@@ -1,7 +1,7 @@
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
-from flask import Flask, make_response, request
+from flask import Flask, make_response, request, render_template
 
 import json
 
@@ -41,6 +41,8 @@ def ingest_course():
             })
         else:
             metadata_ref.set({
+                "prefix": course_id[0],
+                "term": course_id[1],
                 "course_metadata": {
                     course_level: {
                         course_id[2]: data['title']
@@ -80,6 +82,27 @@ def get_term_metadata(term_id):
         return data.to_dict()
     else:
         return make_response({"metadata for course not found"}, 404)
+
+@app.route("/test")
+def test():
+    data = {
+    "course_metadata": {
+        "degree": {
+            "cs3003": "Degree Test"
+        },
+        "diploma": {
+            "cs2002": "Diploma Test"
+        },
+        "foundation": {
+            "cs1002": "Jan 2023 - Python",
+            "hs1002": "Jan 2023 - English II",
+            "ma1003": "Jan 2023 - Mathematics II"
+        }
+    },
+    "prefix": "ns",
+    "term": "23t1"
+}
+    return render_template("test.html", data=data)
 
 if __name__ == "__main__":
     app.run(debug=True, port = 5000)
