@@ -4,6 +4,7 @@ from firebase_admin import firestore
 from flask import Flask, make_response, request, render_template
 
 import json
+import os
 
 # Use the application default credentials.
 cred = credentials.ApplicationDefault()
@@ -18,6 +19,13 @@ app = Flask(__name__)
 def ingest_course():
     # extract data from the request
     data = request.get_json()
+
+    # sanity check to confirm Notebook version
+    try:
+        assert data['ALE_VERSION'] == os.environ.get("ALE_VERSION")
+        del data['ALE_VERSION']
+    except AssertionError:
+        return make_response({"message": "Please update your script"}, 412)
 
     # figure out the course from the data
     course_id = data['course_id'].split("_")
