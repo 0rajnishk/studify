@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--========== BOX ICONS ==========-->
+  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+  <!--========== CSS ==========-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <link rel="shortcut icon" type="image/png" href="../assets/img/notes.png">
+
+        <title>Studify - Your One Stop Solution for Study Material </title>
+        </head>
+        
+        <body>
+        
+          <!--========== SCROLL TOP ==========-->
+          <a href="#" class="scrolltop" id="scroll-top">
+            <i class='bx bx-chevron-up scrolltop__icon'></i>
+        
+          </a>
+        
+          <!--========== HEADER ==========-->
+          <header class="l-header" id="header">
+            <nav class="nav bd-container">
+              <a href="#" class="nav__logo">DATA SCIENCE</a>
+        
+              <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                  <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
+                  <li class="nav__item"><a href="#Importantlink" class="nav__link">Qualifier Content</a></li>
+                  <li class="nav__item"><a href="#menu" class="nav__link">Social media</a></li>
+                  <li class="nav__item"><a href="#contact" class="nav__link">Contact us</a></li>
+        
+                </ul>
+              </div>
+        
+              <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+              </div>
+        
+            </nav>
+            <div><i class='bx bx-moon change-theme' id="theme-button"></i></div>
+          </header>
+        
+          <main class="l-main">
+            <!--========== HOME ==========-->
+            <section class="home" id="home">
+              <div class="home__container bd-container bd-grid">
+                <div class="home__data">
+                  <h1 class="home__title">Studify</h1>
+                  <h2 class="home__subtitle">Your One Stop Solution for Study Material </h2>
+                  <a href="{{ url_for('login') }}" class="button">login to continue</a>
+                </div>
+        
+        
+              </div>
+        
+            </section>
+
+              <div class="slider">
+                <div class="slides-container">
+                  <div class="slide">
+                    <img src="https://uploads-ssl.webflow.com/63a4093ca918637551d8e43e/63d2e79e05b8de27076e3216_Landing-1-web.jpg" alt="Image 1">
+                    <div class="caption">
+                      <p>##no caption</p>
+                    </div>
+                  </div>
+                  <div class="slide">
+                    <img src="https://uploads-ssl.webflow.com/63a4093ca918637551d8e43e/63d2e79e716606bc471ee600_Landing-4-web.jpg" alt="Image 2">
+                    <div class="caption">
+                      <p>Paradox 2022</p>
+                    </div>
+                  </div>
+                  <div class="slide">
+                    <img src="https://uploads-ssl.webflow.com/63a4093ca918637551d8e43e/63d2e79e05b8de27076e3216_Landing-1-web.jpg" alt="Image 3">
+                    <div class="caption">
+                      <p>no caption</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        
+        
+            <!----================================Important Link======================================-->
+            <section class="menu section bd-container" id="Importantlink">
+        
+              <h1 class="section-title"><span class="section-subtitle">Qualifier Content</span></h1>
+        
+              <div class="menu__container bd-grid">
+                <div class="menu__content">
+                  <a href="https://bit.ly/IITMBSNOTES"> <img src="assets/img/notes.png" alt="" class="menu__img"></a>
+        
+                  <a href="https://bit.ly/IITMBSNOTES">
+                    <h3 class="services__title">Maths</h3>
+                  </a>
+                  <span class="menu__detail"></span>
+                  <a href="https://bit.ly/IITMBSNOTES">click here </a>
+                  <!---<a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a>--->
+                </div>
+        
+                <div class="menu__content">
+                  <a href="https://sites.google.com/student.onlinedegree.iitm.ac.in/iitmbsc-academia/home?authuser=0"><img
+                      src="assets/img/pyq.png" alt="" class="menu__img"></a>
+                  <a href="https://sites.google.com/student.onlinedegree.iitm.ac.in/iitmbsc-academia/home?authuser=0">
+                    <h3 class="services__title"> Statistics</h3>
+                  </a>
+                  <span class="menu__detail"></span>
+                  <a href="https://sites.google.com/student.onlinedegree.iitm.ac.in/iitmbsc-academia/home?authuser=0">Click
+                    here</a>
+                  <!--<a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i>rajnsh</a>-->
+                </div>
+        
+                <div class="menu__content">
+                  <img src="assets/img/date.png" alt="" class="menu__img">
+                  <h3 class="services__title">CT</h3>
+                  <span class="menu__detail"></span>
+                  <a href="#">Click here</a>
+                  <!--<a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i>rajnish</a>-->
+                </div>
+        
+        
+                <div class="menu__content">
+                  <img src="assets/img/student_handbook.png" alt="" class="menu__img">
+                  <h3 class="services__title">English</h3>
+                  <span class="menu__detail"></span>
+                  <a href="#">Click here</a>
+                  <!--<a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i>rajnish</a>-->
+                </div>
+        
+        
+              </div>
+            </section>
+        
+        
+        
+        
+            <!--========== Social media  ==========-->
+            <section class="menu section bd-container" id="menu">
+        
+              <h1 class="section-title"><span class="section-subtitle">Social Media</span></h1>
+        
+              <div class="menu__container bd-grid">
+                <div class="menu__content">
+                  <img src="" alt="" class="menu__img">
+                  <h3 class="menu__name">Insta Handle</h3>
+                  <span class="menu__detail"></span>
+                  <a href="https://instagram.com/iitmbsdegree?igshid=ZDdkNTZiNTM=">click here </a>
+                  <!---<a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a>--->
+                </div>
+        
+                <div class="menu__content">
+                  <img src="" alt="" class="menu__img">
+                  <h3 class="menu__name">Whatsapp group</h3>
+                  <span class="menu__detail"></span>
+                  <a href="https://sites.google.com/student.onlinedegree.iitm.ac.in/iitmbs-community">Click here</a>
+                  <!--<a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i>rajnsh</a>-->
+                </div>
+        
+                <div class="menu__content">
+                  <img src="" alt="" class="menu__img">
+                  <h3 class="menu__name">Telegram group</h3>
+                  <span class="menu__detail"></span>
+                  <a href="https://telegram.me/+1rNnHJdP5JViMmU1">click here</a>
+                  <!--<a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i>rajnish</a>-->
+                </div>
+        
+                <div class="menu__content">
+                  <img src="" alt="" class="menu__img">
+                  <h3 class="menu__name">Linkedin</h3>
+                  <span class="menu__detail"></span>
+                  <a href="https://telegram.me/+1rNnHJdP5JViMmU1">click here</a>
+                  <!--<a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i>rajnish</a>-->
+                </div>
+        
+        
+              </div>
+            </section>
+        
+            <!--========== ABOUT 
+            <section class="about section bd-container" id="about">
+        
+        
+              <div class="about__container  bd-grid">
+                <div class="about__data">
+        
+                  <h1 class="section-subtitle about__initial">About us</h1>
+        
+                  <h2 class="section-title about__initial">Unleash your potential with<br> the power of past knowledge <br> and
+                    future notes.</h2>
+                  <p class="about__description">Studify website is your go-to destination for accessing previous year question
+                    papers, notes and discussing topics related to your course. Join now and take charge of your studies!</p>
+                  <h3 class="credit">Credit</h3>
+                  <hr>
+                  <div class="credit-text">
+                    <p class="img"> Rajnish Kumar </p>
+                    <div class="vertical-line-container"><span class="vertical-line-text"> </span></div>
+                    <p class="img"> Sumit sharma</p>
+        
+                  </div>
+                  <hr>
+                  <div class="about-image">
+                    <a href="https://instagram.com/_rajnish.k?igshid=YmMyMTA2M2Y=" class="img1"><img src="assets/img/insta.jpg"
+                        width="40px" height="40px" alt="insta logo"></a>
+                    <a href="https://www.linkedin.com/public-profile/settings" class="img1"><img src="assets/img/link.png"
+                        width="50" height="50" alt="insta logo"></a>
+                    <div class="vertical-line-container"><span class="vertical-line"></span></div>
+                    <a href="#" class="img1"><img src="assets/img/insta.jpg" width="40px" height="40px" alt="insta logo"></a>
+                    <a href="https://www.linkedin.com/in/sumit-sharma-1b93b6232" class="img1"><img src="assets/img/link.png"
+                        width="50" height="50" alt="insta logo"></a>
+                  </div>
+                </div>
+        
+        
+                <div class="slider">
+                  <div class="slides-container">
+                    <div class="slide">
+                      <img src=" https://drive.google.com/uc?export=view&id=1RtDp9IrjHkE6rRisKwZw6fnCw3z5Mquk" alt="Image 1">
+                      <div class="caption">
+                        <p></p>
+                      </div>
+                    </div>
+                    <div class="slide">
+                      <img src=" https://drive.google.com/uc?export=view&id=1h8xDUkFDTYnUM4jpnN63LfdhJ8aO6Khu" alt="Image 2">
+                      <div class="caption">
+                        <p></p>
+                      </div>
+                    </div>
+                    <div class="slide">
+                      <img src=" https://drive.google.com/uc?export=view&id=1OtB8Fi37dpdVF7vtMAi5wz4hw43oaafn" alt="Image 3">
+                      <div class="caption">
+                        <p></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        
+        
+        
+              </div>
+              <hr>
+            </section> ==========-->
+        
+        
+            <!--===== APP 
+            <section class="app section bd-container" id="app">
+              <div class="app__container bd-grid">
+                <div class="app__data">
+                  <span class="section-subtitle app__initial">App</span>
+                  <h2 class="section-title app__initial">coming soon... .</h2>
+                  <p class="app__description">Find our application and download it, you can get many features on our app, Notes,
+                    previous year question paper and many more.</p>
+                  <div class="app__stores">
+                    <a href="#"><img src="#" alt="" class="app__store"></a>
+                    <a href="#"><img src="#" alt="" class="app__store"></a>
+                  </div>
+                </div>
+        
+                <img src="https://drive.google.com/uc?export=view&id=1vGilvcbq5OSly8oeSsHpc2WKr-RmZA1N" alt="" class="app__img">
+
+              </div>
+             
+            </section> =======-->
+        
+            <!--=========================================================== CONTACT US===================================================================================== ==========-->
+            <!--========== CONTACT US ==========-->
+            <section id="contact">
+        
+              <div class="section-heading">
+                <h2>Contact Us</h2>
+                <p>Feel Free to Reach Out to Us</p>
+              </div>
+        
+              <div class="contact-form">
+                <form id="contact-form">
+                  <label for="name">Name:</label>
+                  <input type="text" name="name" id="name">
+                  <label for="email">Email:</label>
+                  <input type="email" name="email" id="email">
+                  <label for="message">Message:</label>
+                  <textarea name="message" id="message"></textarea>
+                  <button type="submit">Submit</button>
+                </form>
+              </div>
+            </section>
+        
+        
+          </main>
+          
+        
+          <!--========== FOOTER ==========-->
+          <footer class="footer section bd-container">
+            
+            <div class="footer__container bd-grid">
+              
+              <div class="footer__content">
+                <a href="#" class="footer__logo">Studify</a>
+                <a href="mailto:studify.iitm@gmail.com" class="footer__description">Studify.iitm@gmail.com</a>
+                <div>
+                  <a href="#" class="footer__social"><i class='bx bxl-facebook'></i></a>
+                  <a href="https://instagram.com/iitmbsdegree?igshid=ZDdkNTZiNTM=" class="footer__social"><i
+                      class='bx bxl-instagram'></i></a>
+                  <a href="#" class="footer__social"><i class='bx bxl-twitter'></i></a>
+                </div>
+              </div>
+        
+              <div class="footer__content">
+                <h3 class="footer__title">Features</h3>
+                <ul>
+                  <li><a href="https://bit.ly/IITMBSNOTES" class="footer__link">Notes</a></li>
+                  <li><a href="https://sites.google.com/student.onlinedegree.iitm.ac.in/iitmbsc-academia/home?authuser=0"
+                      class="footer__link">PYQs</a></li>
+        
+                  <li><a href="#" class="footer__link"></a></li>
+                </ul>
+              </div>
+        
+              <div class="footer__content">
+                <h3 class="footer__title">Information</h3>
+                <ul>
+                  <li><a href="assets/privacy_policy.txt" class="footer__link">Privacy policy</a></li>
+                  <li><a href="assets/terms_and_servises.txt" class="footer__link">Terms of services</a></li>
+                </ul>
+              </div>
+        
+              <div class="footer__content">
+                <h3 class="footer__title">Adress</h3>
+                <ul>
+                  <li>bhutiya gali</li>
+                  <li>bihar</li>
+                </ul>
+              </div>
+            </div>
+        
+            <p class="footer__copy">&#169;All right reserved to me</p>
+          </footer>
+        
+          <!--========== SCROLL REVEAL ==========-->
+          <script src="https://unpkg.com/scrollreveal"></script>
+        
+          <!--========== MAIN JS ==========-->
+
+        
+          <!--==========================firebase====================================-->
+        
+        
+          <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-analytics.js";
+            import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+              authDomain: "studify-m.firebaseapp.com",
+              apiKey: "AIzaSyDIQi1FxB0AiTRXsnwjJF0DBriNNc8l5r8",
+              databaseURL: "https://studify-m-default-rtdb.firebaseio.com",
+              projectId: "studify-m",
+              storageBucket: "studify-m.appspot.com",
+              messagingSenderId: "42857344288",
+              appId: "1:42857344288:web:fd963585581164d8fcfb45",
+              measurementId: "G-YWF13Y56XC"
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+            const database = getDatabase(app);
+
+            // Handle form submission
+            const form = document.getElementById("contact-form");
+            form.addEventListener("submit", function (event) {
+              event.preventDefault(); // Prevent default form submission
+
+              // Get form values
+              const name = form.elements["name"].value;
+              const email = form.elements["email"].value;
+              const message = form.elements["message"].value;
+
+              // Save data to Firebase
+              push(ref(database, "contacts"), {
+                name: name,
+                email: email,
+                message: message
+              })
+                .then(function () {
+                  // Clear form and show success message
+                  form.reset();
+                  alert("Thank you for your message!");
+                })
+                .catch(function (error) {
+                  // Show error message
+                  alert("Oops! Something went wrong. Please try again later.");
+                  console.error(error);
+                });
+            });
+          </script>
+              <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+        
+        
+  </body>
+        
+</html>
