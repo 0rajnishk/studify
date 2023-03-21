@@ -24,7 +24,8 @@
             <div class="grad-bar"></div>
             <nav class="navbar">
                 <!--img src="" alt="Studify"-->
-                <h5>Studify</h5>
+                <h5>
+                <a href="{{data.forum_url}}">{{data.title.split(' - ')[-1]}}</a></h5>
                 <div class="menu-toggle" id="mobile-menu">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -47,51 +48,48 @@
 
 
 
+<section class="container">
+    {% for week in data['week_wise'] %}
 
-        <section class="container">
-            {% for level in data['course_metadata'].keys() %}
+    <div class="ac">
 
-            <div class="ac">
+        <input class="ac-input" id="ac-{{ week }}" name="ac-{{ week }}" type="checkbox" />
+        <label class="ac-label" for="ac-{{ week }}">{{ week['title'] }}</label>
 
-                <input class="ac-input" id="ac-{{ level }}" name="ac-{{ level }}" type="checkbox" />
-                <label class="ac-label" for="ac-{{ level }}">{{ level.upper()}}</label>
+        <article class="ac-text">
 
-                <article class="ac-text">
+            <div class="my-list">
+                <ul id="Grid">
+                    {% for video in week['videos'] %}
+                    <li>
+                        <div>
+                            <h5 class="">{{ video['title'] }}</h5>
+                            <h6 class="">{{ video['yt_vid'] }}</h6>
+                        </div>
+                        <div class="btn-wrapper">
+                            <a href=""
+                                class="card-link">
+                                <button class="btn btn-primary">Download</button>
+                            </a>
+                            </a>
+                        </div>
 
-                    <div class="my-list">
-                        <ul id="Grid">
-                            {% for course_code, course_name in data['course_metadata'][level].items() %}
-                            <li>
-                                <div>
-                                    <h5 class="">{{ course_name.split(' - ')[-1] }}</h5>
-                                    <h6 class="">{{ course_code.upper() }}</h6>
-                                </div>
-                                <div class="btn-wrapper">
-                                    <a href="/course/{{ data['prefix'] }}_{{ data['term'] }}_{{ course_code }}"
-                                        class="card-link">
-                                        <button class="btn btn-primary">Lectures</button>
-                                    </a>
-                                    <a href="/notes/{{ data['prefix'] }}_{{ data['term'] }}_{{ course_code }}"
-                                        class="card-link">
-                                        <button class="btn btn-primary">Notes</button>
-                                    </a>
-                                </div>
-
-                            </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-
-                </article>
+                    </li>
+                    {% endfor %}
+                </ul>
             </div>
 
-
-            {% endfor %}
-        </section>
-
+        </article>
+    </div>
 
 
-        <!-- partial -->
+    {% endfor %}
+</section>
+
+        
+
+
+
 
 
 

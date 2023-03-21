@@ -451,9 +451,9 @@ li{
 
 #Grid li{
   display: inline-block;
-  background: #dbdbdb;
-  width: 170px;
-  padding-top: 40px; /* Used instead of height to give elements fluid, width-based height */
+  background: #ffffff;
+  width: 165px;
+  padding-top: 5px; /* Used instead of height to give elements fluid, width-based height */
   margin-bottom: 2.5%;
 }
 
@@ -474,7 +474,7 @@ li{
 @media (max-width: 800px){
   #Grid li{
     width: 170px;
-    padding-top: 40px;
+    padding-top: 5px;
     margin-bottom: 3%;
     align-self: center;
   }
@@ -485,7 +485,7 @@ li{
 @media (max-width: 600px){
   #Grid li{
     width: 170px;
-    padding-top: 40px;
+    padding-top: 5px;
     margin-bottom: 4%;
     align-self: center;
     
@@ -495,7 +495,7 @@ li{
 @media (max-width: 514px) {
   #Grid li {
     width: 170px;
-    padding-top: 40px;
+    padding-top: 5px;
     margin-bottom: 4%;
     align-self: center;
 
@@ -507,7 +507,7 @@ li{
 @media (max-width: 400px){
   #Grid li{
     width: 170px;
-    padding-top: 40px;
+    padding-top: 5px;
     margin-bottom: 5%;
     align-self: center;
   }
