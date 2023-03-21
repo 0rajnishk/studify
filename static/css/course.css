@@ -439,79 +439,6 @@ li{
 
 /* -- FLUID GRID STYLES -- */
 
-#Grid{
-  max-width: 1200px;
-  /* set your desired maximum width here */
-  margin: 0 auto;
-  /* center the grid horizontally */
-  margin-bottom: 20px;
-  text-align: justify;
-  font-size: 0.1px;
-}
-
-#Grid li{
-  display: inline-block;
-  background: #ffffff;
-  width: 165px;
-  padding-top: 5px; /* Used instead of height to give elements fluid, width-based height */
-  margin-bottom: 2.5%;
-}
-
-
-#Grid:after{
-  content: '';
-  display: inline-block;
-  width: 100%;
-}
-
-
-
-
-/* -- MEDIA QUERIES DEFINING RESPONSIVE LAYOUTS -- */
-
-/* 3 COL */
-
-@media (max-width: 800px){
-  #Grid li{
-    width: 170px;
-    padding-top: 5px;
-    margin-bottom: 3%;
-    align-self: center;
-  }
-}
-
-/* 2 COL */
-
-@media (max-width: 600px){
-  #Grid li{
-    width: 170px;
-    padding-top: 5px;
-    margin-bottom: 4%;
-    align-self: center;
-    
-  }
-}
-
-@media (max-width: 514px) {
-  #Grid li {
-    width: 170px;
-    padding-top: 5px;
-    margin-bottom: 4%;
-    align-self: center;
-
-  }
-}
-
-/* SINGLE COL */
-
-@media (max-width: 400px){
-  #Grid li{
-    width: 170px;
-    padding-top: 5px;
-    margin-bottom: 5%;
-    align-self: center;
-  }
-}
 
 
 /* button ======================================================== */
@@ -537,4 +464,83 @@ li{
   border-width: 0.2em;
   border-color: #f1f1f1;
   cursor: pointer;
+}
+
+/* Youtube cards ======================================================== */
+
+/* -- FLUID GRID STYLES -- */
+
+#Grid {
+  max-width: 1200px;
+  /* set your desired maximum width here */
+  margin: 0 auto;
+  /* center the grid horizontally */
+  margin-bottom: 80px;
+  text-align: justify;
+  font-size: 0.1px;
+}
+
+#Grid li {
+  display: inline-block;
+  background: #ffffff;
+  width: 355px;
+  padding-top: 5px;
+  /* Used instead of height to give elements fluid, width-based height */
+  margin-bottom: 2.5%;
+}
+
+
+#Grid:after {
+  content: '';
+  display: inline-block;
+  width: 100%;
+}
+
+
+
+
+/* -- MEDIA QUERIES DEFINING RESPONSIVE LAYOUTS -- */
+
+/* 3 COL */
+
+@media (max-width: 800px) {
+  #Grid li {
+    width: 355px;
+    padding-top: 5px;
+    margin-bottom: 3%;
+    align-self: center;
+  }
+}
+
+/* 2 COL */
+
+@media (max-width: 600px) {
+  #Grid li {
+    width: 1350px;
+    padding-top: 5px;
+    margin-bottom: 4%;
+    align-self: center;
+
+  }
+}
+
+@media (max-width: 514px) {
+  #Grid li {
+    width: 350px;
+    padding-top: 5px;
+    margin-bottom: 4%;
+    align-self: center;
+
+  }
+}
+
+/* SINGLE COL */
+
+@media (max-width: 400px) {
+  #Grid li {
+    width: 350px;
+    padding-top: 5px;
+    margin-bottom: 5%;
+    align-self: center;
+  }
 }

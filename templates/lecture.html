@@ -24,7 +24,7 @@
             <div class="grad-bar"></div>
             <nav class="navbar">
                 <!--img src="" alt="Studify"-->
-                <h5>
+                <h5><img src="{{ url_for('static', filename='image/studify-logo.pc') }}" alt="studify-logo">
                 <a href="{{data.forum_url}}">{{data.title.split(' - ')[-1]}}</a></h5>
                 <div class="menu-toggle" id="mobile-menu">
                     <span class="bar"></span>
@@ -63,8 +63,10 @@
                     {% for video in week['videos'] %}
                     <li>
                         <div>
+                            <iframe width="350" height="196.875" src="https://www.youtube.com/embed/{{ video['yt_vid'] }}?rel=0" title="{{ video['title'] }}" frameborder="1"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowfullscreen></iframe>
                             <h5 class="">{{ video['title'] }}</h5>
-                            <h6 class="">{{ video['yt_vid'] }}</h6>
                         </div>
                         <div class="btn-wrapper">
                             <a href=""
