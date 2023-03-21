@@ -1,5 +1,4 @@
 dev
 *.pyc
 *.json
-test.py
 env
