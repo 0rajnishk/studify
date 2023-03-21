@@ -98,7 +98,7 @@ def logout():
 @login_required
 def hello_world():
     email = dict(session)['profile']['email']
-    return f'Hello, you are logged in as {email}!'
+    return render_template("ind.html")
 
 
 if __name__ == "__main__":
