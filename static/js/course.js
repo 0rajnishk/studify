@@ -8,3 +8,15 @@ $('.menu-toggle').click(function(){
    $(".nav").toggleClass("mobile-nav");
    $(this).toggleClass("is-active");
 });
+
+
+function closeOtherWeeks(currentWeek) {
+  const allWeeks = document.querySelectorAll('.ac-input');
+  for (let i = 0; i < allWeeks.length; i++) {
+    if (allWeeks[i].id !== `ac-${currentWeek}`) {
+      allWeeks[i].checked = false;
+    }
+  }
+}
+
+
