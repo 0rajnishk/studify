@@ -58,12 +58,12 @@ h2 {
     display: grid;
     grid-template-columns: 1fr 3fr;
     align-items: center;
-    height: 40px;
+    height: 48px;
     overflow: hidden;
 }
 
 .navbar img {
-    height: 35px;
+    height: 30px;
     width: auto;
     justify-self: start;
     margin-left: 20px;
@@ -100,6 +100,7 @@ h2 {
     flex-direction: column;
     justify-content: center;
     background: linear-gradient(-108deg, #b2ee52, #4ae73c, #23d59a, #23bdd5);
+    margin-top: 15px;
     margin-bottom: 35px;
 
 }
@@ -294,7 +295,7 @@ input {
         flex-direction: column;
         position: fixed;
         justify-content: start;
-        top: 55px;
+        top: 57px;
         background-color: #fff;
         width: 100%;
         height: calc(100vh - 55px);
