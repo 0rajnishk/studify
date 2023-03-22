@@ -78,6 +78,7 @@
 }
 
 .youtube_title {
-    min-height: 2em;
+   height: 50px;
+   overflow: hidden;
 
 }
