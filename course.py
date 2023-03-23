@@ -102,3 +102,10 @@ def get_term_metadata(term_id):
 
     else:
         return make_response({"metadata for course not found"}, 404)
+
+
+@course.route('/notes')
+def notes():
+    result = ["raj6", "raj5", "raj4", "raj3", "raj2", "raj1",
+              "raj6", "raj5", "raj4", "raj3", "raj2", "raj1"]
+    return render_template("notes.html", data=result)
