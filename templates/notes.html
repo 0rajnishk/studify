@@ -48,33 +48,16 @@
 		</section>
 
 
-		<article class="ac-text">
 
-		<ul id="Grid-1">
+		<ul class="auto-grid">
 			{% for item in data %}
-					<div class="box">
-						<p>title if any</p>
-						<p>from week to week</p> <p>by name of the author</p>
-					<div class="btn-wrapper">
-						
-						<hr>
-						<a href="/course/{{ data['prefix'] }}_{{ data['term'] }}_{{ course_code }}" class="card-link">
-							<button class="btn btn-primary">Lectures</button>
-						</a>
-						<a href="/notes/{{ data['prefix'] }}_{{ data['term'] }}_{{ course_code }}" class="card-link">
-							<button class="btn btn-primary">Notes</button>
-						</a>
-					</div>
-					</div>
 
-			</div></li>
+			<li class="notes">Item {{ item }}</li>
+
 			{% endfor %}
+
+
 		</ul>
-	</div>
-	</article>
-
-
-		
 		
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 		<script src="{{ url_for('static', filename='js/course.js') }}"></script>

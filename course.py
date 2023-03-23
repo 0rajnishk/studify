@@ -106,6 +106,9 @@ def get_term_metadata(term_id):
 
 @course.route('/notes')
 def notes():
-    result = ["raj6", "raj5", "raj4", "raj3", "raj2", "raj1",
-              "raj6", "raj5", "raj4", "raj3", "raj2", "raj1"]
-    return render_template("notes.html", data=result)
+    # with open('notes.json', 'r') as f:
+    #     notes_data = json.load(f)
+    notes_data = ['raj', 'raj', 'raj', 'raj', 'raj',
+                  'raj', 'raj', 'raj', 'raj', 'raj', 'raj']
+
+    return render_template('notes.html', data=notes_data)

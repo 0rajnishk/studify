@@ -1,18 +1,19 @@
+.auto-grid {
+	--auto-grid-min-size: 12rem;
 
-	#Grid-1 {
-	    list-style: none;
-	    margin: 0;
-	    padding: 0;
-	    display: flex;
-	    flex-wrap: wrap;
-	    justify-content: space-around;
-	}
+	display: grid;
+	padding-top: 30px;
+	padding-right: 30px;
+	grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
+	grid-gap: 1rem;
+}
 
-	.box {
-	    width: 200px;
-	    height: fit-content;
-	    margin: 10px;
-	    display: inline-block;
-	    vertical-align: bottom;
-	}
 
+li.notes {
+	height: 20px;
+	padding: 5rem 1rem;
+	text-align: center;
+	font-size: 1.2rem;
+	background: #e6e6e6;
+	color: #000000;
+}
