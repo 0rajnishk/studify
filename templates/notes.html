@@ -43,23 +43,50 @@
 		<section class="headline">
 			<!-- <h1>Studify</h1>
             <p>Your One Stop Solution for Study Material</p> -->
-			<h1><a href="{{data.forum_url}}">Notes</a></h1>
-			<p><a href=""> click here for Lectures</a></p>
+			<h1>{{ data['title'] }}</h1>
+			<h2>{{ data['course_id'].upper() }}</h2>
 		</section>
 
 
 
-		<ul class="auto-grid">
-			{% for item in data %}
-			
+        <section class="container">
+            {% for source, notes_links in data['Notes'].items() %}
 
-			<li class="notes" style="text-decoration: none;"><a href=""></a>Notes {{ item }}</a></li>
-			
+            <div class="ac">
 
-			{% endfor %}
+                <input class="ac-input" id="ac-{{ source }}" name="ac-{{ source }}" type="checkbox" onclick="closeOtherWeeks('{{ source }}')" />
+                <label class="ac-label" for="ac-{{ source }}">{{ source}}</label>
+
+                <article class="ac-text">
+                    <div class="my-list">
+                        <ul id="Grid">
+                            {% for name, link in notes_links.items() %}
+                            <li>
+                                <div>
+                                    <a href="{{ link }}"><h2 class="">{{ name }}</h2></a>
+                                </div>
+                                <!-- <div class="btn-wrapper">
+                                    <a href="/course/{{ data['prefix'] }}_{{ data['term'] }}_{{ course_code }}"
+                                        class="card-link">
+                                        <button class="btn btn-primary">Lectures</button>
+                                    </a>
+                                    <a href="/notes/{{ course_code }}"
+                                        class="card-link">
+                                        <button class="btn btn-primary">Notes</button>
+                                    </a>
+                                </div> -->
+
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                </article>
+            </div>
 
 
-		</ul>
+            {% endfor %}
+        </section>
 		
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 		<script src="{{ url_for('static', filename='js/course.js') }}"></script>

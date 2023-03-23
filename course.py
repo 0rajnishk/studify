@@ -63,7 +63,7 @@ def ingest_course():
                 }
             })
 
-    return make_response("file written successfully", 200)
+    return make_response({"message":"file written successfully"}, 200)
 
 
 @course.route("/course/<course_id>", methods=["GET"])
@@ -79,7 +79,7 @@ def fetch_post(course_id):
         return render_template("lecture.html", data=data.to_dict())
 
     else:
-        return make_response("course not found", 404)
+        return make_response({"message":"course not found"}, 404)
 
 
 @course.route("/terms", methods=["GET"])
@@ -101,14 +101,15 @@ def get_term_metadata(term_id):
         return render_template("course.html", data=data.to_dict())
 
     else:
-        return make_response({"metadata for course not found"}, 404)
+        return make_response({"message":"metadata for course not found"}, 404)
 
 
-@course.route('/notes')
-def notes():
-    # with open('notes.json', 'r') as f:
-    #     notes_data = json.load(f)
-    notes_data = ['raj', 'raj', 'raj', 'raj', 'raj',
-                  'raj', 'raj', 'raj', 'raj', 'raj', 'raj']
-
-    return render_template('notes.html', data=notes_data)
+@course.route('/notes/<course_id>')
+def notes(course_id):
+    notes_ref = db.collection("ds_notes").document(course_id)
+    notes = notes_ref.get()
+    if notes.exists:
+        return render_template('notes.html', data=notes.to_dict())
+        
+    else:
+        return make_response({"message": "notes for course not found"}, 404)

@@ -1,3 +1,16 @@
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+
+import json
+import os
+
+# Use the application default credentials.
+cred = credentials.ApplicationDefault()
+
+firebase_admin.initialize_app(cred)
+db = firestore.client()
+
 l = [
 
     {
@@ -379,3 +392,9 @@ l = [
     }
 
 ]
+
+for course in l:
+    notes_ref = db.collection("ds_notes").document(course['course_id'])
+    notes_ref.set(course)
+    print(json.dumps(course))
+    # quit()
