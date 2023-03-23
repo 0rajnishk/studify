@@ -1,30 +1,13 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from authlib.integrations.flask_client import OAuth
 
-from functools import wraps
 import os
 import secrets
 from datetime import timedelta
 
-# dotenv setup
-# from dotenv import load_dotenv
-# load_dotenv()
-
 from course import course
-# decorator for routes that should be accessible only by logged in users
+from utils import login_required
 
-
-def login_required(func):
-    @wraps(func)
-    def decorated_function(*args, **kwargs):
-        if 'profile' not in session:
-            return redirect(url_for('login', next=request.url))
-        email = session['profile']['email']
-        if email.endswith('@ds.study.iitm.ac.in'):
-            return func(*args, **kwargs)
-        else:
-            return f'You are not authorized to access this page. Please use an authorized email address ({email}).'
-    return decorated_function
 
 
 # App config
@@ -50,8 +33,9 @@ google = oauth.register(
     authorize_params=None,
     api_base_url='https://www.googleapis.com/oauth2/v1/',
     userinfo_endpoint='https://openidconnect.googleapis.com/v1/userinfo',
-    client_kwargs={'scope': 'openid email profile'},
-    validate_token=True  # enable token validation
+    client_kwargs={'scope': 'email profile'},
+    validate_token=True,  # enable token validation
+    server_metadata_url= 'https://accounts.google.com/.well-known/openid-configuration'
 )
 
 
@@ -64,17 +48,12 @@ def index():
 
 @app.route('/login')
 def login():
-    return redirect(url_for('authorize'))
-
-
-@app.route('/authorize')
-def authorize():
     redirect_uri = url_for('oauth_callback', _external=True)
     return google.authorize_redirect(redirect_uri)
 
-
 @app.route('/oauth-callback')
 def oauth_callback():
+    print(request.args)
     google = oauth.create_client('google')  # create the google oauth client
     # Access token from google (needed to get user info)
     token = google.authorize_access_token()
@@ -85,7 +64,7 @@ def oauth_callback():
         session['profile'] = user_info
         # make the session permanent so it keeps existing after the browser gets closed
         session.permanent = True
-        return redirect(url_for('hello_world'))
+        return redirect(url_for('course.get_term_metadata', term_id="23t1"))
     else:
         return 'You are not authorized to access this page. Please use an authorized email address.'
 
@@ -94,14 +73,6 @@ def oauth_callback():
 def logout():
     session.pop('profile', None)
     return redirect(url_for('index'))
-
-
-@app.route('/hello-world')
-@login_required
-def hello_world():
-    email = dict(session)['profile']['email']
-    return render_template("ind.html")
-
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

@@ -6,6 +6,8 @@ from flask import Flask, make_response, request, render_template, Blueprint
 import json
 import os
 
+from utils import login_required
+
 # Use the application default credentials.
 cred = credentials.ApplicationDefault()
 
@@ -64,8 +66,8 @@ def ingest_course():
 
     return make_response("file written successfully", 200)
 
-
 @course.route("/course/<course_id>", methods=["GET"])
+@login_required
 def fetch_post(course_id):
     course_id = course_id.split("_")
 
@@ -80,6 +82,7 @@ def fetch_post(course_id):
 
 
 @course.route("/terms", methods=["GET"])
+@login_required
 def list_terms():
     terms = []
     terms_ref = db.collection("ds_courses")
@@ -89,6 +92,7 @@ def list_terms():
 
 
 @course.route("/term/<term_id>", methods=["GET"])
+@login_required
 def get_term_metadata(term_id):
     term_metadata_ref = db.document(f"ds_courses/{term_id}")
     data = term_metadata_ref.get()
