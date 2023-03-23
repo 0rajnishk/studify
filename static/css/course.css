@@ -74,4 +74,13 @@
   }
 }
 /* -- FLUID GRID STYLES -- */
+li.notes a{
+  text-decoration: none;
+  color: rgb(10, 6, 0);
+}
 
+
+li.notes{
+  height: auto;
+  margin: 30px;
+}
