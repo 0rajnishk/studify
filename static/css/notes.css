@@ -8,6 +8,9 @@
 	grid-gap: 1rem;
 }
 
+ a {
+	text-decoration: none;
+}
 
 li.notes {
 	height: 20px;
