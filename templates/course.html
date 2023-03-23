@@ -18,7 +18,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 </head>
 
-<body class="p-3 m-0 border-0 bd-example">
+<body>
     <!-- partial:index.partial.html -->
     <div class="page-wrapper">
         <div class="nav-wrapper">
@@ -32,14 +32,14 @@
                     <span class="bar"></span>
                 </div>
                 <ul class="nav no-search">
-                    <li class="nav-item"><a href="#">Home</a></li>
-                    <li class="nav-item"><a href="#">Dashbord</a></li>
+                    <!-- <li class="nav-item"><a href="#">Home</a></li> -->
                     <li class="nav-item"><a href="#">Contact Us</a></li>
-                    <i class="bx bx-moon change-theme" id="theme-button"></i>
+                    <li class="nav-item"><a href="{{ url_for('logout') }}">Logout</a></li>
                     <i class="fas fa-search" id="search-icon"></i>
                     <input class="search-input" type="text" placeholder="Search..">
                 </ul>
             </nav>
+            <div class="grad-bar"></div>
         </div>
         <section class="headline">
             <h1>Studify</h1>

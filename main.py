@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, flash, render_template, request, redirect, url_for, session
 from authlib.integrations.flask_client import OAuth
 
 import os
@@ -9,14 +9,14 @@ from course import course
 from utils import login_required
 
 
-
 # App config
 app = Flask(__name__)
 app.register_blueprint(course)
 # Session config
 app.secret_key = secrets.token_hex(16)
-app.config['SESSION_COOKIE_NAME'] = 'google-login-session'
-app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=5)
+app.config['SESSION_PERMANENT'] = True
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=30)
+
 
 # oAuth Setup
 oauth = OAuth(app)
@@ -35,7 +35,7 @@ google = oauth.register(
     userinfo_endpoint='https://openidconnect.googleapis.com/v1/userinfo',
     client_kwargs={'scope': 'email profile'},
     validate_token=True,  # enable token validation
-    server_metadata_url= 'https://accounts.google.com/.well-known/openid-configuration'
+    server_metadata_url='https://accounts.google.com/.well-known/openid-configuration'
 )
 
 
@@ -51,6 +51,18 @@ def login():
     redirect_uri = url_for('oauth_callback', _external=True)
     return google.authorize_redirect(redirect_uri)
 
+
+# Define a list of allowed domains
+allowed_domains = ['ds.study.iitm.ac.in',
+                   'study.iitm.ac.in', 'ds.study.iitm.ac.in']
+
+# Define a list of blocked emails
+blocked_emails = ['user@example.com']
+
+# Define a list of admin emails
+admin_emails = ['surajnish02@gmainl.com', 'studify.iitm@gmail.com']
+
+
 @app.route('/oauth-callback')
 def oauth_callback():
     print(request.args)
@@ -60,19 +72,27 @@ def oauth_callback():
     # userinfo contains stuff u specified in the scope
     resp = google.get('userinfo')
     user_info = resp.json()
-    if user_info['email'].endswith('@ds.study.iitm.ac.in'):
-        session['profile'] = user_info
-        # make the session permanent so it keeps existing after the browser gets closed
-        session.permanent = True
-        return redirect(url_for('course.get_term_metadata', term_id="23t1"))
+    email = user_info['email']
+    domain = email.split('@')[-1]
+    if domain in allowed_domains or email in admin_emails:
+        if email in blocked_emails:
+            return 'bhag bharwa aandhi aaya'
+        else:
+            session['profile'] = user_info
+            email
+            session.permanent = True
+            return redirect(url_for('course.get_term_metadata', term_id="23t1"))
     else:
-        return 'You are not authorized to access this page. Please use an authorized email address.'
+        session.pop('profile', None)
+        return 'You are not authorized to access this page. Please use student email address.'
 
 
 @app.route('/logout')
 def logout():
     session.pop('profile', None)
-    return redirect(url_for('index'))
+    flash('You have been logged out successfully!', 'success')
+    return render_template('index.html')
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

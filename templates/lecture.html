@@ -16,14 +16,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 </head>
 
-<body class="p-3 m-0 border-0 bd-example">
+<body class="">
     <!-- partial:index.partial.html -->
     <div class="page-wrapper">
         <div class="nav-wrapper">
             <div class="grad-bar"></div>
             <nav class="navbar">
                 <!--img src="" alt="Studify"-->
-                <h5><img src="{{ url_for('static', filename='image/studify-logo.png') }}" alt="studify-logo">
+                <h5><img src="{{ url_for('static', filename='image/studify-logo.png') }}" alt="studify">
                     <!-- <a href="{{data.forum_url}}">{{data.title.split(' - ')[-1]}}</a> -->
                 </h5>
                 <div class="menu-toggle" id="mobile-menu">
@@ -33,18 +33,20 @@
                 </div>
                 <ul class="nav no-search">
                     <li class="nav-item"><a href="#">Home</a></li>
-                    <li class="nav-item"><a href="#">Dashbord</a></li>
+                    <!-- <li class="nav-item"><a href="#">Dashbord</a></li> -->
                     <li class="nav-item"><a href="#">Contact Us</a></li>
-                    <i class="bx bx-moon change-theme" id="theme-button"></i>
+                    <!-- <i class="bx bx-moon change-theme" id="theme-button"></i> -->
                     <i class="fas fa-search" id="search-icon"></i>
                     <input class="search-input" type="text" placeholder="Search..">
                 </ul>
             </nav>
+            <div class="grad-bar"></div>
         </div>
         <section class="headline">
             <!-- <h1>Studify</h1>
             <p>Your One Stop Solution for Study Material</p> -->
             <h1><a href="{{data.forum_url}}">{{data.title.split(' - ')[-1]}}</a></h1>
+            <p><a href=""> click here for notes</a></p>
         </section>
 
         <section class="container">

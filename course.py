@@ -18,7 +18,6 @@ db = firestore.client()
 course = Blueprint('course', __name__, template_folder='templates')
 
 
-
 # route to intake course
 @course.route("/course", methods=["POST"])
 def ingest_course():
@@ -34,7 +33,7 @@ def ingest_course():
 
     # figure out the course from the data
     course_id = data['course_id'].split("_")
-    course_level = ["foundation", "diploma", "degree"][int(course_id[2][2])-1] 
+    course_level = ["foundation", "diploma", "degree"][int(course_id[2][2])-1]
 
     # store  the contents corresponding to the course
     course_ref = db.collection("ds_courses").document(
@@ -66,14 +65,16 @@ def ingest_course():
 
     return make_response("file written successfully", 200)
 
+
 @course.route("/course/<course_id>", methods=["GET"])
 @login_required
 def fetch_post(course_id):
     course_id = course_id.split("_")
 
-    course_ref = db.collection(f"ds_courses/{course_id[1]}/{course_id[2]}").document("course")
+    course_ref = db.collection(
+        f"ds_courses/{course_id[1]}/{course_id[2]}").document("course")
     data = course_ref.get()
-    
+
     if data.exists:
         return render_template("lecture.html", data=data.to_dict())
 

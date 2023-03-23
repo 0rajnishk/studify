@@ -6,10 +6,14 @@
 }
 
 /* HEADINGS */
+.headline a {
+    text-decoration: none;
+    color: white;
+}
 
 h1,
 p {
-    color: #fff;
+    color: #000000;
     text-align: center;
     line-height: 1.4;
 }
@@ -34,17 +38,19 @@ h2 {
 }
 
 .nav-wrapper {
+    padding: 8px;
     width: 100%;
     position: -webkit-sticky;
     /* Safari */
     position: sticky;
     top: 0;
-    background-color: #fff;
+    background-color: #ffffff;
 }
 
 .grad-bar {
-    width: 100%;
-    height: 5px;
+    margin-left: 1%;
+    width: 98%;
+    height: 4px;
     background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
     background-size: 400% 400%;
     -webkit-animation: gradbar 5s ease infinite;
@@ -55,6 +61,7 @@ h2 {
 /* NAVIGATION */
 
 .navbar {
+    position: fixed;
     display: grid;
     grid-template-columns: 1fr 3fr;
     align-items: center;
@@ -72,36 +79,37 @@ h2 {
 .navbar ul {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     justify-self: end;
 
 }
 
 .nav-item a {
     color: #000;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     font-weight: 400;
     text-decoration: none;
     transition: color 0.3s ease-out;
 }
 
 .nav-item a:hover {
-    color: #000000;
+    color: #4c4c4c;
 }
 
 /* SECTIONS */
 
 .headline {
-    width: 100%;
+    margin-left: 5%;
+    width: 90%;
     height: 20vh;
-    min-height: 100px;
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: linear-gradient(-108deg, #b2ee52, #4ae73c, #23d59a, #23bdd5);
+    background: linear-gradient(-5deg, #01fc7a, #0059ff);
+    background-size: 400% 400%;
+    -webkit-animation: gradbar 5s ease infinite;
+    -moz-animation: gradbar 5s ease infinite;
+    animation: gradbar 5s ease infinite;
     margin-top: 15px;
     margin-bottom: 35px;
+    justify-content: space-around;
 
 }
 
@@ -141,7 +149,7 @@ h2 {
 }
 
 #search-icon:hover {
-    color: #3498db;
+    color: #000000;
     cursor: pointer;
 }
 
@@ -149,7 +157,7 @@ h2 {
     -webkit-transform: translate(-35%);
     transform: translate(-35%);
     transition: transform 0.7s ease-in-out;
-    color: #3498db;
+    color: #000000;
 }
 
 .no-search {

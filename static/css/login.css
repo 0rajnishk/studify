@@ -429,6 +429,14 @@ img {
     border-radius: .5rem 0 .5rem 0;
 }
 
+.menu__button1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    padding: .625rem .813rem;
+    border-radius: .5rem 0 .5rem 0;
+}
 /*=========================== APP ==============================*/
 .app__data {
     text-align: center;
