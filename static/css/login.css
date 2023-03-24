@@ -110,6 +110,9 @@ p,
 ul {
     margin: 0;
 }
+.home__title h1{
+    margin-top: 20px;
+}
 
 ul {
     padding: 0;
@@ -556,7 +559,7 @@ img {
         }
     
         .home__container {
-            height: calc(50vh - var(--header-height));
+            height: calc(55vh - var(--header-height));
             align-content: center;
             margin-bottom: 0px;
         }
