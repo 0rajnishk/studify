@@ -427,7 +427,7 @@ img {
     bottom: 0;
     right: 0;
     display: flex;
-    padding: .625rem .813rem;
+    padding: .425rem .513rem;
     border-radius: .5rem 0 .5rem 0;
 }
 
@@ -436,7 +436,7 @@ img {
     bottom: 0;
     left: 0;
     display: flex;
-    padding: .625rem .813rem;
+    padding: .425rem .513rem;
     border-radius: .5rem 0 .5rem 0;
 }
 
