@@ -33,7 +33,7 @@ def ingest_course():
 
     # figure out the course from the data
     course_id = data['course_id'].split("_")
-    course_level = ["foundation", "diploma", "degree"][int(course_id[2][2])-1]
+    course_level = ["foundation", "diploma", "BSc degree", "BS degree"][int(course_id[2][2])-1]
 
     # store  the contents corresponding to the course
     course_ref = db.collection("ds_courses").document(
