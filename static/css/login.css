@@ -882,3 +882,21 @@ img {
 #login-button:hover {
     background-color: #357ae8;
 }
+
+.heart {
+	color: #ef0e2b;
+	font-size:25px;
+}
+
+.jrslm-white2 {
+	/* width: 290px; */
+	/* color: #000000; */
+	/* border: solid #000000 5px; */
+	padding: 5px;
+	text-align: center;
+	margin: 30px;
+	/* font-family: 'Biryani', sans-serif; */
+	font-size: 20px;
+	font-weight: bold;
+}
+
