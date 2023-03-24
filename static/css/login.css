@@ -285,14 +285,14 @@ img {
 
 /*========================================= HOME =============================*/
 .home__container {
-    height: calc(70vh - var(--header-height));
+    height: calc(50vh - var(--header-height));
     align-content: center;
     margin-bottom: 0px;
 }
 
 @media screen and (max-width: 721px) {
     .home__container {
-        height: calc(55vh - var(--header-height));
+        height: calc(35vh - var(--header-height));
 
     }
 }
@@ -482,6 +482,9 @@ img {
     .section {
         padding-top: 0.5rem;
     }
+    .bd-container {
+        margin-top: 0px;
+    }    
 
     .nav {
         height: calc(var(--header-height) + 1.5rem);
@@ -504,9 +507,8 @@ img {
         position: fixed;
     }
 
-    .services__container,
     .menu__container {
-        margin-top: var(--mb-6);
+        margin-top: 0px;
     }
 
     .menu__container {
