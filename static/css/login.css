@@ -104,7 +104,6 @@ body {
     line-height: 1.6;
 }
 
-h1,
 h2,
 h3,
 p,
@@ -285,7 +284,7 @@ img {
 
 /*========================================= HOME =============================*/
 .home__container {
-    height: calc(50vh - var(--header-height));
+    height: calc(70vh - var(--header-height));
     align-content: center;
     margin-bottom: 0px;
 }
@@ -369,7 +368,7 @@ img {
 
 /*================================ MENU =====================================================*/
 .menu__container {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
     justify-content: center;
     margin: 20px;
 }
@@ -427,7 +426,7 @@ img {
     bottom: 0;
     right: 0;
     display: flex;
-    padding: .425rem .513rem;
+    padding: .625rem .813rem;
     border-radius: .5rem 0 .5rem 0;
 }
 
@@ -436,7 +435,7 @@ img {
     bottom: 0;
     left: 0;
     display: flex;
-    padding: .425rem .513rem;
+    padding: .625rem .813rem;
     border-radius: .5rem 0 .5rem 0;
 }
 
@@ -511,12 +510,6 @@ img {
         margin-top: 0px;
     }
 
-    .menu__container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 4rem;
-    }
-
     .menu__content {
         padding: 1.5rem;
     }
@@ -526,9 +519,6 @@ img {
     width: 130px;
 }
 
-.app__store {
-    margin: 0 var(--mb-1) 0 0;
-}
 
 
 @media screen and (min-width: 960px) {
@@ -543,10 +533,33 @@ img {
     }
 }
 
-@media screen and (max-width: 721px) {
+@media screen and (max-width: 767px) {
     .home__img {
         display: none;
     }
+        .menu__button {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            display: flex;
+            padding: .2rem .3rem;
+            border-radius: .5rem 0 .5rem 0;
+        }
+    
+        .menu__button1 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            padding: .2rem .3rem;
+            border-radius: .5rem 0 .5rem 0;
+        }
+    
+        .home__container {
+            height: calc(50vh - var(--header-height));
+            align-content: center;
+            margin-bottom: 0px;
+        }
 }
 
 
