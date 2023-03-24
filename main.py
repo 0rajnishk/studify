@@ -17,7 +17,6 @@ app.secret_key = secrets.token_hex(16)
 app.config['SESSION_PERMANENT'] = True
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=30)
 
-
 # oAuth Setup
 oauth = OAuth(app)
 
@@ -48,7 +47,7 @@ def index():
 
 @app.route('/login')
 def login():
-    redirect_uri = url_for('oauth_callback', _external=True)
+    redirect_uri = url_for('oauth_callback', _external=True, _scheme=request.scheme)
     return google.authorize_redirect(redirect_uri)
 
 
