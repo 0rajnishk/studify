@@ -23,25 +23,6 @@ function linkAction(){
 }
 navLink.forEach(n => n.addEventListener('click', linkAction))
 
-/*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
-const sections = document.querySelectorAll('section[id]')
-
-function scrollActive(){
-  const scrollY = window.pageYOffset
-
-  sections.forEach(current =>{
-      const sectionHeight = current.offsetHeight
-      const sectionTop = current.offsetTop - 50;
-      sectionId = current.getAttribute('id')
-
-      if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
-          document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
-      }else{
-          document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link')
-      }
-  })
-}
-window.addEventListener('scroll', scrollActive)
 
 /*==================== CHANGE BACKGROUND HEADER ====================*/ 
 function scrollHeader(){
@@ -88,28 +69,3 @@ themeButton.addEventListener('click', () => {
   localStorage.setItem('selected-theme', getCurrentTheme())
   localStorage.setItem('selected-icon', getCurrentIcon())
 })
-
-/*==================== SCROLL REVEAL ANIMATION ====================*/
-// Auto-sliding the images
-// Auto-sliding the images
-var currentSlide = 0;
-var sliderInterval = setInterval(nextSlide, 3000);
-
-function nextSlide() {
-  currentSlide = (currentSlide + 1) % 3;
-  goToSlide(currentSlide);
-}
-
-function goToSlide(slideIndex) {
-  var slidesContainer = document.querySelector('.slides-container');
-  var slides = document.querySelectorAll('.slide');
-  var slideWidth = slides[0].offsetWidth;
-  slidesContainer.style.transform = 'translateX(-' + slideWidth * slideIndex + 'px)';
-  
-  // Update the active state of the caption
-  var captions = document.querySelectorAll('.caption');
-  for (var i = 0; i < captions.length; i++) {
-    captions[i].classList.remove('active');
-  }
-  captions[slideIndex].classList.add('active');
-}
