@@ -5,6 +5,8 @@ from flask import Flask, make_response, request, render_template, Blueprint
 
 import json
 import os
+import re
+
 
 from utils import login_required
 
@@ -15,7 +17,20 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 # app = Flask(__name__)
-course = Blueprint('course', __name__, template_folder='templates')
+course = Blueprint('course', __name__)
+
+# Define the regex_search filter function
+
+
+def regex_search(value, pattern):
+    return re.search(pattern, value) is not None
+
+# Add the regex_search filter to the Jinja2 environment of the Blueprint
+
+
+@course.app_template_filter('regex_search')
+def regex_search_filter(value, pattern):
+    return regex_search(value, pattern)
 
 
 # route to intake course
@@ -33,7 +48,8 @@ def ingest_course():
 
     # figure out the course from the data
     course_id = data['course_id'].split("_")
-    course_level = ["foundation", "diploma", "BSc degree", "BS degree"][int(course_id[2][2])-1]
+    course_level = ["foundation", "diploma",
+                    "BSc degree", "BS degree"][int(course_id[2][2])-1]
 
     # store  the contents corresponding to the course
     course_ref = db.collection("ds_courses").document(
@@ -63,7 +79,7 @@ def ingest_course():
                 }
             })
 
-    return make_response({"message":"file written successfully"}, 200)
+    return make_response({"message": "file written successfully"}, 200)
 
 
 @course.route("/course/<course_id>", methods=["GET"])
@@ -79,7 +95,7 @@ def fetch_post(course_id):
         return render_template("lecture.html", data=data.to_dict())
 
     else:
-        return make_response({"message":"course not found"}, 404)
+        return make_response({"message": "course not found"}, 404)
 
 
 @course.route("/terms", methods=["GET"])
@@ -101,7 +117,7 @@ def get_term_metadata(term_id):
         return render_template("course.html", data=data.to_dict())
 
     else:
-        return make_response({"message":"metadata for course not found"}, 404)
+        return make_response({"message": "metadata for course not found"}, 404)
 
 
 @course.route('/notes/<course_id>')
@@ -110,6 +126,6 @@ def notes(course_id):
     notes = notes_ref.get()
     if notes.exists:
         return render_template('notes.html', data=notes.to_dict())
-        
+
     else:
         return make_response({"message": "notes for course not found"}, 404)
