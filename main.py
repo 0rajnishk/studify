@@ -17,6 +17,8 @@ app.secret_key = secrets.token_hex(16)
 app.config['SESSION_PERMANENT'] = True
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(days=30)
 
+if os.environ.get("env") == "prod":
+    app.config['PREFERRED_URL_SCHEME'] = "https"
 
 # oAuth Setup
 oauth = OAuth(app)
