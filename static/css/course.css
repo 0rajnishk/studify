@@ -84,3 +84,23 @@ li.notes{
   height: auto;
   margin: 30px;
 }
+
+.imp grid{
+  --auto-grid-min-size: 8rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
+  grid-gap: 0.5rem;
+}
+
+.imp li {
+  padding: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  background: #747474;
+  color: #000000;
+}
+
+.imp a {
+  text-decoration: none;
+  color: black;
+}

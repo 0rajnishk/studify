@@ -60,7 +60,7 @@ allowed_domains = ['ds.study.iitm.ac.in',
 blocked_emails = ['user@example.com']
 
 # Define a list of admin emails
-admin_emails = ['surajnish02@gmainl.com', 'studify.iitm@gmail.com']
+admin_emails = ['surajnish02@gmail.com', 'studify.iitm@gmail.com']
 
 
 @app.route('/oauth-callback')
@@ -76,7 +76,7 @@ def oauth_callback():
     domain = email.split('@')[-1]
     if domain in allowed_domains or email in admin_emails:
         if email in blocked_emails:
-            return 'bhag bharwa aandhi aaya'
+            return 'You are blocked. Contact admin for more details'
         else:
             session['profile'] = user_info
             email
