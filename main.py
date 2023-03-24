@@ -47,7 +47,7 @@ def index():
 
 @app.route('/login')
 def login():
-    redirect_uri = url_for('oauth_callback', _external=True, _scheme=request.scheme)
+    redirect_uri = url_for('oauth_callback', _external=True, _scheme="https")
     return google.authorize_redirect(redirect_uri)
 
 
