@@ -60,7 +60,7 @@
                 <article class="ac-text">
                     <div class="my-list">
 						<ul id="grid">
-                            {% for name, link in notes_links.items() %}
+                            {% for name, link in notes_links|dictsort %}
                             <li class="notes">
 								<div class="not">
                                     <a href="{{ link }}"><h2 class="">{{ name }}</h2></a>
