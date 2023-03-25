@@ -89,3 +89,8 @@ li.notes{
   text-decoration: none;
   color: rgb(10, 6, 0);
 }
+
+
+.p-3 {
+  z-index: -1;
+}

@@ -1,7 +1,7 @@
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
-from flask import Flask, make_response, request, render_template, Blueprint
+from flask import Flask, make_response, request, render_template, Blueprint, session
 
 import json
 import os
@@ -111,10 +111,14 @@ def list_terms():
 @course.route("/term/<term_id>", methods=["GET"])
 @login_required
 def get_term_metadata(term_id):
+    user_info = session['profile']
+    email = user_info['email']
+    name = user_info['name']
+    profile_photo = user_info['picture']
     term_metadata_ref = db.document(f"ds_courses/{term_id}")
     data = term_metadata_ref.get()
     if data.exists:
-        return render_template("course.html", data=data.to_dict())
+        return render_template("course.html", data=data.to_dict(), roll=email.split('@')[0], name=name, photo=profile_photo)
 
     else:
         return make_response({"message": "metadata for course not found"}, 404)

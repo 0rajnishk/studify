@@ -25,11 +25,13 @@ def login_required(func):
 
         if domain in allowed_domains or email in admin_emails:
             if email in blocked_emails:
+                session.clear()
                 return 'You are blocked. Contact admin for more details'
             else:
                 session.permanent = True
                 return func(*args, **kwargs)
         else:
+            session.clear()
             return 'You are not authorized to access this page. Please use student email address.'
 
     return decorated_function
