@@ -62,7 +62,8 @@ allowed_domains = ['ds.study.iitm.ac.in',
 blocked_emails = ['user@example.com']
 
 # Define a list of admin emails
-admin_emails = ['surajnish02@gmail.com', 'studify.iitm@gmail.com']
+admin_emails = ['surajnish02@gmail.com',
+                'studify.iitm@gmail.com', 'studify.dummy@gmail.com']
 
 
 @app.route('/oauth-callback')

@@ -111,14 +111,10 @@ def list_terms():
 @course.route("/term/<term_id>", methods=["GET"])
 @login_required
 def get_term_metadata(term_id):
-    user_info = session['profile']
-    email = user_info['email']
-    name = user_info['name']
-    profile_photo = user_info['picture']
     term_metadata_ref = db.document(f"ds_courses/{term_id}")
     data = term_metadata_ref.get()
     if data.exists:
-        return render_template("course.html", data=data.to_dict(), roll=email.split('@')[0], name=name, photo=profile_photo)
+        return render_template("course.html", data=data.to_dict())
 
     else:
         return make_response({"message": "metadata for course not found"}, 404)
@@ -133,3 +129,45 @@ def notes(course_id):
 
     else:
         return make_response({"message": "notes for course not found"}, 404)
+
+
+@course.route('/pyq')
+def pyq():
+    pyq = {
+        'Foundation': {
+            'Quiz 1': {
+                'Paper 1': '',
+                'Paper 2': '',
+                'Paper 3': ''
+            },
+            'Quiz 2': {
+                'Paper 1': 'https://drive.google.com/file/d/1AbiYyDbqy0uBlnPcwTi4JdvGc0S29oFV/view?usp=sharing',
+                'Paper 2': 'https://drive.google.com/file/d/1A_Tfw0qHWhxjtPoXtecYJ_w_JqRgy9LH/view?usp=sharing',
+                'Paper 3': 'https://drive.google.com/file/d/1AWm0eKTBv8jk10C7_AMBXZHbeLLHRrsw/view?usp=sharing'
+            },
+            'End Term': {
+                'Paper 1': '',
+                'Paper 2': '',
+                'Paper 3': ''
+            }
+        },
+        'Diploma': {
+            'Quiz 1': {
+                'Paper 1': '',
+                'Paper 2': '',
+                'Paper 3': ''
+            },
+            'Quiz 2': {
+                'Paper 1': 'https://drive.google.com/file/d/1AolZXOmI6CkkxBH5yh5K_hTgj3llxrje/view?usp=sharing',
+                'Paper 2': 'https://drive.google.com/file/d/1AmCqwDF4YGVkupd12vEOHPMuz9QK-JoB/view?usp=sharing',
+                'Paper 3': 'https://drive.google.com/file/d/1AfCdv2z9jYOT2Y_3PynGIJkEZ8ykHk0_/view?usp=sharing'
+            },
+            'End Term': {
+                'Paper 1': '',
+                'Paper 2': '',
+                'Paper 3': ''
+            }
+        }
+    }
+
+    return render_template('pyq.html', data=pyq)
