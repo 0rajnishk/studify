@@ -127,7 +127,7 @@ def get_term_metadata(term_id):
                 term_data['course_metadata']['foundation'].update(
                     qualifier_data['course_metadata']['foundation'])
 
-        return render_template("course.html", data=term_data, roll=email.split('@')[0], name=name, photo=profile_photo)
+        return render_template("course.html", data=term_data)
     data = term_metadata_ref.get()
     if data.exists:
         return render_template("course.html", data=data.to_dict())
