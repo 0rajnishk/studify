@@ -49,39 +49,39 @@
             <p><a href=""> click here for notes</a></p>
         </section>
 
-        <section class="container">
-            {% for week in data['week_wise'] %}
-            {% set r = week['title'] %}
+<section class="container">
+    {% for week in data['week_wise'] %}
+    {% set r = week['title'] %}
 
-            <div class="ac">
-                <input class="ac-input" id="ac-{{r}}" name="ac-{{ r }}" type="checkbox"
-                    onclick="closeOtherWeeks('{{ r }}')" />
-                <label class="ac-label" for="ac-{{r}}">{{ week['title'] }}</label>
-                <article class="ac-text">
-                    <div class="my-list">
-                        <ul id="Grid">
-                            {% for video in week['videos'] %}
-                            <li>
-                                <div><iframe width="350" height="196.875"
-                                        src="https://www.youtube.com/embed/{{ video['yt_vid'] }}?rel=0"
-                                        title="{{ video['title'] }}" frameborder="1"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        allowfullscreen loading="lazy"></iframe></div>
+    <div class="ac">
+        <input class="ac-input" id="ac-{{r}}" name="ac-{{ r }}" type="checkbox" onclick="closeOtherWeeks('{{ r }}')" />
+        <label class="ac-label" for="ac-{{r}}">{{ week['title'] }}</label>
+        <article class="ac-text">
+            <div class="my-list">
+                
+                {% for video in week['videos'] %}
+                <li>
+                    <div><iframe src="https://www.youtube.com/embed/{{ video['yt_vid'] }}?rel=0"
+                            title="{{ video['title'] }}" frameborder="1"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen loading="lazy"></iframe></div>
 
-                                <div class="youtube_title">
-                                    <h5 class="">{{ video['title'] }}</h5>
-                                </div>
-                                <div class="btn-wrapper">
-                                    <a href="https://ssyoutube.com/watch?v={{ video['yt_vid'] }}" class="card-link"><button class="btn btn-primary">download</button></a>
-                                </div>
-                            </li>
-                            {% endfor %}
-                        </ul>
+                    <div class="youtube_title">
+                        <h5>{{ video['title'] }}</h5>
                     </div>
-                </article>
+                    <div class="btn-wrapper">
+                        <a href="https://ssyoutube.com/watch?v={{ video['yt_vid'] }}" class="card-link"><button
+                                class="btn btn-primary">Download</button></a>
+                    </div>
+                </li>
+                {% endfor %}
+                
             </div>
-            {% endfor %}
-        </section>
+        </article>
+    </div>
+    {% endfor %}
+</section>
+
 
 
 

@@ -1,135 +1,38 @@
-/* Youtube cards ======================================================== */
-
-/* -- FLUID GRID STYLES -- */
-
-#Grid {
-    max-width: 1200px;
-    /* set your desired maximum width here */
+/* Youtube cards */
+.container {
+    max-width: 100%;
     margin: 0 auto;
-    /* center the grid horizontally */
-    margin-bottom: 10px;
-    text-align: justify;
-    font-size: 0.1px;
+    z-index: 0;
 }
 
-#Grid li {
-    display: inline-block;
-    background: #ffffff;
-    width: 355px;
-    padding-top: 20px;
-    /* Used instead of height to give elements fluid, width-based height */
-    margin-bottom: 2.5%;
+.my-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    z-index: 0;
 }
 
+.my-list li {
+    width: calc((90%)/3);
+    margin-bottom: 20px;
+    z-index: 0;
+}
 
-#Grid:after {
-    content: '';
-    display: inline-block;
+@media (max-width: 992px) {
+    .my-list li {
+        width: calc((96%)/2);
+    }
+}
+
+@media (max-width: 576px) {
+    .my-list li {
+        width: 98%;
+        height: 120;
+        z-index: 0;
+    }
+}
+
+.my-list li iframe {
     width: 100%;
 }
 
-  .youtube_title{
-      height: 50px;
-      max-width: 350px;
-      
-  }
-
-
-
-
-/* -- MEDIA QUERIES DEFINING RESPONSIVE LAYOUTS -- */
-
-/* 3 COL */
-
-@media (max-width: 800px) {
-    #Grid li {
-        width: 340px;
-        padding-top: 5px;
-        margin-bottom: 3%;
-        align-self: center;
-    }
-            iframe {
-        width: 95%;
-        height: 95%;
-    }
-          .youtube_title {
-              max-width: 95%;
-    
-          }
-}
-
-/* 2 COL */
-
-@media (max-width: 600px) {
-    #Grid li {
-        width: 350px;
-        padding-top: 5px;
-        margin-bottom: 4%;
-        align-self: center;
-
-    }
-        iframe {
-        width: 90%;
-        height: 90%;
-    }
-              .youtube_title {
-              max-width: 90%;
-    
-          }
-}
-
-@media (max-width: 514px) {
-    #Grid li {
-        width: 350px;
-        padding-top: 5px;
-        margin-bottom: 4%;
-        align-self: center;
-
-    }
-        iframe {
-        width: 80%;
-        height: 80%;
-    }
-          .youtube_title {
-              max-width: 80%;
-    
-          }
-}
-
-/* SINGLE COL */
-
-@media (max-width: 400px) {
-    #Grid li {
-        width: 300px;
-        padding-top: 5px;
-        margin-bottom: 5%;
-        align-self: center;
-    }
-        iframe {
-        width: 75%;
-        height: 75%;
-    }
-          .youtube_title {
-              max-width: 75%;
-    
-          }
-}
-
-@media (max-width: 340px) {
-    #Grid li {
-        width: 230px;
-        padding-top: 5px;
-        margin-bottom: 5%;
-        align-self: center;
-    }
-
-    iframe {
-        width: 75%;
-        height: 75%;
-    }
-
-    .youtube_title {
-        max-width: 75%;
-
-    }
-}
