@@ -1,5 +1,6 @@
 from flask import Flask, flash, render_template, request, redirect, url_for, session
 from authlib.integrations.flask_client import OAuth
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 import os
 import secrets
@@ -12,6 +13,12 @@ from utils import login_required
 # App config
 app = Flask(__name__)
 app.register_blueprint(course)
+
+app.wsgi_app = ProxyFix(
+    app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
+)
+
+
 # Session config
 app.secret_key = secrets.token_hex(16)
 app.config['SESSION_PERMANENT'] = True
@@ -50,7 +57,8 @@ def index():
 
 @app.route('/login')
 def login():
-    redirect_uri = url_for('oauth_callback', _external=True, _scheme="http")
+    redirect_uri = url_for(
+        'oauth_callback', _external=True, _scheme=request.scheme)
     return google.authorize_redirect(redirect_uri)
 
 
