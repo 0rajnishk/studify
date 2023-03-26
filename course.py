@@ -112,6 +112,22 @@ def list_terms():
 @login_required
 def get_term_metadata(term_id):
     term_metadata_ref = db.document(f"ds_courses/{term_id}")
+    term_data = term_metadata_ref.get()
+    if term_data.exists:
+        term_data = term_data.to_dict()
+        print(term_data)
+        # bundle qualifier content while
+        # fetching term content
+        if term_id[2] == "t":
+            qualifier_metadata_ref = db.document(
+                f"ds_courses/{term_id.replace('t', 'q')}")
+            qualifier_data = qualifier_metadata_ref.get()
+            if qualifier_data.exists:
+                qualifier_data = qualifier_data.to_dict()
+                term_data['course_metadata']['foundation'].update(
+                    qualifier_data['course_metadata']['foundation'])
+
+        return render_template("course.html", data=term_data, roll=email.split('@')[0], name=name, photo=profile_photo)
     data = term_metadata_ref.get()
     if data.exists:
         return render_template("course.html", data=data.to_dict())
