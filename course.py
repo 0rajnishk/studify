@@ -58,7 +58,7 @@ def ingest_course():
     if not course_ref.get().exists:
         # new course, set flag to write metadata
         flag = True
-    course_ref.set(data)
+    course_ref.set(data, merge=True)
 
     if flag:
         print("writing metadata")
@@ -83,7 +83,7 @@ def ingest_course():
 
 
 @course.route("/course/<course_id>", methods=["GET"])
-# @login_required
+@login_required
 def fetch_post(course_id):
     course_id = course_id.split("_")
 
@@ -99,6 +99,19 @@ def fetch_post(course_id):
     else:
         return make_response({"message": "course not found"}, 404)
 
+@course.route("/cache/<course_id>", methods=["GET"])
+def cached_course_content(course_id):
+    course_id = course_id.split("_")
+
+    course_ref = db.collection(
+        f"ds_courses/{course_id[1]}/{course_id[2]}").document("course")
+    data = course_ref.get()
+
+    if data.exists:
+        content = data.to_dict()
+        return make_response([content["week_wise"][i]["title"] for i in range(len(content["week_wise"]))])
+    
+    return make_response({"message": "course not found"}, 404)
 
 @course.route("/terms", methods=["GET"])
 @login_required
@@ -127,7 +140,7 @@ def get_term_metadata(term_id):
                 qualifier_data = qualifier_data.to_dict()
                 term_data['course_metadata']['foundation'].update(qualifier_data['course_metadata']['foundation'])
 
-        return render_template("course.html", data=term_data, roll=email.split('@')[0], name=name, photo=profile_photo)
+        return render_template("course.html", data=term_data)
 
     else:
         return make_response({"message": "metadata for course not found"}, 404)
