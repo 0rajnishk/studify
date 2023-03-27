@@ -58,7 +58,9 @@ def ingest_course():
     if not course_ref.get().exists:
         # new course, set flag to write metadata
         flag = True
-    course_ref.set(data, merge=True)
+        course_ref.set(data)
+    else:
+        course_ref.update({"week_wise": firestore.ArrayUnion( data['week_wise'] )})
 
     if flag:
         print("writing metadata")
@@ -111,7 +113,7 @@ def cached_course_content(course_id):
         content = data.to_dict()
         return make_response([content["week_wise"][i]["title"] for i in range(len(content["week_wise"]))])
     
-    return make_response({"message": "course not found"}, 404)
+    return make_response([], 404)
 
 @course.route("/terms", methods=["GET"])
 @login_required
