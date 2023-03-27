@@ -34,7 +34,7 @@
 				<ul class="nav no-search">
 					<li class="nav-item"><a href="/term/23t1">Home</a></li>
 					<!-- <li class="nav-item"><a href="#">Dashbord</a></li> -->
-					<li class="nav-item"><a href="https://forms.gle/2jUCjXNoj4hVKkVy9" target="_blank">Contact Us</a></li>
+					<li class="nav-item"><a href="#">Contact Us</a></li>
 					<!-- <i class="bx bx-moon change-theme" id="theme-button"></i> -->
 					<i class="fas fa-search" id="search-icon"></i>
 					<input class="search-input" type="text" placeholder="Search..">
@@ -44,46 +44,59 @@
 		</div>
 		<section class="headline">
 			<!-- <h1>Studify</h1> -->
-			<h1>{{ data['title'] }}</h1>
-			<h2>{{ data['course_id'].upper() }}</h2>
+			<h1>Studify</h1>
+			<h2>Your One Stop Solution for Study Material</a></h2>
 		</section>
 
 
+<section class="container">
+    {% for quiz_name, quiz in data.items() %}
 
-        <section class="container">
-            {% for source, notes_links in data['Notes'].items() %}
+    <div class="ac">
 
-            <div class="ac">
+        <input class="ac-input" id="ac-{{ quiz_name }}" name="ac-{{ quiz_name }}" type="checkbox"
+            onclick="closeOtherWeeks('{{ quiz_name }}')" />
+        <label class="ac-label" for="ac-{{ quiz_name }}">{{ quiz_name }}</label>
+        
+        <article class="ac-text">
+            <div class="p-3 m-0 border-0 bd-example bd-example-row">
+                <div class="container text-center">
+                    <div class="row">
+                        
+                        {% for quiz, paper_link in quiz.items() %}
+                        
+                        
+                                <h4 class="">{{ quiz }}</h4>
+                      
 
-                <input class="ac-input" id="ac-{{ source }}" name="ac-{{ source }}" type="checkbox" onclick="closeOtherWeeks('{{ source }}')" />
-                <label class="ac-label" for="ac-{{ source }}">{{ source}}</label>
-
-					<article class="ac-text">
-						<div class="p-3 m-0 border-0 bd-example bd-example-row">
-							<div class="container text-center">
-								<div class="row">
-									{% for name, link in notes_links|dictsort %}
-									{% if name|regex_search('\s\d') %}
-									{% set modified_name = name|replace(' ', '&nbsp;') %}
-									{% else %}
-									{% set modified_name = name %}
-									{% endif %}
-									<div class="col">
-										<a href="{{ link }}" target="_blank">
-											<h2 class=""> {{ modified_name|safe }} </h2>
-										</a>
-									</div>
-									{% endfor %}
-								</div>
-							</div>
-						</div>
-					</article>
-
-
-
+            <div class="p-3 m-0 border-0 bd-example bd-example-row">
+                <div class="container text-center">
+                    <div class="row">
+                        
+                        {% for paper, link in paper_link.items() %}
+                        
+                        <div class="col">
+                            <a href="{{ link }}">
+                                <h5 class="">{{ paper }}</h5>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </article>
 
-		 {% endfor %}
+    </div>
+
+    {% endfor %}
+</section>
+
+
+
         </section>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>

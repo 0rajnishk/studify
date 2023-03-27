@@ -2,3 +2,7 @@ dev
 *.pyc
 *.json
 env
+degree
+diploma
+foundation
+extract.py

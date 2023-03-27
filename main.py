@@ -57,7 +57,8 @@ def index():
 
 @app.route('/login')
 def login():
-    redirect_uri = url_for('oauth_callback', _external=True, _scheme=request.scheme)
+    redirect_uri = url_for(
+        'oauth_callback', _external=True, _scheme=request.scheme)
     return google.authorize_redirect(redirect_uri)
 
 
@@ -69,11 +70,13 @@ allowed_domains = ['ds.study.iitm.ac.in',
 blocked_emails = ['user@example.com']
 
 # Define a list of admin emails
-admin_emails = ['surajnish02@gmail.com', 'studify.iitm@gmail.com']
+admin_emails = ['surajnish02@gmail.com',
+                'studify.iitm@gmail.com', 'studify.dummy@gmail.com']
 
 
 @app.route('/oauth-callback')
 def oauth_callback():
+    print(request.args)
     google = oauth.create_client('google')  # create the google oauth client
     # Access token from google (needed to get user info)
     token = google.authorize_access_token()

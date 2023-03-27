@@ -90,7 +90,6 @@ li.notes{
   color: rgb(10, 6, 0);
 }
 
-
 .p-3 {
-  z-index: -1;
+  z-index: 0;
 }
