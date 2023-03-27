@@ -58,7 +58,9 @@ def ingest_course():
     if not course_ref.get().exists:
         # new course, set flag to write metadata
         flag = True
-    course_ref.set(data)
+        course_ref.set(data)
+    else:
+        course_ref.update({"week_wise": firestore.ArrayUnion( data['week_wise'] )})
 
     if flag:
         print("writing metadata")
@@ -92,11 +94,26 @@ def fetch_post(course_id):
     data = course_ref.get()
 
     if data.exists:
+        if request.args.get("json"):
+            return data.to_dict()
         return render_template("lecture.html", data=data.to_dict())
 
     else:
         return make_response({"message": "course not found"}, 404)
 
+@course.route("/cache/<course_id>", methods=["GET"])
+def cached_course_content(course_id):
+    course_id = course_id.split("_")
+
+    course_ref = db.collection(
+        f"ds_courses/{course_id[1]}/{course_id[2]}").document("course")
+    data = course_ref.get()
+
+    if data.exists:
+        content = data.to_dict()
+        return make_response([content["week_wise"][i]["title"] for i in range(len(content["week_wise"]))])
+    
+    return make_response([], 404)
 
 @course.route("/terms", methods=["GET"])
 @login_required
@@ -116,21 +133,16 @@ def get_term_metadata(term_id):
     if term_data.exists:
         term_data = term_data.to_dict()
         print(term_data)
-        # bundle qualifier content while
+        # bundle qualifier content while 
         # fetching term content
         if term_id[2] == "t":
-            qualifier_metadata_ref = db.document(
-                f"ds_courses/{term_id.replace('t', 'q')}")
+            qualifier_metadata_ref = db.document(f"ds_courses/{term_id.replace('t', 'q')}")
             qualifier_data = qualifier_metadata_ref.get()
             if qualifier_data.exists:
                 qualifier_data = qualifier_data.to_dict()
-                term_data['course_metadata']['foundation'].update(
-                    qualifier_data['course_metadata']['foundation'])
+                term_data['course_metadata']['foundation'].update(qualifier_data['course_metadata']['foundation'])
 
         return render_template("course.html", data=term_data)
-    data = term_metadata_ref.get()
-    if data.exists:
-        return render_template("course.html", data=data.to_dict())
 
     else:
         return make_response({"message": "metadata for course not found"}, 404)
