@@ -3,6 +3,7 @@ from authlib.integrations.flask_client import OAuth
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 import os
+import re
 import secrets
 from datetime import timedelta
 
@@ -76,7 +77,6 @@ admin_emails = ['surajnish02@gmail.com',
 
 @app.route('/oauth-callback')
 def oauth_callback():
-    print(request.args)
     google = oauth.create_client('google')  # create the google oauth client
     # Access token from google (needed to get user info)
     token = google.authorize_access_token()
@@ -94,8 +94,13 @@ def oauth_callback():
             session.permanent = True
             return redirect(url_for('course.get_term_metadata', term_id="23t1"))
     else:
-        session.pop('profile', None)
-        return 'You are not authorized to access this page. Please use student email address.'
+        # if re.match("/course/ns_2[3-9]{1}q[1-3]{1}_[a-z]{2}[0-9]{4}", urlparse(request.url).path):
+        session['profile'] = user_info
+        session.permanent = True
+        return redirect(url_for('course.get_term_metadata', term_id="23q1"))
+
+        # session.pop('profile', None)
+        # return 'You are not authorized to access this page. Please use student email address.'
 
 
 @app.route('/logout')
