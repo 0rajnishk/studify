@@ -395,6 +395,6 @@ l = [
 
 for course in l:
     notes_ref = db.collection("ds_notes").document(course['course_id'])
-    notes_ref.set(course)
+    notes_ref.update(course)
     print(json.dumps(course))
     # quit()
