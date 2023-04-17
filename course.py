@@ -1,7 +1,7 @@
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
-from flask import Flask, make_response, request, render_template, Blueprint, session
+from flask import Flask, jsonify, make_response, request, render_template, Blueprint, session
 
 import json
 import os
@@ -164,43 +164,16 @@ def notes(course_id):
         return make_response({"message": "notes for course not found"}, 404)
 
 
-@course.route('/pyq/<level>/<quiz>')
-def pyq():
-    pyq = {
-        'Foundation': {
-            'Quiz 1': {
-                'Paper 1': '',
-                'Paper 2': '',
-                'Paper 3': ''
-            },
-            'Quiz 2': {
-                'Paper 1': 'https://drive.google.com/file/d/1AbiYyDbqy0uBlnPcwTi4JdvGc0S29oFV/view?usp=sharing',
-                'Paper 2': 'https://drive.google.com/file/d/1A_Tfw0qHWhxjtPoXtecYJ_w_JqRgy9LH/view?usp=sharing',
-                'Paper 3': 'https://drive.google.com/file/d/1AWm0eKTBv8jk10C7_AMBXZHbeLLHRrsw/view?usp=sharing'
-            },
-            'End Term': {
-                'Paper 1': '',
-                'Paper 2': '',
-                'Paper 3': ''
-            }
-        },
-        'Diploma': {
-            'Quiz 1': {
-                'Paper 1': '',
-                'Paper 2': '',
-                'Paper 3': ''
-            },
-            'Quiz 2': {
-                'Paper 1': 'https://drive.google.com/file/d/1AolZXOmI6CkkxBH5yh5K_hTgj3llxrje/view?usp=sharing',
-                'Paper 2': 'https://drive.google.com/file/d/1AmCqwDF4YGVkupd12vEOHPMuz9QK-JoB/view?usp=sharing',
-                'Paper 3': 'https://drive.google.com/file/d/1AfCdv2z9jYOT2Y_3PynGIJkEZ8ykHk0_/view?usp=sharing'
-            },
-            'End Term': {
-                'Paper 1': '',
-                'Paper 2': '',
-                'Paper 3': ''
-            }
-        }
-    }
+@course.route('/pyq/<level>/<quiz_key>')
+def pyq(level, quiz_key):
+    doc_ref = db.collection("ds_pyq").document(
+        level).collection(quiz_key).document(quiz_key)
+    doc = doc_ref.get()
 
-    return render_template('pyq.html', data=pyq)
+    if doc.exists:
+        quiz_data = doc.to_dict()
+        return render_template('pyq.html', data=quiz_data)
+    else:
+        return f"No data found for {level}/{quiz_key}"
+
+    # return render_template('pyq.html', data=pyq)
