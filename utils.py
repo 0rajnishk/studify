@@ -38,7 +38,6 @@ def login_required(func):
                 session.permanent = True
                 return func(*args, **kwargs)
 
-            session.clear()
             return 'You are not authorized to access this page. Please use student email address.'
 
     return decorated_function
