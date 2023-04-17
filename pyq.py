@@ -11,55 +11,342 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 l = [
-    {
+    {"title": "foundation",
+        "quiz_1": {
 
-        'level': "Foundation",
-        'quiz': 'Quiz 1',
-        'pyq': {
-                "Paper 1": "",
-                "Paper 2": "",
-                "Paper 3": ""
+            "jan_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            },
+            "may_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            },
+            "dec_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            }
         },
-        'quiz': "Quiz 2",
-        'pyq': {
-                "Paper 1": "https://drive.google.com/file/d/1AbiYyDbqy0uBlnPcwTi4JdvGc0S29oFV/view?usp=sharing",
-                "Paper 2": "https://drive.google.com/file/d/1A_Tfw0qHWhxjtPoXtecYJ_w_JqRgy9LH/view?usp=sharing",
-                "Paper 3": "https://drive.google.com/file/d/1AWm0eKTBv8jk10C7_AMBXZHbeLLHRrsw/view?usp=sharing"
+        "quiz_2": {
+
+            "jan_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            },
+            "may_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            },
+            "dec_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            }
         },
-        'quiz': "End Term",
-        'pyq': {
-                "Paper 1": "",
-                "Paper 2": "",
-                "Paper 3": ""
+        "endterm": {
+
+            "jan_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            },
+            "may_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            },
+            "dec_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            }
         }
+     },
+    {"title": "diploma",
+        "quiz_1": {
 
-    },
-    {
-        "level": "Diploma",
-        'quiz': 'Quiz 1',
-        'pyq': {
-                "Paper 1": "",
-                "Paper 2": "",
-                "Paper 3": ""
+            "jan_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            },
+            "may_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            },
+            "dec_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            }
         },
-        'quiz': "Quiz 2",
-        'pyq': {
-                "Paper 1": "https://drive.google.com/file/d/1AolZXOmI6CkkxBH5yh5K_hTgj3llxrje/view?usp=sharing",
-                "Paper 2": "https://drive.google.com/file/d/1AmCqwDF4YGVkupd12vEOHPMuz9QK-JoB/view?usp=sharing",
-                "Paper 3": "https://drive.google.com/file/d/1AfCdv2z9jYOT2Y_3PynGIJkEZ8ykHk0_/view?usp=sharing"
+        "quiz_2": {
+
+            "jan_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            },
+            "may_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            },
+            "dec_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            }
         },
-        "End Term": {
-            "Paper 1": "",
-            "Paper 2": "",
-            "Paper 3": ""
+        "endterm": {
+
+            "jan_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            },
+            "may_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            },
+            "dec_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            }
         }
+     },
+    {"title": "degree",
+        "quiz_1": {
 
-    }
+            "jan_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            },
+            "may_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            },
+            "dec_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            }
+        },
+        "quiz_2": {
+
+            "jan_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            },
+            "may_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            },
+            "dec_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            }
+        },
+        "endterm": {
+
+            "jan_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            },
+            "may_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            },
+            "dec_2022": {
+                "shift": "Enter shift",
+                "paper": {
+                    "paper 1": "upload_question_drive_link",
+                    "paper 2": "upload_question_drive_link",
+                    "paper 3 ": "upload_question_drive_link"
+
+
+                }
+
+            }
+        }
+     }
 ]
+
 
 for course in l:
     # Use the level as the document ID
-    pyq_ref = db.collection("ds_pyq").document(course['level'])
+    pyq_ref = db.collection("ds_pyq").document(course['title'])
     # Update the document with the course data
-    pyq_ref.set(course)
+    pyq_ref.update(course)
     print(json.dumps(course))
