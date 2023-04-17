@@ -4,7 +4,7 @@ from firebase_admin import firestore
 import json
 
 # Initialize a new Firebase app with your service account credentials
-cred = credentials.Certificate('firebase.json')
+cred = credentials.ApplicationDefault()
 firebase_admin.initialize_app(cred)
 
 # Access your Firestore database
