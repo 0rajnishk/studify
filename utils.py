@@ -2,7 +2,6 @@ from functools import wraps
 from flask import session, redirect, url_for, request
 import re
 from urllib.parse import urlparse
-# decorator for routes that should be accessible only by logged in users
 
 # Define a list of allowed domains
 allowed_domains = ['ds.study.iitm.ac.in',
@@ -20,7 +19,12 @@ def login_required(func):
     @wraps(func)
     def decorated_function(*args, **kwargs):
         if 'profile' not in session:
-            return redirect(url_for('login', next=request.url))
+            if not (re.match("^/course/ns_[0-9]{2}q[1-4]?[0-9]_[a-z]{2}[0-9]{4}$", urlparse(request.url).path) or
+                    re.match("^/term/([2-3][3-9]q[1-3]|23q1)$", urlparse(request.url).path)):
+                return redirect(url_for('login', next=request.url))
+            else:
+                session.permanent = True
+                return func(*args, **kwargs)
 
         user_info = session['profile']
         email = user_info['email']
@@ -34,10 +38,6 @@ def login_required(func):
                 session.permanent = True
                 return func(*args, **kwargs)
         else:
-            if re.match("/course/ns_2[3-9]{1}q[1-3]{1}_[a-z]{2}[0-9]{4}|/term/2[3-9]{1}q[1-3]", urlparse(request.url).path):
-                session.permanent = True
-                return func(*args, **kwargs)
-
             session.clear()
             return 'You are not authorized to access this page. Please use student email address.'
 
