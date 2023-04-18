@@ -484,7 +484,6 @@ li {
 
 .btn-primary:hover {
     border-radius: 1em;
-    border-width: 0.2em;
     border-color: #f1f1f1;
     cursor: pointer;
 }
