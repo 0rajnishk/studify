@@ -1,7 +1,7 @@
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
-from flask import Flask, make_response, request, render_template, Blueprint, session
+from flask import Flask, jsonify, make_response, request, render_template, Blueprint, session
 
 import json
 import os
@@ -162,6 +162,35 @@ def notes(course_id):
 
     else:
         return make_response({"message": "notes for course not found"}, 404)
+
+
+@course.route('/pyq')
+def index():
+    return render_template('pyq_choose.html')
+
+
+@course.route('/get_options/<category>')
+def get_options(category):
+    if category == 'foundation':
+        options = [
+            {'value': 'quiz_1', 'label': 'Quiz 1'},
+            {'value': 'quiz_2', 'label': 'Quiz 2'},
+            {'value': 'endterm', 'label': 'endterm'}
+        ]
+    elif category == 'diploma':
+        options = [
+            {'value': 'quiz_1', 'label': 'Quiz 1'},
+            {'value': 'quiz_2', 'label': 'Quiz 2'},
+            {'value': 'endterm', 'label': 'endterm'}
+        ]
+    elif category == 'degree':
+        options = [
+            {'value': 'quiz_1', 'label': 'Quiz 1'},
+            {'value': 'quiz_2', 'label': 'Quiz 2'},
+            {'value': 'endterm', 'label': 'endterm'}
+        ]
+
+    return jsonify(options)
 
 
 @course.route('/pyq/<level>/<quiz_key>')

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Previous Year Question paper</title>
+  </head>
+  <body>
+    <h1>Previous Year Question paper</h1>
+
+    <label for="category-select">Select a category:</label>
+    <select id="category-select">
+      <option value="">Select a category</option>
+      <option value="foundation">Foundation</option>
+      <option value="diploma">Diploma</option>
+      <option value="degree">Degree</option>
+    </select>
+
+    <label for="option-select">Select quiz:</label>
+    <select id="option-select">
+      <option value="">Select an option</option>
+    </select>
+
+    <button id="submit-btn">Submit</button>
+
+    <script src="{{ url_for('static', filename='js/pyq_choose.js') }}"></script>
+  </body>
+</html>
