@@ -1,3 +1,5 @@
+from flask import Blueprint, render_template
+from flask import jsonify
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
@@ -6,6 +8,8 @@ from flask import Flask, jsonify, make_response, request, render_template, Bluep
 import json
 import os
 import re
+from datetime import datetime
+from typing import Union
 
 
 from utils import login_required
@@ -193,6 +197,34 @@ def get_options(category):
     return jsonify(options)
 
 
+# course = Blueprint('course', __name__)
+def sort_by_key(value):
+    if isinstance(value, dict):
+        return sorted(value.items())
+    elif isinstance(value, (list, tuple)):
+        return sorted(value)
+    else:
+        return value
+
+
+@course.app_template_filter('sort_by_key')
+def sort_by_key_filter(value):
+    return sort_by_key(value)
+
+
+def format_date(date_string: str) -> str:
+    if date_string == 'quiz':
+        return datetime.now().strftime('%b %Y')
+    else:
+        date_obj = datetime.strptime(date_string, '%b_%Y')
+        return date_obj.strftime('%b %Y')
+
+
+@course.app_template_filter('format_date')
+def format_date_filter(date_string: str) -> str:
+    return format_date(date_string)
+
+
 @course.route('/pyq/<level>/<quiz_key>')
 def pyq(level, quiz_key):
     doc_ref = db.collection("ds_pyq").document(
@@ -201,8 +233,9 @@ def pyq(level, quiz_key):
 
     if doc.exists:
         quiz_data = doc.to_dict()
-        return render_template('pyq.html', data=quiz_data)
+        sorted_data = sorted(quiz_data.items(), key=lambda x: datetime.now(
+        ) if x[0] == 'quiz' else datetime.strptime(x[0], '%b_%Y'), reverse=True)
+
+        return render_template('pyq.html', data=sorted_data)
     else:
         return f"No data found for {level}/{quiz_key}"
-
-    # return render_template('pyq.html', data=pyq)
