@@ -164,10 +164,10 @@ def notes(course_id):
         return make_response({"message": "notes for course not found"}, 404)
 
 
-@course.route('/pyq/<level>/<quiz_key>')
-def pyq(level, quiz_key):
+@course.route('/pyq/<level>/<subject>/<quiz_key>')
+def pyq(level, subject, quiz_key):
     doc_ref = db.collection("ds_pyq").document(
-        level).collection(quiz_key).document(quiz_key)
+        level).collection(subject).document(quiz_key)
     doc = doc_ref.get()
 
     if doc.exists:
