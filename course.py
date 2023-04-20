@@ -179,42 +179,23 @@ def get_options(category):
     data = metadata_ref.get()
     # course_id = course_id.split("_")
     if data.exists:
-        options = []
         data = data.to_dict()
+        options = []
         course_metadata = data["course_metadata"]
 
-        for category in course_metadata:
-            print(f"\n{category.capitalize()} Courses:")
+        for level in course_metadata:
+            print(f"\n{category} Courses:")
             for course_id, subject in course_metadata[category].items():
                 subject = (subject.split('-')[-1])
-                if category:
+                if level:
                     options.append({'value': course_id, 'label': subject})
             return options
     else:
         return f"No data found"
-    # if category == 'foundation':
-    #     options = [
-    #         {'value': 'maths 1', 'label': 'Maths 1'},
-    #         {'value': 'Stats 1', 'label': 'Quiz 2'},
-    #         {'value': 'endterm', 'label': 'endterm'}
-    #     ]
-    # elif category == 'diploma':
-    #     options = [
-    #         {'value': 'quiz_1', 'label': 'Quiz 1'},
-    #         {'value': 'quiz_2', 'label': 'Quiz 2'},
-    #         {'value': 'endterm', 'label': 'endterm'}
-    #     ]
-    # elif category == 'degree':
-    #     options = [
-    #         {'value': 'quiz_1', 'label': 'Quiz 1'},
-    #         {'value': 'quiz_2', 'label': 'Quiz 2'},
-    #         {'value': 'endterm', 'label': 'endterm'}
-    #     ]
-
-    # return jsonify(options)
-
 
 # course = Blueprint('course', __name__)
+
+
 def sort_by_key(value):
     if isinstance(value, dict):
         return sorted(value.items())
