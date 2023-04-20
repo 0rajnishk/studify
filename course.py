@@ -175,26 +175,43 @@ def index():
 
 @course.route('/get_options/<category>')
 def get_options(category):
-    if category == 'foundation':
-        options = [
-            {'value': 'quiz_1', 'label': 'Quiz 1'},
-            {'value': 'quiz_2', 'label': 'Quiz 2'},
-            {'value': 'endterm', 'label': 'endterm'}
-        ]
-    elif category == 'diploma':
-        options = [
-            {'value': 'quiz_1', 'label': 'Quiz 1'},
-            {'value': 'quiz_2', 'label': 'Quiz 2'},
-            {'value': 'endterm', 'label': 'endterm'}
-        ]
-    elif category == 'degree':
-        options = [
-            {'value': 'quiz_1', 'label': 'Quiz 1'},
-            {'value': 'quiz_2', 'label': 'Quiz 2'},
-            {'value': 'endterm', 'label': 'endterm'}
-        ]
+    metadata_ref = db.document(f"ds_courses/23t1")
+    data = metadata_ref.get()
+    # course_id = course_id.split("_")
+    if data.exists:
+        options = []
+        data = data.to_dict()
+        course_metadata = data["course_metadata"]
 
-    return jsonify(options)
+        for category in course_metadata:
+            print(f"\n{category.capitalize()} Courses:")
+            for course_id, subject in course_metadata[category].items():
+                subject = (subject.split('-')[-1])
+                if category:
+                    options.append({'value': course_id, 'label': subject})
+            return options
+    else:
+        return f"No data found"
+    # if category == 'foundation':
+    #     options = [
+    #         {'value': 'maths 1', 'label': 'Maths 1'},
+    #         {'value': 'Stats 1', 'label': 'Quiz 2'},
+    #         {'value': 'endterm', 'label': 'endterm'}
+    #     ]
+    # elif category == 'diploma':
+    #     options = [
+    #         {'value': 'quiz_1', 'label': 'Quiz 1'},
+    #         {'value': 'quiz_2', 'label': 'Quiz 2'},
+    #         {'value': 'endterm', 'label': 'endterm'}
+    #     ]
+    # elif category == 'degree':
+    #     options = [
+    #         {'value': 'quiz_1', 'label': 'Quiz 1'},
+    #         {'value': 'quiz_2', 'label': 'Quiz 2'},
+    #         {'value': 'endterm', 'label': 'endterm'}
+    #     ]
+
+    # return jsonify(options)
 
 
 # course = Blueprint('course', __name__)
@@ -216,7 +233,7 @@ def format_date(date_string: str) -> str:
     if date_string == 'quiz':
         return datetime.now().strftime('%b %Y')
     else:
-        date_obj = datetime.strptime(date_string, '%b_%Y')
+        date_obj = datetime.strptime(date_string, '%b %Y')
         return date_obj.strftime('%b %Y')
 
 
@@ -225,16 +242,18 @@ def format_date_filter(date_string: str) -> str:
     return format_date(date_string)
 
 
-@course.route('/pyq/<level>/<quiz_key>')
-def pyq(level, quiz_key):
+@course.route('/pyq/<level>/<subject>/<quiz_key>')
+def pyq(level, subject, quiz_key):
     doc_ref = db.collection("ds_pyq").document(
-        level).collection(quiz_key).document(quiz_key)
+        level).collection(subject).document(quiz_key)
     doc = doc_ref.get()
-
     if doc.exists:
         quiz_data = doc.to_dict()
+        print(quiz_data)
         sorted_data = sorted(quiz_data.items(), key=lambda x: datetime.now(
-        ) if x[0] == 'quiz' else datetime.strptime(x[0], '%b_%Y'), reverse=True)
+        ) if x[0] == 'quiz' else datetime.strptime(x[0], '%b %Y'), reverse=True)
+
+        # return jsonify(sorted_data)
 
         return render_template('pyq.html', data=sorted_data)
     else:

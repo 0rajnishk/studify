@@ -10,277 +10,444 @@ firebase_admin.initialize_app(cred)
 # Access your Firestore database
 db = firestore.client()
 
-l = [
+data = [
     {
         "level": "foundation",
-        "quiz_1": {
-            "quiz": "quiz_1",
-            "jan_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "https://drive.google.com/file/d/1TDniJNsSrauTIou_7eITkZO6TOSCs_TQ/view?usp=sharing",
-                    "paper 2": "https://drive.google.com/file/d/1uDL1s6jQ6BLtUp-9ssBtlKUUSWg_LGfj/view?usp=share_link",
-                    "paper 3": "https://drive.google.com/file/d/1F0v3W3WNJqHovfv5UafaV1rzuilmaROq/view?usp=share_link",
-                    "paper 4": "https://drive.google.com/file/d/1rQ4lBOgnAZYZ685J5or-2iC-Df-oAp3b/view?usp=share_link",
-                    "paper 5": "https://drive.google.com/file/d/1vdfopjhuCSe5ifnYXJ5H0yCYhEK-TqPo/view?usp=sharing",
-                    "paper 6": "https://drive.google.com/file/d/1bGvdF5e-BeAVPX88q57hq7lcRH3r0WhA/view?usp=share_link"
+        "cs1001": {
+            "quiz-1": {
+                "jan_2022": {
+                    "paper": {}
                 }
             },
-            "may_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "https://drive.google.com/file/d/1ZAW_4wBJ5gfN6eCkVogTIKLmAW05Z5OX/view?usp=sharing",
-                    "paper 2": "https://drive.google.com/file/d/1uSBgxJqwe9QUT1lmGsweN4i5-Qwd35er/view?usp=share_link",
-                    "paper 3": "https://drive.google.com/file/d/1zI-5W1GAg-krYGcUXo_veWnEd1_i2T3q/view?usp=sharing"
+            "quiz-2": {
+                "Apr 2023": {
+                    "paper": {
+                        "paper 4": "https://drive.google.com/file/d/1G6j7KKrGlaSMVZ1_GG7eYBlwMiSxivSO/view?usp=drivesdk",
+                        "paper 3": "https://drive.google.com/file/d/1PLh9LcUBhgRA5Yp6zDz4j5wlUQp3ZPbV/view?usp=drivesdk",
+                        "paper 2": "https://drive.google.com/file/d/17nt0LxktlpUrnA1J4npjvghAHMH562ca/view?usp=drivesdk",
+                        "paper 1": "https://drive.google.com/file/d/17ZbiSzgxuNPD6_fLoDG_pfVyoe_ZZ-xa/view?usp=drivesdk"
+                    }
+                },
+                "Nov 2022": {
+                    "paper": {
+                        "paper 4": "https://drive.google.com/file/d/1G6j7KKrGlaSMVZ1_GG7eYBlwMiSxivSO/view?usp=drivesdk",
+                        "paper 3": "https://drive.google.com/file/d/1PLh9LcUBhgRA5Yp6zDz4j5wlUQp3ZPbV/view?usp=drivesdk",
+                        "paper 2": "https://drive.google.com/file/d/17nt0LxktlpUrnA1J4npjvghAHMH562ca/view?usp=drivesdk",
+                        "paper 1": "https://drive.google.com/file/d/17ZbiSzgxuNPD6_fLoDG_pfVyoe_ZZ-xa/view?usp=drivesdk"
+                    }
                 }
             },
-            "dec_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "upload_question_drive_link",
-                    "paper 2": "upload_question_drive_link",
-                    "paper 3 ": "upload_question_drive_link"
+            "endterm": {
+                "jan_2022": {
+                    "paper": {}
                 }
             }
         },
-        "quiz_2": {
-            "quiz": "quiz_2",
-            "jan_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "https://drive.google.com/file/d/17pS8hnAfuMnJpJf2W2CDBHbF-G_0Qb3Q/view?usp=sharing",
-                    "paper 2": "https://drive.google.com/file/d/1zJst0w42CFwP3Qo_dXCrZM4GdY-yn0e3/view?usp=sharing",
-                    "paper 3": "https://drive.google.com/file/d/1uQ84iiwcKQ3cguGZse69lv_aXjdKO7tP/view?usp=sharing",
-                    "paper 4": "https://drive.google.com/file/d/1f_r_08Xr6LiadXMkrnXualV5UDrRwrDn/view?usp=sharing",
-                    "paper 5": "https://drive.google.com/file/d/1ESgm19hQLS2cwHhTdG9Pa49JKRdG_OIZ/view?usp=sharing",
-                    "paper 6": "https://drive.google.com/file/d/1R5YZiBMKQF7X8DxXUcsEvNL9nsCgqOw7/view?usp=sharing"
+        "hs1001": {
+            "quiz-1": {
+                "jan_2022": {
+                    "paper": {}
                 }
             },
-            "may_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "upload_question_drive_link",
-                    "paper 2": "upload_question_drive_link",
-                    "paper 3 ": "upload_question_drive_link"
+            "quiz-2": {
+                "Apr 2023": {
+                    "paper": {
+                        "paper 4": "https://drive.google.com/file/d/1ZcQYNnngToREO-aF_1gYs43KKvmOMgyO/view?usp=drivesdk",
+                        "paper 3": "https://drive.google.com/file/d/1ApBxWmNXsefrhY1L9LXZCbaVrHpOWgDA/view?usp=drivesdk",
+                        "paper 2": "https://drive.google.com/file/d/1KUzeD5DI5vTaBbLdhg8zuk3Bz2SdUFCE/view?usp=drivesdk",
+                        "paper 1": "https://drive.google.com/file/d/19sQJllYUh0JTMjiD3Kvn-I7vPhAkfk0l/view?usp=drivesdk"
+                    }
+                },
+                "Nov 2022": {
+                    "paper": {
+                        "paper 4": "https://drive.google.com/file/d/1ZcQYNnngToREO-aF_1gYs43KKvmOMgyO/view?usp=drivesdk",
+                        "paper 3": "https://drive.google.com/file/d/1ApBxWmNXsefrhY1L9LXZCbaVrHpOWgDA/view?usp=drivesdk",
+                        "paper 2": "https://drive.google.com/file/d/1KUzeD5DI5vTaBbLdhg8zuk3Bz2SdUFCE/view?usp=drivesdk",
+                        "paper 1": "https://drive.google.com/file/d/19sQJllYUh0JTMjiD3Kvn-I7vPhAkfk0l/view?usp=drivesdk"
+                    }
                 }
             },
-            "dec_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "upload_question_drive_link",
-                    "paper 2": "upload_question_drive_link",
-                    "paper 3 ": "upload_question_drive_link"
+            "endterm": {
+                "jan_2022": {
+                    "paper": {}
                 }
             }
         },
-        "endterm": {
-            "quiz": "endterm",
-            "jan_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "https://drive.google.com/file/d/1mbK0WosI6NkmDrw5DJK2sSMQpKA71x7e/view?usp=sharing",
-                    "paper 2": "https://drive.google.com/file/d/1EwpI2rRL8dpuAU8ybdt23Vn86YmAKHcF/view?usp=sharing",
-                    "paper 3": "https://drive.google.com/file/d/1ZOPNxFko_XbfwxeihptgP1qMcEo1TcLP/view?usp=sharing",
-                    "paper 4": "https://drive.google.com/file/d/1IpJB-rV3yBps4Txnnp_8a3JsFFMsNz5C/view?usp=sharing"
+        "ma1001": {
+            "quiz-1": {
+                "jan_2022": {
+                    "paper": {}
                 }
             },
-            "may_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "upload_question_drive_link",
-                    "paper 2": "upload_question_drive_link",
-                    "paper 3 ": "upload_question_drive_link"
+            "quiz-2": {
+                "Apr 2023": {
+                    "paper": {
+                        "paper 4": "https://drive.google.com/file/d/1PU9vyToPcPQ_ygDI9pWhymjQfa5ILdoZ/view?usp=drivesdk",
+                        "paper 3": "https://drive.google.com/file/d/15QHJf8_I5IfQs3KqteiGDBdt8eyo0YrA/view?usp=drivesdk",
+                        "paper 2": "https://drive.google.com/file/d/1DykccO3F6ZNU5LJd0N5pcVqNzAXypY-z/view?usp=drivesdk",
+                        "paper 1": "https://drive.google.com/file/d/1mPFU9R0FTjmF5x57qe7yqYYYxgOuHArg/view?usp=drivesdk"
+                    }
+                },
+                "Nov 2022": {
+                    "paper": {
+                        "paper 4": "https://drive.google.com/file/d/1PU9vyToPcPQ_ygDI9pWhymjQfa5ILdoZ/view?usp=drivesdk",
+                        "paper 3": "https://drive.google.com/file/d/15QHJf8_I5IfQs3KqteiGDBdt8eyo0YrA/view?usp=drivesdk",
+                        "paper 2": "https://drive.google.com/file/d/1DykccO3F6ZNU5LJd0N5pcVqNzAXypY-z/view?usp=drivesdk",
+                        "paper 1": "https://drive.google.com/file/d/1mPFU9R0FTjmF5x57qe7yqYYYxgOuHArg/view?usp=drivesdk"
+                    }
                 }
             },
-            "dec_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "upload_question_drive_link",
-                    "paper 2": "upload_question_drive_link",
-                    "paper 3 ": "upload_question_drive_link"
+            "endterm": {
+                "jan_2022": {
+                    "paper": {}
+                }
+            }
+        },
+        "ma1002": {
+            "quiz-1": {
+                "jan_2022": {
+                    "paper": {}
+                }
+            },
+            "quiz-2": {
+                "Apr 2023": {
+                    "paper": {
+                        "paper 4": "https://drive.google.com/file/d/1U1KiPhULl9EWu5mZGnLdHgVPxd9FY22a/view?usp=drivesdk",
+                        "paper 3": "https://drive.google.com/file/d/1ZZhIkn3mYGI-SHEWn4-1H_k9cfdPxOyz/view?usp=drivesdk",
+                        "paper 2": "https://drive.google.com/file/d/1whiemJE119EUXWmHYdGpL7ZEzV7OIS7p/view?usp=drivesdk",
+                        "paper 1": "https://drive.google.com/file/d/1iAXAXzCJyhYcn8L9rgVjqT4qra7tEb7S/view?usp=drivesdk"
+                    }
+                },
+                "Nov 2022": {
+                    "paper": {
+                        "paper 4": "https://drive.google.com/file/d/1U1KiPhULl9EWu5mZGnLdHgVPxd9FY22a/view?usp=drivesdk",
+                        "paper 3": "https://drive.google.com/file/d/1ZZhIkn3mYGI-SHEWn4-1H_k9cfdPxOyz/view?usp=drivesdk",
+                        "paper 2": "https://drive.google.com/file/d/1whiemJE119EUXWmHYdGpL7ZEzV7OIS7p/view?usp=drivesdk",
+                        "paper 1": "https://drive.google.com/file/d/1iAXAXzCJyhYcn8L9rgVjqT4qra7tEb7S/view?usp=drivesdk"
+                    }
+                }
+            },
+            "endterm": {
+                "jan_2022": {
+                    "paper": {}
+                }
+            }
+        },
+        "hs1002": {
+            "quiz-1": {
+                "jan_2022": {
+                    "paper": {}
+                }
+            },
+            "quiz-2": {
+                "Apr 2023": {
+                    "paper": {
+                        "paper 4": "https://drive.google.com/file/d/1RQixMuPci9_dmDtQMwolJ2wWb1KW8ABQ/view?usp=drivesdk",
+                        "paper 3": "https://drive.google.com/file/d/1mCVEQlKdmyvTsfy-G34MDYyCBHAWLPco/view?usp=drivesdk",
+                        "paper 2": "https://drive.google.com/file/d/1jHa3CpQon1LUhwg37Z2z7bJN43dtekcH/view?usp=drivesdk",
+                        "paper 1": "https://drive.google.com/file/d/1rydIfh_2jL2VcNxCTzjqH_KmxbsiXUw6/view?usp=drivesdk"
+                    }
+                },
+                "Nov 2022": {
+                    "paper": {
+                        "paper 4": "https://drive.google.com/file/d/1RQixMuPci9_dmDtQMwolJ2wWb1KW8ABQ/view?usp=drivesdk",
+                        "paper 3": "https://drive.google.com/file/d/1mCVEQlKdmyvTsfy-G34MDYyCBHAWLPco/view?usp=drivesdk",
+                        "paper 2": "https://drive.google.com/file/d/1jHa3CpQon1LUhwg37Z2z7bJN43dtekcH/view?usp=drivesdk",
+                        "paper 1": "https://drive.google.com/file/d/1rydIfh_2jL2VcNxCTzjqH_KmxbsiXUw6/view?usp=drivesdk"
+                    }
+                }
+            },
+            "endterm": {
+                "jan_2022": {
+                    "paper": {}
+                }
+            }
+        },
+        "ma1004": {
+            "quiz-1": {
+                "jan_2022": {
+                    "paper": {}
+                }
+            },
+            "quiz-2": {
+                "Apr 2023": {
+                    "paper": {
+                        "paper 4": "https://drive.google.com/file/d/1l8zF-nlimE1lzvINL7i3nbADBg4ngULU/view?usp=drivesdk",
+                        "paper 3": "https://drive.google.com/file/d/16hwM7gSFP4FnoM71dzrMTtLQKMz6Xr9w/view?usp=drivesdk",
+                        "paper 2": "https://drive.google.com/file/d/1wAGbtF7pw6k5--yEHxz2Wl2UcDiPNCF6/view?usp=drivesdk",
+                        "paper 1": "https://drive.google.com/file/d/1qF-cL8rjYWlZjVnFzrkbOYiiyfHgtwj2/view?usp=drivesdk"
+                    }
+                },
+                "Nov 2022": {
+                    "paper": {
+                        "paper 4": "https://drive.google.com/file/d/1l8zF-nlimE1lzvINL7i3nbADBg4ngULU/view?usp=drivesdk",
+                        "paper 3": "https://drive.google.com/file/d/16hwM7gSFP4FnoM71dzrMTtLQKMz6Xr9w/view?usp=drivesdk",
+                        "paper 2": "https://drive.google.com/file/d/1wAGbtF7pw6k5--yEHxz2Wl2UcDiPNCF6/view?usp=drivesdk",
+                        "paper 1": "https://drive.google.com/file/d/1qF-cL8rjYWlZjVnFzrkbOYiiyfHgtwj2/view?usp=drivesdk"
+                    }
+                }
+            },
+            "endterm": {
+                "jan_2022": {
+                    "paper": {}
+                }
+            }
+        },
+        "ma1003": {
+            "quiz-1": {
+                "jan_2022": {
+                    "paper": {}
+                }
+            },
+            "quiz-2": {
+                "Apr 2023": {
+                    "paper": {
+                        "paper 4": "https://drive.google.com/file/d/1UFdrtsFoMu2Lf80_o8IWt0lFPmP-HCC5/view?usp=drivesdk",
+                        "paper 3": "https://drive.google.com/file/d/19bZ_s55gDUGY0vrLva09dnMsqo01QDmX/view?usp=drivesdk",
+                        "paper 2": "https://drive.google.com/file/d/1QN3N-B_Y8uqpPZMI0NYBU6S5aXmbR0xQ/view?usp=drivesdk",
+                        "paper 1": "https://drive.google.com/file/d/1rwHS2ySvHUnPGRZSv8JXaSZxa0rtj0rT/view?usp=drivesdk"
+                    }
+                },
+                "Nov 2022": {
+                    "paper": {
+                        "paper 4": "https://drive.google.com/file/d/1UFdrtsFoMu2Lf80_o8IWt0lFPmP-HCC5/view?usp=drivesdk",
+                        "paper 3": "https://drive.google.com/file/d/19bZ_s55gDUGY0vrLva09dnMsqo01QDmX/view?usp=drivesdk",
+                        "paper 2": "https://drive.google.com/file/d/1QN3N-B_Y8uqpPZMI0NYBU6S5aXmbR0xQ/view?usp=drivesdk",
+                        "paper 1": "https://drive.google.com/file/d/1rwHS2ySvHUnPGRZSv8JXaSZxa0rtj0rT/view?usp=drivesdk"
+                    }
+                }
+            },
+            "endterm": {
+                "jan_2022": {
+                    "paper": {}
+                }
+            }
+        },
+        "cs1002": {
+            "quiz-1": {
+                "jan_2022": {
+                    "paper": {}
+                }
+            },
+            "quiz-2": {
+                "Apr 2023": {
+                    "paper": {}
+                },
+                "Nov 2022": {
+                    "paper": {}
+                }
+            },
+            "endterm": {
+                "jan_2022": {
+                    "paper": {}
                 }
             }
         }
     },
     {
         "level": "diploma",
-        "quiz_1": {
-            "quiz": "quiz_1",
-            "jan_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "upload_question_drive_link",
-                    "paper 2": "upload_question_drive_link",
-                    "paper 3 ": "upload_question_drive_link"
+        "subject 1": {
+            "quiz-1": {
+                "jan_2022": {
+                    "paper": {}
                 }
             },
-            "may_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "upload_question_drive_link",
-                    "paper 2": "upload_question_drive_link",
-                    "paper 3 ": "upload_question_drive_link"
+            "quiz-2": {
+                "Apr 2023": {
+                    "paper": {}
+                },
+                "Nov 2022": {
+                    "paper": {}
                 }
             },
-            "dec_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "upload_question_drive_link",
-                    "paper 2": "upload_question_drive_link",
-                    "paper 3 ": "upload_question_drive_link"
+            "endterm": {
+                "jan_2022": {
+                    "paper": {}
                 }
             }
         },
-        "quiz_2": {
-            "quiz": "quiz_2",
-            "jan_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "upload_question_drive_link",
-                    "paper 2": "upload_question_drive_link",
-                    "paper 3 ": "upload_question_drive_link"
+        "subject 2": {
+            "quiz-1": {
+                "jan_2022": {
+                    "paper": {}
                 }
             },
-            "may_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "upload_question_drive_link",
-                    "paper 2": "upload_question_drive_link",
-                    "paper 3 ": "upload_question_drive_link"
+            "quiz-2": {
+                "Apr 2023": {
+                    "paper": {}
+                },
+                "Nov 2022": {
+                    "paper": {}
                 }
             },
-            "dec_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "upload_question_drive_link",
-                    "paper 2": "upload_question_drive_link",
-                    "paper 3 ": "upload_question_drive_link"
-                }
-            }
-        },
-        "endterm": {
-            "quiz": "endterm",
-            "jan_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "upload_question_drive_link",
-                    "paper 2": "upload_question_drive_link",
-                    "paper 3 ": "upload_question_drive_link"
-                }
-            },
-            "may_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "upload_question_drive_link",
-                    "paper 2": "upload_question_drive_link",
-                    "paper 3 ": "upload_question_drive_link"
-                }
-            },
-            "dec_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "upload_question_drive_link",
-                    "paper 2": "upload_question_drive_link",
-                    "paper 3 ": "upload_question_drive_link"
+            "endterm": {
+                "jan_2022": {
+                    "paper": {}
                 }
             }
         }
     },
     {
-        "level": "degree",
-        "quiz_1": {
-            "quiz": "quiz_1",
-            "jan_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "upload_question_drive_link",
-                    "paper 2": "upload_question_drive_link",
-                    "paper 3 ": "upload_question_drive_link"
+        "level": "degre",
+        "subject 1": {
+            "quiz-1": {
+                "jan_2022": {
+                    "paper": {}
                 }
             },
-            "may_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "upload_question_drive_link",
-                    "paper 2": "upload_question_drive_link",
-                    "paper 3 ": "upload_question_drive_link"
+            "quiz-2": {
+                "Apr 2023": {
+                    "paper": {}
+                },
+                "Nov 2022": {
+                    "paper": {}
                 }
             },
-            "dec_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "upload_question_drive_link",
-                    "paper 2": "upload_question_drive_link",
-                    "paper 3 ": "upload_question_drive_link"
+            "endterm": {
+                "jan_2022": {
+                    "paper": {}
                 }
             }
         },
-        "quiz_2": {
-            "quiz": "quiz_2",
-            "jan_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "upload_question_drive_link",
-                    "paper 2": "upload_question_drive_link",
-                    "paper 3 ": "upload_question_drive_link"
+        "subject 2": {
+            "quiz-1": {
+                "jan_2022": {
+                    "paper": {}
                 }
             },
-            "may_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "upload_question_drive_link",
-                    "paper 2": "upload_question_drive_link",
-                    "paper 3 ": "upload_question_drive_link"
+            "quiz-2": {
+                "Apr 2023": {
+                    "paper": {}
+                },
+                "Nov 2022": {
+                    "paper": {}
                 }
             },
-            "dec_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "upload_question_drive_link",
-                    "paper 2": "upload_question_drive_link",
-                    "paper 3 ": "upload_question_drive_link"
+            "endterm": {
+                "jan_2022": {
+                    "paper": {}
+                }
+            }
+        }
+    },
+    {
+        "level": "diploma",
+        "subject 1": {
+            "quiz-1": {
+                "jan_2022": {
+                    "paper": {}
+                }
+            },
+            "quiz-2": {
+                "Apr 2023": {
+                    "paper": {}
+                },
+                "Nov 2022": {
+                    "paper": {}
+                }
+            },
+            "endterm": {
+                "jan_2022": {
+                    "paper": {}
                 }
             }
         },
-        "endterm": {
-            "quiz": "endterm",
-            "jan_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "upload_question_drive_link",
-                    "paper 2": "upload_question_drive_link",
-                    "paper 3 ": "upload_question_drive_link"
+        "subject 2": {
+            "quiz-1": {
+                "jan_2022": {
+                    "paper": {}
                 }
             },
-            "may_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "upload_question_drive_link",
-                    "paper 2": "upload_question_drive_link",
-                    "paper 3 ": "upload_question_drive_link"
+            "quiz-2": {
+                "Apr 2023": {
+                    "paper": {}
+                },
+                "Nov 2022": {
+                    "paper": {}
                 }
             },
-            "dec_2022": {
-                "shift": "Enter shift",
-                "paper": {
-                    "paper 1": "upload_question_drive_link",
-                    "paper 2": "upload_question_drive_link",
-                    "paper 3 ": "upload_question_drive_link"
+            "endterm": {
+                "jan_2022": {
+                    "paper": {}
+                }
+            }
+        }
+    },
+    {
+        "level": "degre",
+        "subject 1": {
+            "quiz-1": {
+                "jan_2022": {
+                    "paper": {}
+                }
+            },
+            "quiz-2": {
+                "Apr 2023": {
+                    "paper": {}
+                },
+                "Nov 2022": {
+                    "paper": {}
+                }
+            },
+            "endterm": {
+                "jan_2022": {
+                    "paper": {}
+                }
+            }
+        },
+        "subject 2": {
+            "quiz-1": {
+                "jan_2022": {
+                    "paper": {}
+                }
+            },
+            "quiz-2": {
+                "Apr 2023": {
+                    "paper": {}
+                },
+                "Nov 2022": {
+                    "paper": {}
+                }
+            },
+            "endterm": {
+                "jan_2022": {
+                    "paper": {}
                 }
             }
         }
     }
 ]
 
+# for course in data:
+#     level = course['level']
+#     print(level, " level \n\n\n")
+#     for key, value in course.items():
+#         if key != "level":
+#             print(key, "\n", value)
+#             # ======%%%%%%%%%%%%%%%%%=======%%%%%%%%%%%%%%%%%====%%%%%%%%%%%%%%%%%==
+#             level_ref = db.collection("ds_pyq").document(
+#                 level).collection(key)
 
-for course in l:
-    # Use the level as the document ID
+#             for sub, sub_value in value.items():
+#                 level_ref = db.collection(
+#                     "ds_pyq").document(level).collection(sub)
+#                 for quiz_key, quiz_value in sub_value.items():
+#                     quiz_ref = level_ref.document(quiz_key)
+#                     quiz_ref.set(quiz_value)
+#                     print(quiz_key, "\n\n\n", quiz_value)
+
+
+for course in data:
     level = course['level']
-    level_ref = db.collection("ds_pyq").document(level)
+    print(level, " level \n\n\n")
+    for key, value in course.items():
+        if key != "level":
+            # print(key, "\n", value)
+            # ======%%%%%%%%%%%%%%%%%=======%%%%%%%%%%%%%%%%%====%%%%%%%%%%%%%%%%%==
+            level_ref = db.collection("ds_pyq").document(
+                level).collection(key)
 
-    # Store quiz data under each level document
-    for quiz_key, quiz_value in course.items():
-        if quiz_key != 'level':
-            quiz_ref = level_ref.collection(quiz_key).document(quiz_key)
-            quiz_ref.set(quiz_value)
-            print(json.dumps(quiz_value))
+            for quiz_key, quiz_value in value.items():
+                quiz_ref = level_ref.document(quiz_key)
+                quiz_ref.set(quiz_value)
+                print(json.dumps(quiz_value), "\n\n\n")

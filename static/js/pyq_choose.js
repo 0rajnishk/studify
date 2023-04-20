@@ -26,12 +26,14 @@ function categoryChanged() {
 function submitClicked() {
   const categorySelect = document.getElementById('category-select');
   const optionSelect = document.getElementById('option-select');
+  const subjectselect = document.getElementById('subject-select');
+
 
   if (categorySelect.value === '' || optionSelect.value === '') {
     return;
   }
 
-  const url = `/pyq/${categorySelect.value}/${optionSelect.value}`;
+  const url = `/pyq/${categorySelect.value}/${optionSelect.value}/${subjectselect.value}`;
   window.location.href = url;
 }
 
