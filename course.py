@@ -169,7 +169,6 @@ def notes(course_id):
 
 
 @course.route('/pyq')
-@login_required
 def index():
     return render_template('pyq_choose.html')
 
