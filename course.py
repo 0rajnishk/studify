@@ -224,6 +224,7 @@ def format_date_filter(date_string: str) -> str:
 
 
 @course.route('/pyq/<level>/<subject>/<quiz_key>')
+@login_required
 def pyq(level, subject, quiz_key):
     doc_ref = db.collection("ds_pyq").document(
         level).collection(subject).document(quiz_key)
