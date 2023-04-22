@@ -59,16 +59,16 @@ def index():
 @app.route('/login')
 def login():
     next_url = request.args.get('next', None)
-    if next_url and 'https://studify.space/pyq' in next_url:
+    if next_url and 'pyq' in next_url:
         next_url = 'pyq'
     elif next_url and '23t1' in next_url:
         next_url = 'term/23t1'
     elif next_url and '23q1' in next_url:
         next_url = 'term/23q1'
-    print(next_url,"\n\n\n\n\n\n\n")
-    redirect_uri = url_for('oauth_callback', _external=True, _scheme=request.scheme, next=next_url)
+    print(next_url, "\n\n\n\n\n\n\n")
+    redirect_uri = url_for('oauth_callback', _external=True,
+                           _scheme=request.scheme, next=next_url)
     return google.authorize_redirect(redirect_uri)
-
 
 
 # Define a list of allowed domains
@@ -82,10 +82,12 @@ blocked_emails = ['user@example.com']
 admin_emails = ['surajnish02@gmail.com',
                 'studify.iitm@gmail.com', 'studify.dummy@gmail.com']
 
+
 @app.route('/oauth-callback')
 def oauth_callback():
     try:
-        google = oauth.create_client('google')  # create the google oauth client
+        # create the google oauth client
+        google = oauth.create_client('google')
         # Access token from google (needed to get user info)
         token = google.authorize_access_token()
         # userinfo contains stuff u specified in the scope
@@ -101,13 +103,13 @@ def oauth_callback():
                 email
                 session.permanent = True
                 next_url = request.args.get('next')
-                if next_url and 'https://studify.space/pyq' in next_url:
+                if next_url and 'pyq' in next_url:
                     next_url = 'pyq'
                 elif next_url and 'term/23t1' in next_url:
                     next_url = 'term/23t1'
                 elif next_url and 'term/23q1' in next_url:
                     next_url = 'term/23q1'
-                print(next_url,"\n\n\n\n\n\n\n")
+                print(next_url, "\n\n\n\n\n\n\n")
                 if next_url:
                     return redirect(next_url)
                 else:
@@ -127,7 +129,6 @@ def oauth_callback():
     except Exception as e:
         # print(str(e))
         return 'Error: ' + str(e)
-
 
 
 @app.route('/logout')
