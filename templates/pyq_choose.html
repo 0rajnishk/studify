@@ -103,6 +103,27 @@
   </head>
   <body>
     <h1>Previous Year Question paper</h1>
+    {% if not session.get('profile') %}
+    <button
+      id="login-modal-btn"
+      type="button"
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#login-modal"
+    >
+    <a href="{{ url_for('login') }}" style="text-decoration: none; color: black;"> Login</a>
+     
+    </button>
+          <div class="modal-body">
+            <p>
+              You need to be logged in with student email id to access full content. <br>
+              <h4>|| Qualifier content can only be available without login ||</h4>
+            </p>
+          </div>
+          {% else %}
+        <h3>Best of luck {{ session['profile']['name'] }} for upcoming exam!!</h3>
+        <!-- <a href="{{ url_for('logout') }}">Logout</a> -->
+        {% endif %}
 
     <label for="category-select">Select Level:</label>
     <select id="category-select">

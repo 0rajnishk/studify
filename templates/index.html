@@ -54,7 +54,13 @@
                 <div class="home__data">
                   <h1 class="home__title">Studify</h1>
                   <h2 class="home__subtitle">Study space for BS Degree Students</h2>
-                  <a href="{{ url_for('login') }}" class="button">login to continue</a>
+                  <!-- <a href="{{ url_for('login') }}" class="button">login to continue</a> -->
+                  {% if 'profile' in session %}
+                      <a href="/term/23t1" class="button">continue</a>
+                  {% else %}
+                      <a href="{{ url_for('login') }}" class="button">login to continue</a>
+                  {% endif %}
+                  
                 </div>
         
         
