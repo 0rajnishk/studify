@@ -59,7 +59,7 @@ def index():
 @app.route('/login')
 def login():
     next_url = request.args.get('next', None)
-    if next_url and 'http://127.0.0.1:5000/pyq' in next_url:
+    if next_url and 'https://studify.space/pyq' in next_url:
         next_url = 'pyq'
     elif next_url and '23t1' in next_url:
         next_url = 'term/23t1'
@@ -101,7 +101,7 @@ def oauth_callback():
                 email
                 session.permanent = True
                 next_url = request.args.get('next')
-                if next_url and 'http://127.0.0.1:5000/pyq' in next_url:
+                if next_url and 'https://studify.space/pyq' in next_url:
                     next_url = 'pyq'
                 elif next_url and 'term/23t1' in next_url:
                     next_url = 'term/23t1'
