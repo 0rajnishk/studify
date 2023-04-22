@@ -78,6 +78,7 @@ allowed_domains = ['ds.study.iitm.ac.in',
 # Define a list of blocked emails
 blocked_emails = ['user@example.com']
 
+
 # Define a list of admin emails
 admin_emails = ['surajnish02@gmail.com',
                 'studify.iitm@gmail.com', 'studify.dummy@gmail.com']
