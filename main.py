@@ -9,13 +9,11 @@ from datetime import timedelta
 
 from course import course
 from utils import login_required
-from cal import cal
 
 
 # App config
 app = Flask(__name__)
 app.register_blueprint(course)
-app.register_blueprint(cal)
 
 app.wsgi_app = ProxyFix(
     app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_prefix=1
