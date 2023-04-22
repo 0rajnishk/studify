@@ -95,8 +95,8 @@ def oauth_callback():
             return redirect(url_for('course.get_term_metadata', term_id="23t1"))
     else:
         # if re.match("/course/ns_2[3-9]{1}q[1-3]{1}_[a-z]{2}[0-9]{4}", urlparse(request.url).path):
-        session['profile'] = user_info
-        session.permanent = True
+#         session['profile'] = user_info
+#         session.permanent = True
         return redirect(url_for('course.get_term_metadata', term_id="23q1"))
 
         # session.pop('profile', None)
