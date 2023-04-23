@@ -255,7 +255,7 @@ def cal_choose():
 
 
 @course.route('/cal/<level>/<subject>/<gaa>/<qz1>/<qz2>')
-def pyq(level, subject, gaa, qz1, qz2):
+def cal(level, subject, gaa, qz1, qz2):
     if subject != 'cs1001' and 'cs' in subject:
         pe1 = qz2.split('_')[0]
         pe2 = qz2.split('_')[-1]
