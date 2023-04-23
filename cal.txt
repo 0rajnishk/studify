@@ -1,0 +1,533 @@
+course.pyq
+
+
+=========================================================================================================================
+=========================================================================================================================
+=========================================================================================================================
+
+
+@course.route('/cal')
+def cal():
+    metadata_ref = db.document(f"ds_courses/23t1")
+    data = metadata_ref.get()
+    # course_id = course_id.split("_")
+    if data.exists:
+        data = data.to_dict()
+        course_metadata = data["course_metadata"]
+    return render_template('cal_choose.html', data=course_metadata)
+    # return jsonify(course_metadata)
+
+@course.route('/cal/<level>/<subject>/<gaa>/<qz1>/<qz2>')
+def pyq(level, subject, gaa, qz1, qz2):
+    if subject != 'cs1001' and 'cs' in subject:
+        pe1 = qz2.split('_')[0]
+        pe2 = qz2.split('_')[-1]
+        print
+        # Convert string inputs to float
+        gaa = float(gaa)
+        qz1 = float(qz1)
+        pe1 = float(pe1)
+        pe2 = float(pe2)
+
+        # Calculate the minimum final marks required for different percentages
+        percentages = [40, 50, 60, 70, 80, 90]
+        min_marks = []
+        for percentage in percentages:
+            # Define the equation to solve
+            def equation(F):
+                total1 = 0.1*gaa + 0.1*qz1 + max(0.5*F + 0.2*max(pe1, pe2),
+                                                 0.4*F + 0.3*max(pe1, pe2) + 0.1*min(pe1, pe2))
+                return total1 - percentage
+
+            # Use the bisection method to find the root of the equation
+            a, b = 0, 100
+            while (b - a) > 0.0001:
+                mid = (a + b) / 2
+                if equation(mid) > 0:
+                    a, b = a, mid
+                else:
+                    a, b = mid, b
+            if b == 100:
+                min_marks.append("not possible")
+
+            elif round((a + b) / 2, 2) == 0:
+                print(((a + b) / 2, 2), '\n\n\n\n\n\n\n\n\n')
+                min_marks.append("already passed")
+            else:
+                min_marks.append(round((a + b) / 2, 2))
+
+        # return jsonify(min_marks)
+        return render_template('marks_calculator.html', level=level, subject=subject, percentages=percentages, min_marks=min_marks)
+
+    else:
+        # Convert string inputs to float
+        gaa = float(gaa)
+        qz1 = float(qz1)
+        qz2 = float(qz2)
+
+        # Calculate the minimum final marks required for different percentages
+        percentages = [40, 50, 60, 70, 80, 90]
+        min_marks = []
+        for percentage in percentages:
+            # Define the equation to solve
+            def equation(F):
+                total1 = 0.1*gaa + max(0.6*F + 0.2*max(qz1, qz2),
+                                       0.4*F + 0.2*qz1 + 0.3*qz2)
+                total2 = 0.1*gaa + 0.4*F + 0.2*qz1 + 0.3*qz2
+                return max(total1, total2) - percentage
+
+            # Use the bisection method to find the root of the equation
+            a, b = 0, 100
+            while (b - a) > 0.0001:
+                mid = (a + b) / 2
+                if equation(mid) > 0:
+                    a, b = a, mid
+                else:
+                    a, b = mid, b
+
+            if b == 100:
+                min_marks.append("not possible")
+            elif round((a + b) / 2, 2) == 0:
+                print(((a + b) / 2, 2), '\n\n\n\n\n\n\n\n\n')
+                min_marks.append("already passed")
+            else:
+                min_marks.append(round((a + b) / 2, 2))
+
+        # return jsonify(min_marks)
+
+        return render_template('marks_calculator.html', level=level, subject=subject, percentages=percentages, min_marks=min_marks)
+
+
+
+=========================================================================================================================
+javascript           ======================================================================================================
+cal_choose.js        ======================================================================================================
+
+=========================================================================================================================
+
+
+
+
+function clearFormFields() {
+  const quiz = document.getElementById('quiz-inputs');
+  const oppe = document.getElementById('oppe-inputs');
+  const gaa = document.getElementById('gaa');
+  const oppe1 = document.getElementById('oppe1');
+  const oppe2 = document.getElementById('oppe2');
+  const qz1 = document.getElementById('quiz1');
+  const qz2 = document.getElementById('quiz2');
+
+  quiz.value = '';
+  oppe.value = '';
+  gaa.value = '';
+  oppe1.value = '';
+  oppe2.value = '';
+  qz1.value = '';
+  qz2.value = '';
+}
+
+window.addEventListener('load', clearFormFields);
+
+
+
+
+const quiz = document.getElementById('quiz-inputs');
+const oppe = document.getElementById('oppe-inputs');
+const gaa = document.getElementById('gaa');
+const oppe1 = document.getElementById('oppe1');
+const oppe2 = document.getElementById('oppe2');
+const qz1 = document.getElementById('quiz1');
+const qz2 = document.getElementById('quiz2');
+
+
+function categoryChanged() {
+  const categorySelect = document.getElementById('category-select');
+  const optionSelect = document.getElementById('option-select');
+  
+  // Clear the options in the option select box
+  optionSelect.innerHTML = '<option value="">Select an option</option>';
+  
+  if (categorySelect.value === '') {
+    return;
+  }
+  
+  // Make a request to your Flask app to get the options for the selected category
+  fetch(`/get_options/${categorySelect.value}`)
+    .then(response => response.json())
+    .then(options => {
+      // Add the options to the option select box
+      options.forEach(option => {
+        const optionElement = document.createElement('option');
+        optionElement.value = option.value;
+        optionElement.textContent = option.label;
+        optionSelect.appendChild(optionElement);
+      });
+    });
+}
+
+const optionSelected = document.getElementById('option-select');
+let selectedOption = '';
+
+optionSelected.addEventListener('change', (event) => {
+  selectedOption = event.target.value;
+  console.log(selectedOption);
+      if (selectedOption.startsWith('cs') & selectedOption != 'cs1001') {
+        console.log(selectedOption.startsWith('cs'));
+        oppe.style.display = 'block';
+        quiz.style.display = 'None'
+        console.log(oppe.innerHTML);
+      } else {
+        quiz.style.display = 'block';
+        oppe.style.display = 'None'
+        console.log('done dn')
+      }
+});
+
+
+function submitClicked() {
+  const categorySelect = document.getElementById('category-select');
+  const optionSelect = document.getElementById('option-select');
+  // const gaa = document.getElementById('gaa');
+  
+
+  // const end = document.getElementById('quiz1');
+
+
+  if (categorySelect.value === '' || optionSelect.value === '') {
+    return;
+  }
+    if (qz2.value !== '') {
+      const url = `/pyq/${categorySelect.value}/${optionSelect.value}/${gaa.value}/${qz1.value}/${qz2.value}`;
+      window.location.href = url;
+    } else if (oppe1.value !== '' & oppe2.value != '') {
+      const url = `/pyq/${categorySelect.value}/${optionSelect.value}/${gaa.value}/${qz1.value}/${oppe1.value}_${oppe2.value}`;
+      window.location.href = url;
+    }
+
+
+}
+
+const categorySelect = document.getElementById('category-select');
+categorySelect.addEventListener('change', categoryChanged);
+
+const submitBtn = document.getElementById('submit-btn');
+submitBtn.addEventListener('click', submitClicked);
+
+
+=========================================================================================================================
+Html                              ======================================================================================================
+marks_calculator.html             ======================================================================================================
+
+=========================================================================================================================
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marks Calculator</title>
+    <style>
+      /* Styles for desktop view */
+      .container {
+        width: 80%;
+        margin: auto;
+        padding-top: 50px;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 30px;
+      }
+
+      table {
+        width: 100%;
+        margin: auto;
+        border-collapse: collapse;
+        text-align: center;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        font-size: 1.2rem;
+      }
+
+      th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+      }
+
+      .percentages {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        font-size: 1.2rem;
+      }
+
+      .percentage {
+        padding: 5px;
+        background-color: #f2f2f2;
+        border-radius: 5px;
+      }
+
+      /* Styles for mobile view */
+      @media (max-width: 768px) {
+        .container {
+          width: 90%;
+          padding-top: 20px;
+        }
+
+        h1 {
+          font-size: 2rem;
+          margin-bottom: 20px;
+        }
+
+        th,
+        td {
+          font-size: 1rem;
+        }
+
+        .percentages {
+          flex-wrap: wrap;
+          margin-bottom: 20px;
+        }
+
+        .percentage {
+          margin-bottom: 5px;
+          font-size: 0.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Marks Calculator</h1>
+      <h2>{{ level }} - {{ subject }}</h2>
+
+      <!-- <div class="percentages">
+        {% for percentage in percentages %}
+        <div class="percentage">{{ percentage }}%</div>
+        {% endfor %}
+      </div> -->
+
+      <table>
+        <thead>
+          <tr>
+            <th>Percentage</th>
+            <th>Minimum Marks Required</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in range(6) %}
+          <tr>
+            <td>{{ percentages[i] }}%</td>
+            <td>{{ min_marks[i] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
+
+
+
+
+
+=========================================================================================================================
+Html                 ======================================================================================================
+cal_choose.html      ======================================================================================================
+
+=========================================================================================================================
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{{ url_for('static', filename='image/icon.png') }}"
+    />
+    <title>Previous Year Question paper</title>
+    <style>
+      /* Reset the default styles */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Set a default font size and line height */
+      html {
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      /* Style the body */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+        padding: 20px;
+      }
+
+      /* Style the heading */
+      h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      /* Style the form */
+      form {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      /* Style the label and select elements */
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 18px;
+      }
+
+      input[type="text"],
+      input[type="number"],
+      select {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #fff;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+      }
+      #oppe {
+        display: none;
+      }
+      #quiz-oppe {
+        display: none;
+      }
+      button {
+        display: block;
+        margin: 20px auto 0;
+        padding: 10px 20px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color ease-in-out 0.15s;
+      }
+
+      button:hover {
+        background-color: #0069d9;
+      }
+
+      /* Media queries for smaller screens */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 24px;
+        }
+
+        label {
+          font-size: 16px;
+        }
+
+        select {
+          font-size: 14px;
+        }
+
+        button {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Grade Projection</h1>
+
+    <label for="category-select">Select Level:</label>
+    <select id="category-select">
+      <option value="">Select Level</option>
+      <option value="foundation">Foundation</option>
+      <option value="diploma">Diploma</option>
+      <option value="degree">Degree</option>
+    </select>
+
+    <label for="option-select">Select Subject:</label>
+    <select id="option-select">
+      <option value="">Select an option</option>
+    </select>
+
+    <label for="gaa">Average Graded Score</label>
+    <input
+      type="number"
+      name="gaa"
+      id="gaa"
+      placeholder="Graded Assignment"
+      required
+    />
+    <label for="quiz1">Quiz 1 Score</label>
+    <input
+      type="number"
+      name="quiz-1"
+      id="quiz1"
+      placeholder="Quiz 1"
+      required
+    />
+
+    <div id="oppe-inputs" style="display: none">
+      <label for="oppe1">OPPE 1 Score</label>
+      <input
+        type="number"
+        name="oppe-1"
+        id="oppe1"
+        placeholder="OPPE 1"
+        required
+      />
+      <label for="oppe2">OPPE 2 Score</label>
+      <input
+        type="number"
+        name="oppe-2"
+        id="oppe2"
+        placeholder="OPPE 2"
+        required
+      />
+    </div>
+
+    <div id="quiz-inputs" style="display: none">
+      <label for="quiz2">Quiz 2 Score</label>
+      <input
+        type="number"
+        name="quiz-2"
+        id="quiz2"
+        placeholder="Quiz 2"
+        required
+      />
+    </div>
+
+    <div id="endterm" style="display: none">
+      <label for="endterm">Average Graded Assignment Score</label>
+      <input
+        type="number"
+        name="endterm"
+        id="end"
+        placeholder="Graded Assignment"
+        required
+      />
+    </div>
+
+    <button id="submit-btn">Submit</button>
+
+    <script src="{{ url_for('static', filename='js/pyq_choose.js') }}"></script>
+  </body>
+</html>

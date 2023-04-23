@@ -51,6 +51,8 @@
         font-size: 18px;
       }
 
+      input[type="text"],
+      input[type="number"],
       select {
         display: block;
         width: 100%;
@@ -62,8 +64,12 @@
         box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
         transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
       }
-
-      /* Style the submit button */
+      #oppe {
+        display: none;
+      }
+      #quiz-oppe {
+        display: none;
+      }
       button {
         display: block;
         margin: 20px auto 0;
@@ -102,7 +108,7 @@
     </style>
   </head>
   <body>
-    <h1>Previous Year Question paper</h1>
+    <h1>Grade Projection</h1>
 
     <label for="category-select">Select Level:</label>
     <select id="category-select">
@@ -112,20 +118,71 @@
       <option value="degree">Degree</option>
     </select>
 
-    <label for="option-select"> Select Subject:</label>
+    <label for="option-select">Select Subject:</label>
     <select id="option-select">
       <option value="">Select an option</option>
     </select>
-    <label for="subject-select">Select quiz:</label>
-    <select id="subject-select">
-      <option value="">Select an option</option>
-      <option value="quiz-1">Quiz 1</option>
-      <option value="quiz-2">Quiz 2</option>
-      <option value="endterm">Endterm</option>
-    </select>
+
+    <label for="gaa">Average Graded Score</label>
+    <input
+      type="number"
+      name="gaa"
+      id="gaa"
+      placeholder="Graded Assignment"
+      required
+    />
+    <label for="quiz1">Quiz 1 Score</label>
+    <input
+      type="number"
+      name="quiz-1"
+      id="quiz1"
+      placeholder="Quiz 1"
+      required
+    />
+
+    <div id="oppe-inputs" style="display: none">
+      <label for="oppe1">OPPE 1 Score</label>
+      <input
+        type="number"
+        name="oppe-1"
+        id="oppe1"
+        placeholder="OPPE 1"
+        required
+      />
+      <label for="oppe2">OPPE 2 Score</label>
+      <input
+        type="number"
+        name="oppe-2"
+        id="oppe2"
+        placeholder="OPPE 2"
+        required
+      />
+    </div>
+
+    <div id="quiz-inputs" style="display: none">
+      <label for="quiz2">Quiz 2 Score</label>
+      <input
+        type="number"
+        name="quiz-2"
+        id="quiz2"
+        placeholder="Quiz 2"
+        required
+      />
+    </div>
+
+    <div id="endterm" style="display: none">
+      <label for="endterm">Average Graded Assignment Score</label>
+      <input
+        type="number"
+        name="endterm"
+        id="end"
+        placeholder="Graded Assignment"
+        required
+      />
+    </div>
 
     <button id="submit-btn">Submit</button>
 
-    <script src="{{ url_for('static', filename='js/pyq_choose.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/cal_choose.js') }}"></script>
   </body>
 </html>
