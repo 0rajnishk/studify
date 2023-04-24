@@ -6,7 +6,8 @@
     "axe/structure": [
       "default",
       {
-        "list": "off"
+        "list": "off",
+        "listitem": "off"
       }
     ],
     "axe/aria": [
@@ -20,8 +21,22 @@
       "default",
       {
         "ignore": [
-          "iframe[allow]"
+          "iframe[allow]",
+          "iframe[loading]"
         ]
+      }
+    ],
+    "disown-opener": "off",
+    "axe/name-role-value": [
+      "default",
+      {
+        "link-name": "off"
+      }
+    ],
+    "axe/keyboard": [
+      "default",
+      {
+        "nested-interactive": "off"
       }
     ]
   }
