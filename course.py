@@ -10,7 +10,7 @@ import os
 import re
 from datetime import datetime
 from typing import Union
-
+import datetime
 
 from utils import login_required
 
@@ -175,23 +175,18 @@ def index():
 
 @course.route('/get_options/<category>')
 def get_options(category):
-    metadata_ref = db.document(f"ds_courses/23t1")
+    metadata_ref = db.document(f"pyq/meta_data")
     data = metadata_ref.get()
-    # course_id = course_id.split("_")
     if data.exists:
         data = data.to_dict()
         options = []
-        course_metadata = data["course_metadata"]
-
-        for level in course_metadata:
-            print(f"\n{category} Courses:")
-            for course_id, subject in course_metadata[category].items():
-                subject = (subject.split('-')[-1])
-                if level:
-                    options.append({'value': course_id, 'label': subject})
-            return options
+        course_metadata = data.get(category, {})
+        for course_id, subject in course_metadata.items():
+            options.append({'value': course_id, 'label': subject})
+        return jsonify(options)
     else:
-        return f"No data found"
+        return jsonify([])  # return empty list if data doesn't exist
+
 
 # course = Blueprint('course', __name__)
 
@@ -223,23 +218,27 @@ def format_date_filter(date_string: str) -> str:
     return format_date(date_string)
 
 
-@course.route('/pyq/<level>/<subject>/<quiz_key>')
-@login_required
-def pyq(level, subject, quiz_key):
-    doc_ref = db.collection("ds_pyq").document(
-        level).collection(subject).document(quiz_key)
-    doc = doc_ref.get()
-    if doc.exists:
-        quiz_data = doc.to_dict()
-        print(quiz_data)
-        sorted_data = sorted(quiz_data.items(), key=lambda x: datetime.now(
-        ) if x[0] == 'quiz' else datetime.strptime(x[0], '%b %Y'), reverse=True)
-
-        # return jsonify(sorted_data)
-
-        return render_template('pyq.html', data=sorted_data)
+@course.route('/pyq/<subject>/<quiz>')
+def pyq(subject, quiz):
+    # Build a query to get the documents with quiz data for a specific subject
+    doc_ref = db.collection('ds_courses').document(
+        '23t1').collection(subject).document('pyq')
+    doc = doc_ref.get().to_dict()
+    if quiz in doc:
+        quiz_data = doc[quiz]
+        # Sort quiz data by date in reverse chronological order
+        # sorted_data = sorted(quiz_data, key=lambda x: datetime.datetime.strptime(
+        #     x[0], "%b %Y"), reverse=True)
+        return render_template('pyq.html', data=quiz_data)
+        # return jsonify(quiz_data)
     else:
-        return f"No data found for {level}/{quiz_key}"
+        response = make_response('quiz data not found')
+        response.status_code = 404
+        return response
+
+    #     return render_template('pyq.html', data=sorted_data)
+    # else:
+    #     return f"No data found for {level}/{quiz_key}"
 
 
 @course.route('/cal')

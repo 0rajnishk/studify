@@ -10,850 +10,614 @@ firebase_admin.initialize_app(cred)
 # Access your Firestore database
 db = firestore.client()
 
-data = [
-    {
-        "level": "foundation",
-        "cs1001": {
-            "quiz-1": {
-                "Feb 2023": {
-                    "paper": {
-                        "paper 5": "https://drive.google.com/file/d/1WGz1aiHM6B2SNWw5vOmrOROn_uLpZkrC/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1WoTxDJBfj9HKCdI5eXCI0sUUgAtcK2Je/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1md3KKzBWzFuTtiquc4a01vn1t1hX-ias/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/19Q_ZHRVEQ3e3xEMNTvlbDVHi_UAZaQEi/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1AqQLQeB1XjntbF7g0Ij2TlQmK9PmHsR3/view?usp=drivesdk"
-                    }
-                },
-                "Oct 2022": {
-                    "paper": {
-                        "paper 5": "https://drive.google.com/file/d/1WGz1aiHM6B2SNWw5vOmrOROn_uLpZkrC/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1WoTxDJBfj9HKCdI5eXCI0sUUgAtcK2Je/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1md3KKzBWzFuTtiquc4a01vn1t1hX-ias/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/19Q_ZHRVEQ3e3xEMNTvlbDVHi_UAZaQEi/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1AqQLQeB1XjntbF7g0Ij2TlQmK9PmHsR3/view?usp=drivesdk"
-                    }
-                }
-            },
-            "quiz-2": {
-                "Apr 2023": {
-                    "paper": {
-                        "paper 2": "https://drive.google.com/file/d/17nt0LxktlpUrnA1J4npjvghAHMH562ca/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/17ZbiSzgxuNPD6_fLoDG_pfVyoe_ZZ-xa/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1G6j7KKrGlaSMVZ1_GG7eYBlwMiSxivSO/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1PLh9LcUBhgRA5Yp6zDz4j5wlUQp3ZPbV/view?usp=drivesdk"
-                    }
-                },
-                "Nov 2022": {
-                    "paper": {
-                        "paper 2": "https://drive.google.com/file/d/17nt0LxktlpUrnA1J4npjvghAHMH562ca/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/17ZbiSzgxuNPD6_fLoDG_pfVyoe_ZZ-xa/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1G6j7KKrGlaSMVZ1_GG7eYBlwMiSxivSO/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1PLh9LcUBhgRA5Yp6zDz4j5wlUQp3ZPbV/view?usp=drivesdk"
-                    }
-                }
-            },
-            "endterm": {
-                "Dec 2022": {
-                    "paper": {
-                        "paper 4": "https://drive.google.com/file/d/1xkmvm_wvZzMK-yU-3kmneBICSst240RX/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1gScW30hxPUwkVSTeNUxYjBVRXiU_NF4L/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1jt8PP1BII3x8W8ceIn0gIyWIaMLIGjHs/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1kH-pbKAmY7X7uBUkm9BUyqvui6iYgxSW/view?usp=drivesdk"
-                    }
-                }
-            }
-        },
+
+# import json
+# import firebase_admin
+# from firebase_admin import credentials
+# from firebase_admin import firestore
+
+# # Use a service account to authenticate with Firestore
+# cred = credentials.Certificate("firebase.json")
+# firebase_admin.initialize_app(cred)
+
+# # Access Firestore
+# db = firestore.client()
+
+data = {
+    "foundation": {
         "hs1001": {
-            "quiz-1": {
-                "Feb 2023": {
-                    "paper": {
-                        "paper 5": "https://drive.google.com/file/d/1NzAONEOOruUDf-wURLDR8w5WYgV_QVir/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1imGvAQnI4Evm_EKXGM5d1330-Jxb_Fyx/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1psrGDHqT-30ZdwtPqmuQ4Ii3A7CzBvva/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1G1DgDScoAxpeWJaTgzhoMhYm_qNvCg29/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1z7hejYr5HqIAXfj4hNNDqUZM3aOFG3wO/view?usp=drivesdk"
-                    }
-                },
-                "Oct 2022": {
-                    "paper": {
-                        "paper 5": "https://drive.google.com/file/d/1NzAONEOOruUDf-wURLDR8w5WYgV_QVir/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1imGvAQnI4Evm_EKXGM5d1330-Jxb_Fyx/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1psrGDHqT-30ZdwtPqmuQ4Ii3A7CzBvva/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1G1DgDScoAxpeWJaTgzhoMhYm_qNvCg29/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1z7hejYr5HqIAXfj4hNNDqUZM3aOFG3wO/view?usp=drivesdk"
-                    }
-                }
+            "endterm": {
+                "Dec 2022": [
+                    "https://drive.google.com/file/d/1JYkkXBojAdKyBsW8aBeNTF_x4qTrUjbN/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/10n064zK2Ow9THM3fCT80zXfpexrLdC8E/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1CfTKHWz3wcfMghLX71U-ebOC8my9Sp6T/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1DiDvQAxXj3UvuOGT4WdbcWRqpRhDJJE9/view?usp=drivesdk"
+                ]
             },
             "quiz-2": {
-                "Apr 2023": {
-                    "paper": {
-                        "paper 1": "https://drive.google.com/file/d/19sQJllYUh0JTMjiD3Kvn-I7vPhAkfk0l/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1ApBxWmNXsefrhY1L9LXZCbaVrHpOWgDA/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1KUzeD5DI5vTaBbLdhg8zuk3Bz2SdUFCE/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1ZcQYNnngToREO-aF_1gYs43KKvmOMgyO/view?usp=drivesdk"
-                    }
-                },
-                "Nov 2022": {
-                    "paper": {
-                        "paper 1": "https://drive.google.com/file/d/19sQJllYUh0JTMjiD3Kvn-I7vPhAkfk0l/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1ApBxWmNXsefrhY1L9LXZCbaVrHpOWgDA/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1KUzeD5DI5vTaBbLdhg8zuk3Bz2SdUFCE/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1ZcQYNnngToREO-aF_1gYs43KKvmOMgyO/view?usp=drivesdk"
-                    }
-                }
+                "Nov 2022": [
+                    "https://drive.google.com/file/d/1h9FoWovsjKzzXei7s8CR6NXnY3-V0uzB/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1xn6fDrpWQlqeUuO29q71P2Hu88rbxBEF/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/18dmq02soewWB2cmFiZBT3vLh7NYyykZi/view?usp=drivesdk"
+                ],
+                "Apr 2023": [
+                    "https://drive.google.com/file/d/1drUFjBQWjW_aEC3gLruX1ARagylCKCx_/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1EOAdrE1f1R8gOJHkcm6bS2g-sun7PjUm/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1yjJjw98xjGUxqYLW_jLUOd3w20PzqaXs/view?usp=drivesdk"
+                ]
             },
-            "endterm": {
-                "Dec 2022": {
-                    "paper": {
-                        "paper 4": "https://drive.google.com/file/d/1smgpIfE_6aq5pC0UokIdXo5zbW58A9q-/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/10O8xmHuiBIhXvwgAdrsXOVrz3s0JZWRa/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1iwRAI1ezAmN9C7fsRlm9yKLxM4XndPy_/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/16urHBu3Tpe0ZWRGgpgFnFsrdHbPFry2g/view?usp=drivesdk"
-                    }
-                }
+            "quiz-1": {
+                "Oct 2022": [
+                    "https://drive.google.com/file/d/1vg10VE5rKnp-ktYsoiOxik46nAAFdUnJ/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1fpgFaNFW902gDZlRwNFsJ3KL8Zmqkvo0/view?usp=drivesdk"
+                ],
+                "Feb 2023": [
+                    "https://drive.google.com/file/d/1vW2uaNCCrmegyQaJFSu5tF-qwCMOSMMo/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1VcJkjL09Yft-YTKiI4l0tLkqM-fejjAH/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1c46oK1vL4Lj6mjFGomTih1Ekxj_73R1e/view?usp=drivesdk"
+                ]
             }
         },
-        "ma1001": {
-            "quiz-1": {
-                "Feb 2023": {
-                    "paper": {
-                        "paper 5": "https://drive.google.com/file/d/12EgWEtQYNO2LfYEpgdOgSKdeYo3FWWID/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1GNsQhlVv9dHl1uolcJkENgWDAWHj3grr/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/11UfPr-Z5p98AFGXibru1T1ExGyjeUFjh/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1owoEFFKZi6CJ4Yu1lC6Zi9_qAL6QfT1u/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/10WqQIqHdKco6rXbJQ0mRA6I644EPn_cW/view?usp=drivesdk"
-                    }
-                },
-                "Oct 2022": {
-                    "paper": {
-                        "paper 5": "https://drive.google.com/file/d/12EgWEtQYNO2LfYEpgdOgSKdeYo3FWWID/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1GNsQhlVv9dHl1uolcJkENgWDAWHj3grr/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/11UfPr-Z5p98AFGXibru1T1ExGyjeUFjh/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1owoEFFKZi6CJ4Yu1lC6Zi9_qAL6QfT1u/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/10WqQIqHdKco6rXbJQ0mRA6I644EPn_cW/view?usp=drivesdk"
-                    }
-                }
+        "cs1001": {
+            "endterm": {
+                "Dec 2022": [
+                    "https://drive.google.com/file/d/1uKwSz3AmARmxcwLJDod5wnKjGy-gEq-G/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1JcR3sta0VijseearUe7Xvr_V5LasXWCT/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1V6ZzBa7VgnPjiO811c0UVrHB7XkzrhVM/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1_2HBXu2i9zGUGCjPMF9NiUeDDxbHrZmZ/view?usp=drivesdk"
+                ]
             },
             "quiz-2": {
-                "Apr 2023": {
-                    "paper": {
-                        "paper 1": "https://drive.google.com/file/d/1mPFU9R0FTjmF5x57qe7yqYYYxgOuHArg/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1PU9vyToPcPQ_ygDI9pWhymjQfa5ILdoZ/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/15QHJf8_I5IfQs3KqteiGDBdt8eyo0YrA/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1DykccO3F6ZNU5LJd0N5pcVqNzAXypY-z/view?usp=drivesdk"
-                    }
-                },
-                "Nov 2022": {
-                    "paper": {
-                        "paper 1": "https://drive.google.com/file/d/1mPFU9R0FTjmF5x57qe7yqYYYxgOuHArg/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1PU9vyToPcPQ_ygDI9pWhymjQfa5ILdoZ/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/15QHJf8_I5IfQs3KqteiGDBdt8eyo0YrA/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1DykccO3F6ZNU5LJd0N5pcVqNzAXypY-z/view?usp=drivesdk"
-                    }
-                }
+                "Nov 2022": [
+                    "https://drive.google.com/file/d/1JcOUHBpNED1x_TgHTDXk10TZPCldh2d2/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1Wl6of1IxzW2jwQubNK1QtvjhHlXw_3Vj/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1mL_dl3u5msi6uhZqjvEt2pDLIehXEHie/view?usp=drivesdk"
+                ],
+                "Apr 2023": [
+                    "https://drive.google.com/file/d/1zm2YSrR84n0TQEUzn0jlXzUjdsDhqUjd/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/10AdvBmW-rf8BEpkvNvq-7x2_ioWQFkQr/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1JI7j3BRMMLIhZ-P7lExxCAkutCKcuEwb/view?usp=drivesdk"
+                ]
             },
-            "endterm": {
-                "Dec 2022": {
-                    "paper": {
-                        "paper 4": "https://drive.google.com/file/d/10ioJsLg3YaDrw9VCnIo_cFm36nnbjiba/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1qvRGzpB6ZLTIC-cDrtSI05q7DoTuzzdK/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1gOVUbH4WXXXH5S1sAMTwfSOx8taEp8Nd/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/19s8vjoDudX06EUOdpkqABtk9wu3yKuqW/view?usp=drivesdk"
-                    }
-                }
+            "quiz-1": {
+                "Oct 2022": [
+                    "https://drive.google.com/file/d/1P2O51283pm6ERTWmBSglJujr18t-6wWL/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1uGnvfc30GXELbvUXD4f5CwZekiD2SkMI/view?usp=drivesdk"
+                ],
+                "Feb 2023": [
+                    "https://drive.google.com/file/d/1Kh8B7FpbC1tmZBcrkFgYRVNYjlKOog1R/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1g5cEvITSCm03ejNUoK45MxxdzHHXLLMZ/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1-Zar-WDul_mvQ1zKuPl8_QVG9XQzNQcN/view?usp=drivesdk"
+                ]
             }
         },
         "ma1002": {
-            "quiz-1": {
-                "Feb 2023": {
-                    "paper": {
-                        "paper 5": "https://drive.google.com/file/d/14QW97GCb__mtyT0v_87lOQa790M1Wyp1/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1Uo1oSBsLY0gXnML2gIiJJa8hq3-7G6MC/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1AXkHHA5QNRu2wQPQbJmahS-zodWkljMV/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1pQSTooOIMueLmChSCfOq59gmNtz1KOU8/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1P6iIv8g05XarzfcM_Mer9SHgFuNcfX7o/view?usp=drivesdk"
-                    }
-                },
-                "Oct 2022": {
-                    "paper": {
-                        "paper 5": "https://drive.google.com/file/d/14QW97GCb__mtyT0v_87lOQa790M1Wyp1/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1Uo1oSBsLY0gXnML2gIiJJa8hq3-7G6MC/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1AXkHHA5QNRu2wQPQbJmahS-zodWkljMV/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1pQSTooOIMueLmChSCfOq59gmNtz1KOU8/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1P6iIv8g05XarzfcM_Mer9SHgFuNcfX7o/view?usp=drivesdk"
-                    }
-                }
+            "endterm": {
+                "Dec 2022": [
+                    "https://drive.google.com/file/d/1lfqNR2TIAGpsQGqWA9PaFBC0bChbvSX4/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1xAW1BP7txHpQc7288EpR4CNzWU1KeVgm/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1tBxMPRNvbqRr1_9VbfRQJRBcjfxESvpG/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1i3tlHXAF3SaDgq-tAoj6NnL3S0bD62Ir/view?usp=drivesdk"
+                ]
             },
             "quiz-2": {
-                "Apr 2023": {
-                    "paper": {
-                        "paper 1": "https://drive.google.com/file/d/1iAXAXzCJyhYcn8L9rgVjqT4qra7tEb7S/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1U1KiPhULl9EWu5mZGnLdHgVPxd9FY22a/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1ZZhIkn3mYGI-SHEWn4-1H_k9cfdPxOyz/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1whiemJE119EUXWmHYdGpL7ZEzV7OIS7p/view?usp=drivesdk"
-                    }
-                },
-                "Nov 2022": {
-                    "paper": {
-                        "paper 1": "https://drive.google.com/file/d/1iAXAXzCJyhYcn8L9rgVjqT4qra7tEb7S/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1U1KiPhULl9EWu5mZGnLdHgVPxd9FY22a/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1ZZhIkn3mYGI-SHEWn4-1H_k9cfdPxOyz/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1whiemJE119EUXWmHYdGpL7ZEzV7OIS7p/view?usp=drivesdk"
-                    }
-                }
+                "Nov 2022": [
+                    "https://drive.google.com/file/d/19r3M7uzbsLJ9I8YG3evecSEZtyFQ3x3z/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1PgBYEflLEtVIOdU2wJt7R33DVdURTRJE/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1Fkej_dggrreH6lwj9DQt6kTH3a4oB0w2/view?usp=drivesdk"
+                ],
+                "Apr 2023": [
+                    "https://drive.google.com/file/d/1ODjO0cyZfilmMg6IrUUpKDqM_mSjj6bV/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/19l06KXpRXTHKYut60xggLLGQ97JqVGw-/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1eO9vBesG0F6ANC2bVhLtxMgYeUHQyBUR/view?usp=drivesdk"
+                ]
             },
-            "endterm": {
-                "Dec 2022": {
-                    "paper": {
-                        "paper 4": "https://drive.google.com/file/d/1SESUNKu_xD0MellLUQGKipwF_6_jRA5c/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1wQizdhMOyND321mlPncqeRsvrt33Rrr-/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1RYml6lq1e3fyT34I4JnWckXawkTHu6qX/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1j-hzKhwMyHncllGqRTG-Cp63k6ZEryW0/view?usp=drivesdk"
-                    }
-                }
+            "quiz-1": {
+                "Oct 2022": [
+                    "https://drive.google.com/file/d/1ZhSHlpKrKGJN_h7HD_cmGByfAy-xO-Th/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1OAdQOEdZRJ8y1p3G4fAchegb_09isEGs/view?usp=drivesdk"
+                ],
+                "Feb 2023": [
+                    "https://drive.google.com/file/d/1t61t4N_DYxbkxg-5cOnig_vzMWaStvqv/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1j7jFiRmdAPjfpBRvlDvr4_0OBqKJhcbO/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/10ftZBITzn36MgaLT-1XOOnlKtd8Xb0oi/view?usp=drivesdk"
+                ]
             }
         },
         "hs1002": {
-            "quiz-1": {
-                "Feb 2023": {
-                    "paper": {
-                        "paper 5": "https://drive.google.com/file/d/15uKQ5NgoyhQCytuhjsYyfbYO0jW6CHJe/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1J0A2GhAdkiVxyMl2wzGBn8dXWkiFfiyg/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1IMqjKPr3_cYhh34UtHvMe6VM7jZ_pxff/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1t7mbGFFbh3kKOZqNqwBRzRkPvjy-Fbn2/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1vMLVdk3995kbWdEgTXsA2RyCrNhDzrfC/view?usp=drivesdk"
-                    }
-                },
-                "Oct 2022": {
-                    "paper": {
-                        "paper 5": "https://drive.google.com/file/d/15uKQ5NgoyhQCytuhjsYyfbYO0jW6CHJe/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1J0A2GhAdkiVxyMl2wzGBn8dXWkiFfiyg/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1IMqjKPr3_cYhh34UtHvMe6VM7jZ_pxff/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1t7mbGFFbh3kKOZqNqwBRzRkPvjy-Fbn2/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1vMLVdk3995kbWdEgTXsA2RyCrNhDzrfC/view?usp=drivesdk"
-                    }
-                }
+            "endterm": {
+                "Dec 2022": [
+                    "https://drive.google.com/file/d/1c9vQ3slvZHujOkEqeOKE6j2dNVWFoOPQ/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1RYt998wcPcJQwmyBsIjGh7EQtGhsUjku/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1oZ4MBSX4EOdL34SpzCuPzWBuARa8oU8P/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1G40mKZe-UBzlsIzpVhWA9u_T7Jsudpj_/view?usp=drivesdk"
+                ]
             },
             "quiz-2": {
-                "Apr 2023": {
-                    "paper": {
-                        "paper 1": "https://drive.google.com/file/d/1rydIfh_2jL2VcNxCTzjqH_KmxbsiXUw6/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1RQixMuPci9_dmDtQMwolJ2wWb1KW8ABQ/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1mCVEQlKdmyvTsfy-G34MDYyCBHAWLPco/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1jHa3CpQon1LUhwg37Z2z7bJN43dtekcH/view?usp=drivesdk"
-                    }
-                },
-                "Nov 2022": {
-                    "paper": {
-                        "paper 1": "https://drive.google.com/file/d/1rydIfh_2jL2VcNxCTzjqH_KmxbsiXUw6/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1RQixMuPci9_dmDtQMwolJ2wWb1KW8ABQ/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1mCVEQlKdmyvTsfy-G34MDYyCBHAWLPco/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1jHa3CpQon1LUhwg37Z2z7bJN43dtekcH/view?usp=drivesdk"
-                    }
-                }
+                "Nov 2022": [
+                    "https://drive.google.com/file/d/1z13Sq-FtG_TJsHidjNheRp2c7J6JkEAv/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1RVTbMA8oSxiZeGNnhWME1-28MB8mkzyP/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1pJKS3bEjzOSEe2vg9i1NeYR1ONeUl7rf/view?usp=drivesdk"
+                ],
+                "Apr 2023": [
+                    "https://drive.google.com/file/d/1rU8hgbEJJcfi6kGL6L09SLVvLeiujcfZ/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1s5Uon4cFOiyFO0fWCHsAm2vNPc2dd1KY/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1CgBNEoIGPYAfUo4hzfySIutIPYhGzJ3o/view?usp=drivesdk"
+                ]
             },
-            "endterm": {
-                "Dec 2022": {
-                    "paper": {
-                        "paper 4": "https://drive.google.com/file/d/1z_uiWVl0pdge-BwTvM1P0srrLZHhqVoa/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1yUiWdYsu7Wj7L9d9luvueVMGBgAm0nNt/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1Pu75LbeG9W79yU8EhIHeq69J7iSqayvc/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1-4Ko1ICLzpFn59ysQoeTWhBLGbulfDtP/view?usp=drivesdk"
-                    }
-                }
-            }
-        },
-        "ma1004": {
             "quiz-1": {
-                "Feb 2023": {
-                    "paper": {
-                        "paper 5": "https://drive.google.com/file/d/1O_zIFJkYU4Qd_lIAjMadMlialHSfrEc2/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1djLf_qq6YEYnlMHgn0-aqmHANqp9O2qe/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1_JjnFIJtRdbC-ZT-iCii3SK_dmipW5eU/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/18wprx0pvzCgmlc1V5CQ8h2EmPqpNrzIn/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/16tPRcHLf2kY5XFMy2qyLih_V3ZCzkBIR/view?usp=drivesdk"
-                    }
-                },
-                "Oct 2022": {
-                    "paper": {
-                        "paper 5": "https://drive.google.com/file/d/1O_zIFJkYU4Qd_lIAjMadMlialHSfrEc2/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1djLf_qq6YEYnlMHgn0-aqmHANqp9O2qe/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1_JjnFIJtRdbC-ZT-iCii3SK_dmipW5eU/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/18wprx0pvzCgmlc1V5CQ8h2EmPqpNrzIn/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/16tPRcHLf2kY5XFMy2qyLih_V3ZCzkBIR/view?usp=drivesdk"
-                    }
-                }
-            },
-            "quiz-2": {
-                "Apr 2023": {
-                    "paper": {
-                        "paper 1": "https://drive.google.com/file/d/1qF-cL8rjYWlZjVnFzrkbOYiiyfHgtwj2/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1l8zF-nlimE1lzvINL7i3nbADBg4ngULU/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/16hwM7gSFP4FnoM71dzrMTtLQKMz6Xr9w/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1wAGbtF7pw6k5--yEHxz2Wl2UcDiPNCF6/view?usp=drivesdk"
-                    }
-                },
-                "Nov 2022": {
-                    "paper": {
-                        "paper 1": "https://drive.google.com/file/d/1qF-cL8rjYWlZjVnFzrkbOYiiyfHgtwj2/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1l8zF-nlimE1lzvINL7i3nbADBg4ngULU/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/16hwM7gSFP4FnoM71dzrMTtLQKMz6Xr9w/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1wAGbtF7pw6k5--yEHxz2Wl2UcDiPNCF6/view?usp=drivesdk"
-                    }
-                }
-            },
-            "endterm": {
-                "Dec 2022": {
-                    "paper": {
-                        "paper 4": "https://drive.google.com/file/d/19NQmXIYQK1p_M2jbbVx_68V3oAWKIhFn/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1LZsaYlhyA37rm6AGxkyR9BWb30FjhCfJ/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1TN7VF4Exzi2P2d8sYW1J8Evomum-AXj4/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1Vt-lcNh17TIqLkSqDoaqjezHTfCiMUWx/view?usp=drivesdk"
-                    }
-                }
-            }
-        },
-        "ma1003": {
-            "quiz-1": {
-                "Feb 2023": {
-                    "paper": {
-                        "paper 5": "https://drive.google.com/file/d/1hJI5g_uK1gMCCxI6TUBGRHGkr7tQKN_f/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/192lzuEoepH3AHO6D9bTvDuFOge4pDPrR/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/15q-gpFSOs0yUTA6J24gA62kDTyBF_Hv8/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1z-f8wZa3nhhKln5i7vzlDIMLPFvcVVRo/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1WQC-tukolXuIIC1w6Yoc6S_8x11gSOAc/view?usp=drivesdk"
-                    }
-                },
-                "Oct 2022": {
-                    "paper": {
-                        "paper 5": "https://drive.google.com/file/d/1hJI5g_uK1gMCCxI6TUBGRHGkr7tQKN_f/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/192lzuEoepH3AHO6D9bTvDuFOge4pDPrR/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/15q-gpFSOs0yUTA6J24gA62kDTyBF_Hv8/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1z-f8wZa3nhhKln5i7vzlDIMLPFvcVVRo/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1WQC-tukolXuIIC1w6Yoc6S_8x11gSOAc/view?usp=drivesdk"
-                    }
-                }
-            },
-            "quiz-2": {
-                "Apr 2023": {
-                    "paper": {
-                        "paper 1": "https://drive.google.com/file/d/1rwHS2ySvHUnPGRZSv8JXaSZxa0rtj0rT/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1UFdrtsFoMu2Lf80_o8IWt0lFPmP-HCC5/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/19bZ_s55gDUGY0vrLva09dnMsqo01QDmX/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1QN3N-B_Y8uqpPZMI0NYBU6S5aXmbR0xQ/view?usp=drivesdk"
-                    }
-                },
-                "Nov 2022": {
-                    "paper": {
-                        "paper 1": "https://drive.google.com/file/d/1rwHS2ySvHUnPGRZSv8JXaSZxa0rtj0rT/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1UFdrtsFoMu2Lf80_o8IWt0lFPmP-HCC5/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/19bZ_s55gDUGY0vrLva09dnMsqo01QDmX/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1QN3N-B_Y8uqpPZMI0NYBU6S5aXmbR0xQ/view?usp=drivesdk"
-                    }
-                }
-            },
-            "endterm": {
-                "Dec 2022": {
-                    "paper": {
-                        "paper 4": "https://drive.google.com/file/d/1gEcajjB9Y5zDRMfVzFss6w3dbWwDyD6o/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1AMFRnoz9DZ7ldEGlwqpCDb0aG8FSxcNW/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1_6ahzFPiB9muFknXOrqhwlUZPpzWmEbn/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1KxDGic6OLCh4odDeWvw8Smkh3SDboaQZ/view?usp=drivesdk"
-                    }
-                }
+                "Oct 2022": [
+                    "https://drive.google.com/file/d/1qmNoAzCsC2J42tGPvyQlUrrVd2BMgO4k/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/15O-Zfi9vdhnM20iozZ62xabMxqihfq96/view?usp=drivesdk"
+                ],
+                "Feb 2023": [
+                    "https://drive.google.com/file/d/1Y4ANJYm_t92EcMEIsweuVLAHCMq7kvCV/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1ywUZQPc0y3wNK2RmWIP4W2IWad6bHVCD/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1bfb42uBQ19bw-zbYmrrDk0LjBZ9yUGLN/view?usp=drivesdk"
+                ]
             }
         },
         "cs1002": {
+            "endterm": {
+                "Dec 2022": [
+                    "https://drive.google.com/file/d/1pDfhYIvCC8x3mWPX_7TGHpSIN7NLIEOS/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/18DLRxiUab0LxX43H4mnAcqYEz-nJ3Od8/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1wlanZJaCSU6gM4KmqY5659kt2AcXirSr/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1slkIvE9JXhc_Jy7CElMJubjkldkV6Q-x/view?usp=drivesdk"
+                ]
+            },
             "quiz-1": {
-                "Feb 2023": {
-                    "paper": {
-                        "paper 5": "https://drive.google.com/file/d/1HAzfqqyjMnmOiFLg53M2synTSyzijl_y/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1MN_al6qDxD581CwFD8z_gMeG5C6qzj1m/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1E6q-cGswEfmcZL--dQ2MKk8iDOuJawt7/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1NmqPwhFqJMyoCNs5yDW9QM7_VvQVIogN/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1WGIe40sf-B7bpZRbI6KZELnO0s2_8d_z/view?usp=drivesdk"
-                    }
-                },
-                "Oct 2022": {
-                    "paper": {
-                        "paper 5": "https://drive.google.com/file/d/1HAzfqqyjMnmOiFLg53M2synTSyzijl_y/view?usp=drivesdk",
-                        "paper 4": "https://drive.google.com/file/d/1MN_al6qDxD581CwFD8z_gMeG5C6qzj1m/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1E6q-cGswEfmcZL--dQ2MKk8iDOuJawt7/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1NmqPwhFqJMyoCNs5yDW9QM7_VvQVIogN/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1WGIe40sf-B7bpZRbI6KZELnO0s2_8d_z/view?usp=drivesdk"
-                    }
-                }
+                "Oct 2022": [
+                    "https://drive.google.com/file/d/1Nz1gBVtCfWgpyt0sB1efot95pcAwWKVJ/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1pjlLRQuqDQlIbdRuOAuElorN95b7MfwA/view?usp=drivesdk"
+                ],
+                "Feb 2023": [
+                    "https://drive.google.com/file/d/1WxWUHgq_UbpBaTmNGs-Oz3AOV36ZfrLu/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1Yvd79KvJKOrOdEUa6Bv-whpLBwZiaNp8/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1NGc7_frj1x643KpN5yIp1NXveC8A23hd/view?usp=drivesdk"
+                ]
+            }
+        },
+        "ma1004": {
+            "endterm": {
+                "Dec 2022": [
+                    "https://drive.google.com/file/d/1iz9fUzyfyBH733pwu0NWuSq-ylWGqZiw/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1U-Fdq6c55d6IRYSQ9RGZyN0_DdwdV8CY/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1AhfhQAut4xTo5-UoC8xXKxDrRMDAn_fk/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1RDaL-gaCYyfOHKBd9F9EQETbRtbbMFvZ/view?usp=drivesdk"
+                ]
             },
             "quiz-2": {
-                "Apr 2023": {
-                    "paper": {}
-                },
-                "Nov 2022": {
-                    "paper": {}
-                }
+                "Nov 2022": [
+                    "https://drive.google.com/file/d/1sZ8plhVMr2VhRB7HgLQ0HCHNJnp8lEOG/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1IQ9-BGwvKxRxUXTQ5x6U_2kyUKlr0sfa/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1TP39xTi5bjRR7_fzhmeb4Sla2OsWa8OK/view?usp=drivesdk"
+                ],
+                "Apr 2023": [
+                    "https://drive.google.com/file/d/1PpODe3t-UQzFqg31z0rVSX0avtE08_4E/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/19bOBoCzJKS7avkUEijHeGUfyHVahDsNI/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1Qto4scT5ney6RwfktgDTLtL7MQsr_kXk/view?usp=drivesdk"
+                ]
             },
+            "quiz-1": {
+                "Oct 2022": [
+                    "https://drive.google.com/file/d/1lp69dHQ-QE6OqucHUiYbcr_fQvjB97nw/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1TsjWyxn76KHj0c09mCxFoTao6JCEB4SM/view?usp=drivesdk"
+                ],
+                "Feb 2023": [
+                    "https://drive.google.com/file/d/1t9g6w_pltZ8Y2QFdzHvyft6chTbFu10_/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1PfY7qt3Aaqe87myl6t2Elg4A2Zj_BIAI/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1_3FSUU4relNx72FfH8FRwVT0fDvpcnpE/view?usp=drivesdk"
+                ]
+            }
+        },
+        "ma1003": {
             "endterm": {
-                "Dec 2022": {
-                    "paper": {
-                        "paper 4": "https://drive.google.com/file/d/1v1hB6hrSe4SyW0hB14e9D2Y2IEtySUtw/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1nuhEl0WBZ1bT5mXagMqxuTlKtu_jJBt3/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1jLXBfrq8chTckaGs-JvbEv2guV1fx6Fc/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1bSHkVeX1-pGilz7iUr8slpQTtDztZFHI/view?usp=drivesdk"
-                    }
-                }
+                "Dec 2022": [
+                    "https://drive.google.com/file/d/16JSOj1RSGF5j3bIq20NlOc4O5xXDtcfh/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1lFqsgXHOU5BVQx5VnrMhZFiLZFW70d-J/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1GlLudIljlB7h-tWeP7a7Ag3nxhUVKMYJ/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1GkvllwxsjofKIA-YXXCtcEqorluhLFtB/view?usp=drivesdk"
+                ]
+            },
+            "quiz-2": {
+                "Nov 2022": [
+                    "https://drive.google.com/file/d/1NsVNZXtOvOyP-kpEk7U5eOAhtVAzgSWp/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1jvYNCqhzFmJegI3TGfHgl8_k5ZL_WEGc/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1luyI8Bv1Df2_aezuFKV2FwidLgFBxf6v/view?usp=drivesdk"
+                ],
+                "Apr 2023": [
+                    "https://drive.google.com/file/d/1LRo-wN0Y9iDSEsIcfaY9L4URW238q8-e/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1E1EI6A5LEHqN97we1MgHRGwlfsy_79j4/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1VutdDF1QHWUXrhbWlTBGcZF6735Gp6CV/view?usp=drivesdk"
+                ]
+            },
+            "quiz-1": {
+                "Oct 2022": [
+                    "https://drive.google.com/file/d/14ejlz1PEZl_6WTy2sYNrNXmPoTFnKMJt/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1vxX1efFFABQ_ZObaM4AxmCGNE6p6CBeB/view?usp=drivesdk"
+                ],
+                "Feb 2023": [
+                    "https://drive.google.com/file/d/1shrfYEO6P-jQjF5Ypge6LHtYempPVe9M/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1foNDfZuyumXnFFQiRVu7kDHzt5ntxcOH/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/196D-c7thIRiXddcYtU_uhVKDNwy4zBOc/view?usp=drivesdk"
+                ]
+            }
+        },
+        "ma1001": {
+            "endterm": {
+                "Dec 2022": [
+                    "https://drive.google.com/file/d/1oP8OHieQz__dUKk9ebb0K7OlIoyH8kpN/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1JSl_qF52B4pG-cS-COkhHqznUFWQ6gol/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1hxbr-P0hpLerpQQ0A1Hz9_1jynwNvOv7/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1P1dKpNyfrWvgasGU00hCSsIHtLu1Yl4l/view?usp=drivesdk"
+                ]
+            },
+            "quiz-2": {
+                "Nov 2022": [
+                    "https://drive.google.com/file/d/14lDY_i1A3FP3GG15asvYZORME2w7nMai/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1HNaRxgB05H3Kjg3sfn_k3nipU-DC5YQx/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1UinAcJC9xxeBMysoPGFgxji1mf8Hzddn/view?usp=drivesdk"
+                ],
+                "Apr 2023": [
+                    "https://drive.google.com/file/d/1KQNfQ7Dzaw0DF0bYszk3Em7IDuX80Bs5/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1-ul13C-lmM9iifH5nHIrZ_W_kihdTozh/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1Ks2YAS9xQG1nH3hWcO2rnR8X1h962Lc3/view?usp=drivesdk"
+                ]
+            },
+            "quiz-1": {
+                "Oct 2022": [
+                    "https://drive.google.com/file/d/10HS7BZPR26R1f6A5wIfcG_e8wJJg8iLO/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1FFEpu5IrzMMpp1H36xUXBNRsr-29A83o/view?usp=drivesdk"
+                ],
+                "Feb 2023": [
+                    "https://drive.google.com/file/d/1Spq3vsr2Klqph4dLgexJ6KPLJVGSqujW/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/13SkLa_fBALT7CsGAOQkCQyTocigQrvve/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1S3tPpR6Ea8-b7dC3A8fqNHALmuhxjIlR/view?usp=drivesdk"
+                ]
             }
         }
     },
-    {
-        "level": "diploma",
-        "cs2001": {
-            "quiz-1": {
-                "Jun 2022": {
-                    "paper": {
-                        "paper 3": "https://drive.google.com/file/d/1b8BQMsX-tR4MG3k9hhX2Qyo7aLeM5_Zk/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/14lDI4J8FBWsNbvSeA4zHLWlIPt8uZYnv/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1vT8xL9OU9eGKGwvsBNulrN_mO1RjhHoL/view?usp=drivesdk"
-                    }
-                }
-            },
-            "quiz-2": {
-                "Mar 2022": {
-                    "paper": {
-                        "paper 4": "https://drive.google.com/file/d/1kkbKW22-Up1ZFwWNF7NPwTDqro_gsu-6/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1UEXgWqIms-I1FJLhXp3hEXvWWuMgMNzN/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1cPiH7E3-MkLUOFAB1hwppgbgrjrFgUO3/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/15SxhCd2fZ6-gUX8wfNNUrvlBoqKsuDxk/view?usp=drivesdk"
-                    }
-                }
-            },
+    "diploma": {
+        "se2002": {
             "endterm": {
-                "Apr 2022": {
-                    "paper": {
-                        "paper 2": "https://drive.google.com/file/d/1EzIntXwCJ4cJQJ7_AFVVmIPT_OMaZfrI/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/16vlYWTYhdLnRFhGPsuVvuh1B_O9CoCMA/view?usp=drivesdk"
-                    }
-                }
-            }
-        },
-        "cs2002": {
-            "quiz-1": {
-                "Jun 2022": {
-                    "paper": {
-                        "paper 3": "https://drive.google.com/file/d/1XK6b59Xu6BCTc_dvj2_rt3Dvp7KqOnKd/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1wa5OFJdvqHdDElLII_9TmrkS3k0_Hi13/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1TxY4-GYULBpzDVXHXWg6uEpBcfAovxQR/view?usp=drivesdk"
-                    }
-                }
-            },
-            "quiz-2": {
-                "Mar 2022": {
-                    "paper": {
-                        "paper 4": "https://drive.google.com/file/d/1z0WPtUo16TIaUV2vPS8ryHd3kSPVVJoj/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1zejLxoqnLMIzJghRh7INpYjbKQkb_r1K/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1UpJDg8gOabYcPS5Xm-9PlZ2SRQhEizM5/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1OOT4SbwHtQ4ED9Hgo-gI_V7KNW-Ybfr9/view?usp=drivesdk"
-                    }
-                }
-            },
-            "endterm": {
-                "Apr 2022": {
-                    "paper": {
-                        "paper 4": "https://drive.google.com/file/d/1WdJPOhtwjrpbP0Dpg4whFs7XmzgNQnv2/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/18LROPxYuuoPSBwXEp9azMY-nSftJscFz/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1bmoytImbLOkeIH3HcmwhCPp4UshaV6Nt/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1Hi_qAAuRSGl-u0vVTBPO1BOAtvUojpQO/view?usp=drivesdk"
-                    }
-                }
-            }
-        },
-        "cs2003": {
-            "quiz-1": {
-                "Jun 2022": {
-                    "paper": {}
-                }
-            },
-            "quiz-2": {
-                "Mar 2022": {
-                    "paper": {}
-                }
-            },
-            "endterm": {
-                "Apr 2022": {
-                    "paper": {}
-                }
-            }
-        },
-        "cs2004": {
-            "quiz-1": {
-                "Jun 2022": {
-                    "paper": {}
-                }
-            },
-            "quiz-2": {
-                "Mar 2022": {
-                    "paper": {}
-                }
-            },
-            "endterm": {
-                "Apr 2022": {
-                    "paper": {}
-                }
-            }
-        },
-        "cs2005": {
-            "quiz-1": {
-                "Jun 2022": {
-                    "paper": {
-                        "paper 3": "https://drive.google.com/file/d/1pXgnP5vG1cTgoUKcE2RCUssVVUBl-aTj/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1Wb1TaqHp2rAH8KNsW_Zke6adZKkIoDPa/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1Fwr4KW27kWI5gqKdhsodg0BAUxup_p9O/view?usp=drivesdk"
-                    }
-                }
-            },
-            "quiz-2": {
-                "Mar 2022": {
-                    "paper": {
-                        "paper 4": "https://drive.google.com/file/d/1M92jBDeE-aIRP81kUG3tGBAE0AS9ZZAH/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1VEd-Pdp5JtR7zbuA7_l9pqhNw_9KPnPb/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1iILGD1iGGvHJxN09vwjHiynngoddGq7w/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1BpNNlPQQzjQg6Iv8ExHaFtmZjzJCmA54/view?usp=drivesdk"
-                    }
-                }
-            },
-            "endterm": {
-                "Apr 2022": {
-                    "paper": {
-                        "paper 2": "https://drive.google.com/file/d/1Fy2h5Qj7IzqrCnEwd2iai-15BOloj6C3/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1HpGgvykEvqZ2VoAwmVUE2mPyvJaISfy5/view?usp=drivesdk"
-                    }
-                }
-            }
-        },
-        "cs2006": {
-            "quiz-1": {
-                "Jun 2022": {
-                    "paper": {}
-                }
-            },
-            "quiz-2": {
-                "Mar 2022": {
-                    "paper": {}
-                }
-            },
-            "endterm": {
-                "Apr 2022": {
-                    "paper": {}
-                }
-            }
-        },
-        "cs2007": {
-            "quiz-1": {
-                "Jun 2022": {
-                    "paper": {
-                        "paper 3": "https://drive.google.com/file/d/1BT7Quewhja9p7xjvUfVqVs9c2d8rp8BI/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/18a9Pxi_aUk830-FeLJ2R6LRy4X4mSja8/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1JWDYxm_XtREI7yqJ5REekLyrqZYDe313/view?usp=drivesdk"
-                    }
-                }
-            },
-            "quiz-2": {
-                "Mar 2022": {
-                    "paper": {}
-                }
-            },
-            "endterm": {
-                "Apr 2022": {
-                    "paper": {
-                        "paper 2": "https://drive.google.com/file/d/1s3oGjU3p4Qh5YEs0qbUcC8L37OSkSdA3/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1-39lnzY9rpZ6ZnRY9-xjzWMHX7CjV9F3/view?usp=drivesdk"
-                    }
-                }
-            }
-        },
-        "cs2008": {
-            "quiz-1": {
-                "Jun 2022": {
-                    "paper": {
-                        "paper 3": "https://drive.google.com/file/d/16j7luW6HtDIZFxep5kDKE7UOhOxgJnFz/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/132Z9EkOHwJOpT0OjcCUyGJYVRmriNQTF/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1z4uGAhR_y6wRCGD7NQb8ht0yHdiU0nGw/view?usp=drivesdk"
-                    }
-                }
-            },
-            "quiz-2": {
-                "Mar 2022": {
-                    "paper": {
-                        "paper 4": "https://drive.google.com/file/d/1ZuBG7SjeAuSEQIUWfZFPtMDkB8GpuSaP/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1k2JIlf3Qai0Bhy7GwdsOnQlG2ag-r3Da/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1lLDPXeI8AFNldJdlQtVPcZPqPht4WAIP/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1pi6FUJT6fs0wf-Pco0TQvXI8R0XxkbW5/view?usp=drivesdk"
-                    }
-                }
-            },
-            "endterm": {
-                "Apr 2022": {
-                    "paper": {}
-                }
-            }
-        },
-        "ms2001": {
-            "quiz-1": {
-                "Jun 2022": {
-                    "paper": {
-                        "paper 3": "https://drive.google.com/file/d/1CTxUhJwn2V4Ckkl3uiU2WNqePKNKYh8L/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1VSBiXKxL2F27_cFdKNsKJHZUorn53Dq6/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1gx3peVo_47WQWWjPRZr2NgME4xJ06-Nl/view?usp=drivesdk"
-                    }
-                }
-            },
-            "quiz-2": {
-                "Mar 2022": {
-                    "paper": {
-                        "paper 4": "https://drive.google.com/file/d/14r30fXPTOysjYazggdwY2pBXHMlJOgZW/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1N74RUPOs_Nl9_l9G08TMWG9FL1jLMRRn/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/192r3DfOHC39TW1zPs3j6CdKOZjSLz9k5/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1qqBd4dW6hmsr5aO8Cj-uvzU1l0ZcoglG/view?usp=drivesdk"
-                    }
-                }
-            },
-            "endterm": {
-                "Apr 2022": {
-                    "paper": {
-                        "paper 4": "https://drive.google.com/file/d/1LQ9CKYhnUjszi2FcB2_6YSyAHhjr7sLP/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1UWTSJ3uHoOs-xZ9cx11o8nR0JXN3EitM/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1LOqwNNgM4LIZ_hJ5DKIjH-u6VxyqHXsT/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1C4xlYpdJ4z22wNgiDSKAEgYn1vS3E7W4/view?usp=drivesdk"
-                    }
-                }
-            }
-        },
-        "ms2002": {
-            "quiz-1": {
-                "Jun 2022": {
-                    "paper": {
-                        "paper 3": "https://drive.google.com/file/d/12CbeCXdGm-tUHdf6Rig9PsB7WFc0RCgj/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1WnT2k2OIZULJd-ieNqHhZmDZ8C5AScjI/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1_1RCRUUOT8G-80FQ7q22T3aEHEnsMdII/view?usp=drivesdk"
-                    }
-                }
-            },
-            "quiz-2": {
-                "Mar 2022": {
-                    "paper": {
-                        "paper 4": "https://drive.google.com/file/d/1hwaYJ6F9kiglENqzWL_uVN4lRRq5U2eI/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1BB_S35XUarkFbqDH96f9niOsvmrhbymh/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1HbJRuzSpkefw0YCV3XkooTCtEBnn9TXM/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1ofxg5JLGyQntt0p0mIng2Q-Fa_PppFot/view?usp=drivesdk"
-                    }
-                }
-            },
-            "endterm": {
-                "Apr 2022": {
-                    "paper": {
-                        "paper 4": "https://drive.google.com/file/d/107_kmMYzclaiyLB5WHUL0mEC_4iyxxxx/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1_lLs_Vmi379bqZKG_VxSET1TaFTDd_2O/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1QmRIn2YDmG4VIkHJDC6RZOaeAE6mH1lI/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/143pZc80drN0QM_tFsX0CAYN5Nhb2k2yL/view?usp=drivesdk"
-                    }
-                }
+                "Apr 2022": [
+                    "https://drive.google.com/file/d/1HPxB-3fjOiC2CZLhWv4C5kCH67h1PdkD/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1KQV5NJOat8f4zlbC7LRn5Dhap1pzk4yC/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/135zM2j40i6sHxxHUaSA_KXCtblsy0JWI/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1qWwrPCx7YpR_s9pUrKnaGh_4ZjhUIgX2/view?usp=drivesdk"
+                ]
             }
         },
         "se2001": {
-            "quiz-1": {
-                "Jun 2022": {
-                    "paper": {
-                        "paper 3": "https://drive.google.com/file/d/11l26fkiudg9JaNlldDfxf8XA1cvsNQZo/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1t3eUteFJSGpaFC8ZvVgHXw_HCI-5Enqv/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1hGlfgk-uHO0RmQEiGX0pXNy0O2DOn5gP/view?usp=drivesdk"
-                    }
-                }
+            "endterm": {
+                "Apr 2022": [
+                    "https://drive.google.com/file/d/1UVFx9CKGX_93iEZ-tyBOaaBMV2YSvn2V/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1BjAH7imIiU7YqGkQr2HQMjUKRBYAu7SV/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1Wdx3b6R3kZ_b608cnHf9fvmSVl_7okgp/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1dqznyc5X36XZW0a-gxlY9vGLpR2FX4kH/view?usp=drivesdk"
+                ]
             },
             "quiz-2": {
-                "Mar 2022": {
-                    "paper": {
-                        "paper 4": "https://drive.google.com/file/d/1rhtWzKptKO2m511nUbLS-tjqfC8XesQl/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1b4kcnv9HDv3GcXgSMFnVH6bK15LutHaE/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1uUI2RUC7lx8Aj4ELn8tSNYwYPpoxycLk/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1QE-C_mYmtIWcLAo7VZTKOtOWoD5ilA2y/view?usp=drivesdk"
-                    }
-                }
+                "Mar 2022": [
+                    "https://drive.google.com/file/d/1FfYk6JxbWNxCaVi6mwUQBeKMa2PuUUPN/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1wqjmxv5xGeLil52iCAm_MyZAGY_aRB6z/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1C6Jb8rbUVxKYgOEWoMVdgPCmWIhlzAit/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1dyCkz_SGv2pQyK9mETdJHv00jQFAX1G-/view?usp=drivesdk"
+                ]
             },
-            "endterm": {
-                "Apr 2022": {
-                    "paper": {
-                        "paper 4": "https://drive.google.com/file/d/17LyA3XlbzBZLfqluWxrqdVaaAXsitbBq/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1rFVWmJLvJOmecPL6ObGB48mFwL2pbvF3/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/12VNJy_HeToEhXkiEU1HOS_O81GGwPK3K/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/14M6J2BPkyZuizXftZhul2brxZmBsQWeo/view?usp=drivesdk"
-                    }
-                }
+            "quiz-1": {
+                "Jun 2022": [
+                    "https://drive.google.com/file/d/1VPPJR3R43qwHtG1EKOy3QCFxP5k_vnf1/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1nly9j2FaaGGHUgmYV0pkcsLesa-yBJuQ/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1szdYW8wSBdQp-i3sk9DWrOOS0zdIyur9/view?usp=drivesdk"
+                ]
             }
         },
-        "se2002": {
-            "quiz-1": {
-                "Jun 2022": {
-                    "paper": {}
-                }
+        "cs2002": {
+            "endterm": {
+                "Apr 2022": [
+                    "https://drive.google.com/file/d/15mgoRgQkhHrKvTgcOzVDp37YXGDZ9p27/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/11ew3AXHjP_d5Klp7DpVAuzHzEg9HsRRf/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1fxD0NRlrPm0v-KyJXz6agoeWR6Fjnn-E/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1GYCY9paT2zpfHmrythosWmmk4puVptOY/view?usp=drivesdk"
+                ]
             },
             "quiz-2": {
-                "Mar 2022": {
-                    "paper": {}
-                }
+                "Mar 2022": [
+                    "https://drive.google.com/file/d/1gQzL6FP83MG_ETGVzZ_-H3D3vAxThTok/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1Ewtx-pfp7EYgJ4Q5qFx3a_D_3REJa0MK/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1yaJkuTUMFtN29q_uXtHcG4gVoGOYGoST/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1RK3uazwkLoyofVhId07szS5OcUXjNgC5/view?usp=drivesdk"
+                ]
             },
-            "endterm": {
-                "Apr 2022": {
-                    "paper": {
-                        "paper 4": "https://drive.google.com/file/d/16Bv137cDERov3GQAg-aCAif0RmQavj-F/view?usp=drivesdk",
-                        "paper 3": "https://drive.google.com/file/d/1wa6PXWsNXqH7eY1z2yuSYQ-C-KS1ayXq/view?usp=drivesdk",
-                        "paper 2": "https://drive.google.com/file/d/1NXR1NPgls069mCm50vxwAhYfRHKUYZy7/view?usp=drivesdk",
-                        "paper 1": "https://drive.google.com/file/d/1So_hFA9lrNOo-VSbOX2Gybob2bJladUM/view?usp=drivesdk"
-                    }
-                }
+            "quiz-1": {
+                "Jun 2022": [
+                    "https://drive.google.com/file/d/1zyoRME6VRUPZnF3dRB_3W9gB5JlKoGDq/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1S9vFxyah5GfVVlfsHSGsUw3kgsv88JsP/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1dwrDOs7N8rXh29w6fZ-CBCD9lK1H7chZ/view?usp=drivesdk"
+                ]
             }
         },
-        "cs2003p": {
-            "quiz-1": {
-                "Jun 2022": {
-                    "paper": {}
-                }
+        "ms2002": {
+            "endterm": {
+                "Apr 2022": [
+                    "https://drive.google.com/file/d/1pLNmxUplN1nozNtHANKEq8sNaVCNrnXU/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1wgFGxEUf4NZ3wGvsqbqrLHLksQXEkTZj/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1qD2T-aNGf7kKVD8wDDHL5Bq2KLWIRhTh/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1hH25gZVuFtMGS3DqM9xcsNyjs3Cha_iV/view?usp=drivesdk"
+                ]
             },
             "quiz-2": {
-                "Mar 2022": {
-                    "paper": {}
-                }
+                "Mar 2022": [
+                    "https://drive.google.com/file/d/1UA5-CJ_D5ktkDBEDEUiCDvkaXHmv1_30/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/15M2gfsubXj9x35WZTdRpD9WX-Mqpwe26/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1oLtHpCUtEb1RsQ2-z2MdMEmT0UvuG9R-/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1rrkt5oHmr4AsxKVNBaUMS5ghQcsVAM5l/view?usp=drivesdk"
+                ]
             },
-            "endterm": {
-                "Apr 2022": {
-                    "paper": {}
-                }
+            "quiz-1": {
+                "Jun 2022": [
+                    "https://drive.google.com/file/d/1irq15FYtZszm2ewFxhCP5f-o7w6ZhS3o/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1JGH7PqexYivwiDlgprNT8rVI_3S4fvLS/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/11f1e7Hq3WIoqisaBcmuObXKmRWCqMqvy/view?usp=drivesdk"
+                ]
             }
         },
-        "cs2006p": {
-            "quiz-1": {
-                "Jun 2022": {
-                    "paper": {}
-                }
+        "ms2001": {
+            "endterm": {
+                "Apr 2022": [
+                    "https://drive.google.com/file/d/1GzhvWESw46B2xxw-aeVK2tLOHaOUB0ug/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1MK1yLcI9XEBSpwdMDmZyL79aSAMGqAC2/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1uZRX13CSfBIXjxBz4FMgrpkN6-dhsFsL/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1yZAHOp2wCNhskcE7DfTRelUHZxwS4uOL/view?usp=drivesdk"
+                ]
             },
             "quiz-2": {
-                "Mar 2022": {
-                    "paper": {}
-                }
+                "Mar 2022": [
+                    "https://drive.google.com/file/d/15GnRP2AaKBdfOnq6pAgGgiQlhSILYsAx/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1CCD4c_L759lcGdB6mlPIgyKjp8_VVrg_/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1NOJfjinOPMwaR8HeLnMEhHfbecOLbTEl/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1qM8AANC1EmBK2cAqvFksR8HC34ccaOxa/view?usp=drivesdk"
+                ]
             },
-            "endterm": {
-                "Apr 2022": {
-                    "paper": {}
-                }
+            "quiz-1": {
+                "Jun 2022": [
+                    "https://drive.google.com/file/d/1hYivuoAiVM69C_bhlfM0706BGeK-qNme/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1MxzXXseHi3fS0pIlblUbKCkKuDFFYoUH/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1fQdzq_byMYo-HrrVxgEXpIOLXVcAIk64/view?usp=drivesdk"
+                ]
             }
         },
-        "MS2001P": {
-            "quiz-1": {
-                "Jun 2022": {
-                    "paper": {}
-                }
+        "cs2007": {
+            "endterm": {
+                "Apr 2022": [
+                    "https://drive.google.com/file/d/1BLRvQxJGXFI23Lhc2rdZjiMM5k8uAGlw/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1P-Nky1gGjsAMzA818MXna4VkuFXn63-n/view?usp=drivesdk"
+                ]
             },
             "quiz-2": {
-                "Mar 2022": {
-                    "paper": {}
-                }
+                "Mar 2022": [
+                    "https://drive.google.com/file/d/1wc75FB-jhWElKNKH2Xh2QL2-r96JpgrG/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1rt9tssYP2Pdk9SCFtERULR1LzVtbVHGv/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/15cG7obpQbm79qnDbwMhzNJGE2BGITKL1/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1U4OSyGEJTvGgTzGVmufr-jFWT2prhLJR/view?usp=drivesdk"
+                ]
             },
-            "endterm": {
-                "Apr 2022": {
-                    "paper": {}
-                }
+            "quiz-1": {
+                "Jun 2022": [
+                    "https://drive.google.com/file/d/107ucHoL19VoeZo-Q_pMETBALnuxjdaJl/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1nilnoCbGjBTQloJ0TDWL8y-fVlmH-557/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/17F2Oa0QqqDKQJmfgWCWUwS3awAZVfluR/view?usp=drivesdk"
+                ]
             }
         },
-        "CS2008P": {
-            "quiz-1": {
-                "Jun 2022": {
-                    "paper": {}
-                }
+        "cs2004": {
+            "endterm": {
+                "Apr 2022": [
+                    "https://drive.google.com/file/d/1Y_XlaPPPmq1D3gApMkGJudhRaMptAmzV/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1cML-Un7m_TvPknI287CaG-wxYhIxGvzA/view?usp=drivesdk"
+                ]
             },
             "quiz-2": {
-                "Mar 2022": {
-                    "paper": {}
-                }
+                "Mar 2022": [
+                    "https://drive.google.com/file/d/1U2NpBvewMO5cSlxh6bXZ4FP0hv1PE-rM/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1SzvfSYE7w_uX0izjdZXUxjfZ8G7c6uRQ/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1HH9XxfCYj1cRJHILpT3Prh_XyAo_jMu0/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1o7mJd4EjWMKz12fiLrxFErHW7UGaUDSM/view?usp=drivesdk"
+                ]
             },
+            "quiz-1": {
+                "Jun 2022": [
+                    "https://drive.google.com/file/d/1nDQ3CMpL98et_1sGMoZYHTYMP8vr_6Ge/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1BjMfzbX_9i7LmNW6nvgkr6UgX8-iLMpq/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1UngX0ILvfxdUPzpzw1Pba5l4bhda-GGD/view?usp=drivesdk"
+                ]
+            }
+        },
+        "cs2005": {
             "endterm": {
-                "Apr 2022": {
-                    "paper": {}
-                }
+                "Apr 2022": [
+                    "https://drive.google.com/file/d/1jczk_r8UthFPj0Tw-2SEgbM6_8fxnGK5/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1-w7GKRBXSjGZ0K6vt1gpg-KV-Is1CFf7/view?usp=drivesdk"
+                ]
+            },
+            "quiz-2": {
+                "Mar 2022": [
+                    "https://drive.google.com/file/d/1G-yz-mAwGLIyuIDN-jaxyFKS1hRArcQe/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1SG51upGdKXfGowUZee3-I1Vg4itaxDUp/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/17GP9nBuVB7hy1Nrh5efUUNFYkPvCgcTn/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1uPnF-omUqv6MnofPpp3EV6t-boCup2ju/view?usp=drivesdk"
+                ]
+            },
+            "quiz-1": {
+                "Jun 2022": [
+                    "https://drive.google.com/file/d/1lNbb5_UyJQXUMwh6D-DR0jWn-jwAWL1s/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1SKCtpgDG89aY_v_v5E2G2cEtUdtYcsZ2/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1NfXq-TztMgV6qrrGzkL4YFzjyy8oPYCv/view?usp=drivesdk"
+                ]
+            }
+        },
+        "cs2001": {
+            "endterm": {
+                "Apr 2022": [
+                    "https://drive.google.com/file/d/1PdCuGslv0dC65KoGC9wCi5S9-7zR30EZ/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1fjMeXsJcxu5V5bU1D49m13lOhogAWEK1/view?usp=drivesdk"
+                ]
+            },
+            "quiz-2": {
+                "Mar 2022": [
+                    "https://drive.google.com/file/d/1izjfYM7JE6yF41y-adWEiyT1UWdPsa10/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1RLNxVC4K15-vETLN7qoywacPvm7FCs8n/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1MT-54MrLoFV_WObGfAf0sHg8pmhKJBm9/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/12fwvLc08ALgxydOtN_wI6GQCMJdILVjc/view?usp=drivesdk"
+                ]
+            },
+            "quiz-1": {
+                "Jun 2022": [
+                    "https://drive.google.com/file/d/1IGe24OlwBbVM2udBuog-9N3-pszLgKzy/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1zRtwCEK4qKpCJmD6AK2jhxlaAm5a8v78/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1NST9NLckTfNZZ2c21SNtjSWvmKxAhP2o/view?usp=drivesdk"
+                ]
+            }
+        },
+        "cs2006": {
+            "quiz-2": {
+                "Mar 2022": [
+                    "https://drive.google.com/file/d/1nfESd8oncAjft5cULdDcRcfLWITnn8dF/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1n81W9BsZblnEf54xkKjDGFRgOpXJOqxY/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/179kAts4yOYrbesngRrQd0teO_MfyYqSb/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1Qwqny5Q8KwFeo2hJ7HbpQEEgj3yjY742/view?usp=drivesdk"
+                ]
+            }
+        },
+        "cs2003": {
+            "quiz-2": {
+                "Mar 2022": [
+                    "https://drive.google.com/file/d/1XxrYbkew0jPZTzKELNk9aghfAqYhntZl/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/191e3SN3BBaVZUoAWn4ipgUq7MHKvLeBp/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1-CbtTWOImc2SdN_LGwfnIOKW88hJfZjM/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1NIJoMtYAfYkMCTrnKqUxBQIaLD4ZCpjK/view?usp=drivesdk"
+                ]
+            }
+        },
+        "cs2008": {
+            "quiz-2": {
+                "Mar 2022": [
+                    "https://drive.google.com/file/d/1SO-t7nSLgBEAuWOZ2dMRWi07vJ9WLM03/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1sdwQ9JED-l2s9Gh8fbaxnDYX8da90nnw/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1Rf74ALA2bSmD_PCTy3U1HAaMKXZbOTTD/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/16lSmP9iE-Jh5Bn2IkvSi9XeUUQefTckk/view?usp=drivesdk"
+                ]
+            },
+            "quiz-1": {
+                "Jun 2022": [
+                    "https://drive.google.com/file/d/1u8wq5-ZylrMcbq7TC0GLvnJ7V8q3aRaR/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/1y3Dya2bg7TconSnqdBWXc5mChTxrJ_pV/view?usp=drivesdk",
+                    "https://drive.google.com/file/d/14oWdrmPc4tXw7ylnmZuZmFo2AScOByO_/view?usp=drivesdk"
+                ]
             }
         }
     },
-    {
-        "level": "degree",
-        "subject 1": {
-            "quiz-1": {
-                "Dec 2022": {
-                    "paper": {}
-                }
-            },
-            "quiz-2": {
-                "quiz_2_date_d": {
-                    "paper": {}
-                },
-                "Nov 2022": {
-                    "paper": {}
-                }
-            },
-            "endterm": {
-                "Dec 2022": {
-                    "paper": {}
-                }
-            }
+    "degree": {}
+}
+
+# Define the collection names
+collections = {
+    "foundation": "pyq/foundation",
+    "diploma": "pyq/diploma",
+    "degree": "pyq/degree"
+}
+
+# for level, courses in data.items():
+#     print(courses, '\n')
+#     for course, quiz in courses.items():
+#         print(course, '\n\n\n\n', quiz)
+#         doc_ref = db.collection(f"ds_courses/23t1/{course}").document('pyq')
+#         doc_ref.set(quiz)
+
+
+data = {
+    "foundation": {
+        "hs1001": {
+            "course_name": " English1"
         },
-        "subject 2": {
-            "quiz-1": {
-                "Dec 2022": {
-                    "paper": {}
-                }
-            },
-            "quiz-2": {
-                "quiz_2_date_d": {
-                    "paper": {}
-                },
-                "Nov 2022": {
-                    "paper": {}
-                }
-            },
-            "endterm": {
-                "Dec 2022": {
-                    "paper": {}
-                }
-            }
+        "cs1001": {
+            "course_name": " CT"
+        },
+        "ma1002": {
+            "course_name": " Statistics1"
+        },
+        "hs1002": {
+            "course_name": " English2"
+        },
+        "cs1002": {
+            "course_name": " Intro to Python"
+        },
+        "ma1004": {
+            "course_name": " Statistics2"
+        },
+        "ma1003": {
+            "course_name": " Maths2"
+        },
+        "ma1001": {
+            "course_name": " Maths1"
         }
-    }
-]
+    },
+    "diploma": {
+        "se2002": {
+            "course_name": "TDS"
+        },
+        "se2001": {
+            "course_name": "System Commands"
+        },
+        "cs2002": {
+            "course_name": "PDSA"
+        },
+        "ms2002": {
+            "course_name": "Business Analytics"
+        },
+        "ms2001": {
+            "course_name": "BDM"
+        },
+        "cs2007": {
+            "course_name": "MLT"
+        },
+        "cs2004": {
+            "course_name": "MLF"
+        },
+        "cs2005": {
+            "course_name": "Java"
+        },
+        "cs2001": {
+            "course_name": "DBMS"
+        },
+        "cs2006": {
+            "course_name": "AppDev 2"
+        },
+        "cs2003": {
+            "course_name": "AppDev 1"
+        },
+        "cs2008": {
+            "course_name": "MLP"
+        }
+    },
+    "degree": {}
+}
 
-#     level = course['level']
-#     print(level, " level \n\n\n")
-#     for key, value in course.items():
-#         if key != "level":
-#             print(key, "\n", value)
-#             # ======%%%%%%%%%%%%%%%%%=======%%%%%%%%%%%%%%%%%====%%%%%%%%%%%%%%%%%==
-#             level_ref = db.collection("ds_pyq").document(
-#                 level).collection(key)
 
-#             for sub, sub_value in value.items():
-#                 level_ref = db.collection(
-#                     "ds_pyq").document(level).collection(sub)
-#                 for quiz_key, quiz_value in sub_value.items():
-#                     quiz_ref = level_ref.document(quiz_key)
-#                     quiz_ref.set(quiz_value)
-#                     print(quiz_key, "\n\n\n", quiz_value)
+courses = {}
 
+for level, courses_dict in data.items():
+    level_courses = {}
+    for course_id, course_data in courses_dict.items():
+        level_courses[course_id] = course_data['course_name']
+    courses[level] = level_courses
 
-for course in data:
-    level = course['level']
-    print(level, " level \n\n\n")
-    for key, value in course.items():
-        if key != "level":
-            # print(key, "\n", value)
-            # ======%%%%%%%%%%%%%%%%%=======%%%%%%%%%%%%%%%%%====%%%%%%%%%%%%%%%%%==
-            level_ref = db.collection("ds_pyq").document(
-                level).collection(key)
+doc_ref = db.collection('pyq').document('meta_data')
+doc_ref.set(courses)
 
-            for quiz_key, quiz_value in value.items():
-                quiz_ref = level_ref.document(quiz_key)
-                quiz_ref.set(quiz_value)
-                print(json.dumps(quiz_value), "\n\n\n")
+print(courses)
+
+cs = {'foundation': {'hs1001': ' English1', 'cs1001': ' CT', 'ma1002': ' Statistics1', 'hs1002': ' English2', 'cs1002': ' Intro to Python', 'ma1004': ' Statistics2', 'ma1003': ' Maths2', 'ma1001': ' Maths1'}, 'diploma': {'se2002': 'TDS',
+                                                                                                                                                                                                                             'se2001': 'System Commands', 'cs2002': 'PDSA', 'ms2002': 'Business Analytics', 'ms2001': 'BDM', 'cs2007': 'MLT', 'cs2004': 'MLF', 'cs2005': 'Java', 'cs2001': 'DBMS', 'cs2006': 'AppDev 2', 'cs2003': 'AppDev 1', 'cs2008': 'MLP'}}
