@@ -33,7 +33,7 @@ function submitClicked() {
     return;
   }
 
-  const url = `/pyq/${categorySelect.value}/${optionSelect.value}/${subjectselect.value}`;
+  const url = `/pyq/${optionSelect.value}/${subjectselect.value}`;
   window.location.href = url;
 }
 
