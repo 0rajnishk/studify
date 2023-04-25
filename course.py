@@ -219,6 +219,7 @@ def format_date_filter(date_string: str) -> str:
 
 
 @course.route('/pyq/<subject>/<quiz>')
+@login_required
 def pyq(subject, quiz):
     # Build a query to get the documents with quiz data for a specific subject
     doc_ref = db.collection('ds_courses').document(
