@@ -13,7 +13,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 90vh;
     position: relative;
     background-color: #1e1f26;
     text-align: center;
@@ -36,11 +36,17 @@ body {
     .slider {
         height: 95vh;
     }
+    .nav {
+        height: 100vh;
+    }
 }
 
 @media (min-width: 800px) {
     .slider {
         height: 65vh;
+    }
+    .nav {
+        height: 100vh;
     }
 }
 
