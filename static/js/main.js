@@ -57,7 +57,7 @@ class NavigationPage {
   }
 
   checkHeaderPosition() {
-    const headerHeight = 75;
+    const headerHeight = 600;
     if ($(window).scrollTop() > headerHeight) {
       $(".nav-container").addClass("nav-container--scrolled");
     } else {
