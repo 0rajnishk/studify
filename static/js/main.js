@@ -1,71 +1,128 @@
-/*==================== SHOW MENU ====================*/
-const showMenu = (toggleId, navId) =>{
-  const toggle = document.getElementById(toggleId),
-  nav = document.getElementById(navId)
-  
-  // Validate that variables exist
-  if(toggle && nav){
-      toggle.addEventListener('click', ()=>{
-          // We add the show-menu class to the div tag with the nav__menu class
-          nav.classList.toggle('show-menu')
-      })
+window.onload = function () {
+  Particles.init({
+    selector: ".background"
+  });
+};
+const particles = Particles.init({
+  selector: ".background",
+  color: ["#03dac6", "#ff0266", "#000000"],
+  connectParticles: true,
+  responsive: [
+    {
+      breakpoint: 400,
+      options: {
+        color: ["#faebd7", "#03dac6", "#ff0266"],
+        maxParticles: 40,
+        connectParticles: false
+      }
+    }
+  ]
+});
+
+class NavigationPage {
+  constructor() {
+    this.currentId = null;
+    this.currentTab = null;
+    this.tabContainerHeight = 70;
+    this.lastScroll = 0;
+    let self = this;
+    $(".nav-tab").click(function () {
+      self.onTabClick(event, $(this));
+    });
+    $(window).scroll(() => {
+      this.onScroll();
+    });
+    $(window).resize(() => {
+      this.onResize();
+    });
+  }
+
+  onTabClick(event, element) {
+    event.preventDefault();
+    let scrollTop =
+      $(element.attr("href")).offset().top - this.tabContainerHeight + 1;
+    $("html, body").animate({ scrollTop: scrollTop }, 600);
+  }
+
+  onScroll() {
+    this.checkHeaderPosition();
+    this.findCurrentTabSelector();
+    this.lastScroll = $(window).scrollTop();
+  }
+
+  onResize() {
+    if (this.currentId) {
+      this.setSliderCss();
+    }
+  }
+
+  checkHeaderPosition() {
+    const headerHeight = 75;
+    if ($(window).scrollTop() > headerHeight) {
+      $(".nav-container").addClass("nav-container--scrolled");
+    } else {
+      $(".nav-container").removeClass("nav-container--scrolled");
+    }
+    let offset =
+      $(".nav").offset().top +
+      $(".nav").height() -
+      this.tabContainerHeight -
+      headerHeight;
+    if (
+      $(window).scrollTop() > this.lastScroll &&
+      $(window).scrollTop() > offset
+    ) {
+      $(".nav-container").addClass("nav-container--move-up");
+      $(".nav-container").removeClass("nav-container--top-first");
+      $(".nav-container").addClass("nav-container--top-second");
+    } else if (
+      $(window).scrollTop() < this.lastScroll &&
+      $(window).scrollTop() > offset
+    ) {
+      $(".nav-container").removeClass("nav-container--move-up");
+      $(".nav-container").removeClass("nav-container--top-second");
+      $(".nav-container-container").addClass("nav-container--top-first");
+    } else {
+      $(".nav-container").removeClass("nav-container--move-up");
+      $(".nav-container").removeClass("nav-container--top-first");
+      $(".nav-container").removeClass("nav-container--top-second");
+    }
+  }
+
+  findCurrentTabSelector(element) {
+    let newCurrentId;
+    let newCurrentTab;
+    let self = this;
+    $(".nav-tab").each(function () {
+      let id = $(this).attr("href");
+      let offsetTop = $(id).offset().top - self.tabContainerHeight;
+      let offsetBottom =
+        $(id).offset().top + $(id).height() - self.tabContainerHeight;
+      if (
+        $(window).scrollTop() > offsetTop &&
+        $(window).scrollTop() < offsetBottom
+      ) {
+        newCurrentId = id;
+        newCurrentTab = $(this);
+      }
+    });
+    if (this.currentId != newCurrentId || this.currentId === null) {
+      this.currentId = newCurrentId;
+      this.currentTab = newCurrentTab;
+      this.setSliderCss();
+    }
+  }
+
+  setSliderCss() {
+    let width = 0;
+    let left = 0;
+    if (this.currentTab) {
+      width = this.currentTab.css("width");
+      left = this.currentTab.offset().left;
+    }
+    $(".nav-tab-slider").css("width", width);
+    $(".nav-tab-slider").css("left", left);
   }
 }
-showMenu('nav-toggle','nav-menu')
 
-/*==================== REMOVE MENU MOBILE ====================*/
-const navLink = document.querySelectorAll('.nav__link')
-
-function linkAction(){
-  const navMenu = document.getElementById('nav-menu')
-  // When we click on each nav__link, we remove the show-menu class
-  navMenu.classList.remove('show-menu')
-}
-navLink.forEach(n => n.addEventListener('click', linkAction))
-
-
-/*==================== CHANGE BACKGROUND HEADER ====================*/ 
-function scrollHeader(){
-  const nav = document.getElementById('header')
-  // When the scroll is greater than 200 viewport height, add the scroll-header class to the header tag
-  if(this.scrollY >= 200) nav.classList.add('scroll-header'); else nav.classList.remove('scroll-header')
-}
-window.addEventListener('scroll', scrollHeader)
-
-/*==================== SHOW SCROLL TOP ====================*/ 
-function scrollTop(){
-  const scrollTop = document.getElementById('scroll-top');
-  // When the scroll is higher than 560 viewport height, add the show-scroll class to the a tag with the scroll-top class
-  if(this.scrollY >= 560) scrollTop.classList.add('show-scroll'); else scrollTop.classList.remove('show-scroll')
-}
-window.addEventListener('scroll', scrollTop)
-
-/*==================== DARK LIGHT THEME ====================*/ 
-const themeButton = document.getElementById('theme-button')
-const darkTheme = 'dark-theme'
-const iconTheme = 'bx-sun'
-
-// Previously selected topic (if user selected)
-const selectedTheme = localStorage.getItem('selected-theme')
-const selectedIcon = localStorage.getItem('selected-icon')
-
-// We obtain the current theme that the interface has by validating the dark-theme class
-const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
-const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'bx-moon' : 'bx-sun'
-
-// We validate if the user previously chose a topic
-if (selectedTheme) {
-// If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
-document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
-themeButton.classList[selectedIcon === 'bx-moon' ? 'add' : 'remove'](iconTheme)
-}
-
-// Activate / deactivate the theme manually with the button
-themeButton.addEventListener('click', () => {
-  // Add or remove the dark / icon theme
-  document.body.classList.toggle(darkTheme)
-  themeButton.classList.toggle(iconTheme)
-  // We save the theme and the current icon that the user chose
-  localStorage.setItem('selected-theme', getCurrentTheme())
-  localStorage.setItem('selected-icon', getCurrentIcon())
-})
+new NavigationPage();

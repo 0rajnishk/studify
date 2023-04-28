@@ -1,141 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+   <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!--========== BOX ICONS ==========-->
-  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
-
-  <!--========== CSS ==========-->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8E33B6L8TW"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-8E33B6L8TW');
-    </script>
-
-<link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='image/icon.png') }}">
-
-        <title>Studify - Study space for BS Degree Students </title>
-        </head>
-        
-        <body>
-        
-          <!--========== SCROLL TOP ==========-->
-          <a href="#" class="scrolltop" id="scroll-top">
-            <i class='bx bx-chevron-up scrolltop__icon'></i>
-        
-          </a>
-        
-          <!--========== HEADER ==========-->
-          <header class="l-header" id="header">
-            <nav class="nav bd-container">
-              <a href="#" class="nav__logo">DATA SCIENCE</a>
-        
-              <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                  <!-- <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li> -->
-                  <li class="nav__item"><a href="https://exam.studify.space/" target="_blank" class="nav__link">Quiz Evaluator</a></li>
-                  <li class="nav__item"><a href="/cal" class="nav__link" target="_blank">Pass Marks Calculator</a></li>
-                  <li class="nav__item"><a href="/pyq" class="nav__link" target="_blank">Previous term question paper</a></li>
-                  <li class="nav__item"><a href="https://forms.gle/2jUCjXNoj4hVKkVy9" class="nav__link" target="_blank">Contact us</a></li>
-        
-                </ul>
-              </div>
-        
-              <div class="nav__toggle" id="nav-toggle">
-                <i class='bx bx-menu'></i>
-              </div>
-        
-            </nav>
-            <div><i class='bx bx-moon change-theme' id="theme-button"></i></div>
-          </header>
-        
-          <main class="l-main">
-            <!--========== HOME ==========-->
-            <section class="home" id="home">
-              <div class="home__container bd-container bd-grid">
-                <div class="home__data">
-                  <h1 class="home__title">Studify</h1>
-                  <h2 class="home__subtitle">Study space for BS Degree Students</h2>
-                  <!-- <a href="{{ url_for('login') }}" class="button">login to continue</a> -->
-                  {% if 'profile' in session %}
-                      <a href="/term/23t1" class="button">continue</a>
-                  {% else %}
-                      <a href="{{ url_for('login') }}" class="button">login to continue</a>
-                  {% endif %}
-                  
-                </div>
-        
-        
-              </div>
-        
-            </section>
-        
-        
-            <!----================================Important Link======================================-->
-            <section class="menu section bd-container" id="Importantlink">
-        
-              <h1 class="section-title"><span class="section-subtitle">Qualifier Content</span></h1>
-        
-              <div class="menu__container bd-grid">
-                <div class="menu__content">
-                  <img src="" alt="" class="menu__img">
-        
-                  
-                    <h3 class="services__title">Maths - I</h3>
-                  <span class="menu__detail">&nbsp;</span>
-                  <span>
-                    <a href="/notes/ma1001" class="button menu__button1" style="float: left;">Notes</a>
-                    <a href="/course/ns_23q1_ma1001" class="button menu__button">Lectures</a>
-                  </span>
-                </div>
-        
-                <div class="menu__content">
-                  <img src="" alt="" class="menu__img"></a>
-                    <h3 class="services__title">Statistics - I</h3>
-                 
-                  <span class="menu__detail">&nbsp;</span>
-                  <span>
-                    <a href="notes/ma1002" class="button menu__button1" style="float: left;">Notes</a>
-                    <a href="/course/ns_23q1_ma1002" class="button menu__button">Lectures</a>
-                  </span>
-                </div>
-        
-                <div class="menu__content">
-                  <img src="" alt="" class="menu__img">
-                  <h3 class="services__title">CT</h3>
-                  <span class="menu__detail">&nbsp;</span>
-                  <span>
-                    <a href="/notes/cs1001" class="button menu__button1" style="float: left;">Notes</a>
-                    <a href="course/ns_23q1_cs1001" class="button menu__button">Lectures</a>
-                  </span>
-                </div>
-        
-        
-                <div class="menu__content">
-                  <img src="" alt="" class="menu__img">
-                  <h3 class="services__title">English - I</h3>
-                  <span class="menu__detail">&nbsp;</span>
-                  <span>
-                    <a href="/notes/hs1001" class="button menu__button1" style="float: left;">Notes</a>
-                    <a href="/course/ns_23q1_hs1001" class="button menu__button" >Lectures</a>
-                  </span>
-
-                </div>
-        
-        
-              </div>
-            </section>  
-          </main>
-          <div class="jrslm-white2 w3-center footer__copy">Made with&nbsp;<span class="heart">&#9829;</span>&nbsp;by Rajnish, Shashank & Sumit</div>
-          <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-  </body>
-        
+  <meta name="keywords" content="Study iitm, Studify iitm, Study bs degree, Studify bs degree">
+  <meta name="description" content="STUDIFY provides a comprehensive study space for BS degree students of iitm.">
+  <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='image/icon.png') }}">
+  <title>Studify - Study space for BS Degree Students </title>
+      <link rel="preconnect" href="https://fonts.googleapis.com"/>
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+      <link
+         href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;500&family=Raleway:wght@100;200;300;400;500&family=Roboto:wght@300;400;700&display=swap"
+         rel="stylesheet"/>
+      <link
+         rel="stylesheet"
+         href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+         crossorigin="anonymous"
+         />
+      <link
+         href="https://fonts.googleapis.com/icon?family=Material+Icons"
+         rel="stylesheet"
+         />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"></script>
+      <link
+         rel="stylesheet"
+         href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"/>
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/card.css') }}">
+   </head>
+   <body>
+      <sectio class="nav">
+         <h1>Studify</h1>
+         <h3 class="span loader">
+            <span class="m">S</span><span class="m">T</span><span class="m">U</span
+               ><span class="m">D</span><span class="m">Y</span
+               ><span class="m">&nbsp;</span><span class="m">S</span
+               ><span class="m">P</span><span class="m">A</span><span class="m">C</span
+               ><span class="m">E</span><span class="m">&nbsp;</span
+               ><span class="m">F</span><span class="m">O</span><span class="m">R</span
+               ><span class="m">&nbsp;</span><span class="m">B</span
+               ><span class="m">S</span><span class="m">&nbsp;</span
+               ><span class="m">D</span><span class="m">E</span><span class="m">G</span
+               ><span class="m">R</span><span class="m">E</span
+               ><span class="m">E</span> <br> <br>
+                {% if 'profile'not in session %}
+                <a href="{{ url_for('login') }}" class="btn">Login with student email </a>
+                                      
+                {% else %}
+                <a href="/term/23t1" class="btn">continue</a>
+                {% endif %}
+         </h3>
+         <div class="nav-container">
+            <a class="nav-tab" href="#tab-svelte">LECTURES</a
+               ><a class="nav-tab" href="#tab-esbuild">NOTES</a
+               ><a class="nav-tab" href="#tab-next">TOOLS</a
+               ><a class="nav-tab" href="#tab-typescript">SOCIAL</a> ><span
+               class="nav-tab-slider"
+               ></span>
+         </div>
+      </sectio>
+      <main class="main">
+         <section class="slider" id="tab-svelte">
+            <h1>LECTURES</h1>
+            {% if not session.get('profile') %}
+            <h2>Login with student email id to get full access</h2>
+            {% endif %}
+            <main class="page-content">
+               <div class="card maths">
+                  <div class="content">
+                     <h3 class="title">
+                     Mathematics 1</h2>
+                     <p class="copy"></p>
+                     <a href="course/ns_23q1_ma1001" class="btn">Visit</a>
+                  </div>
+               </div>
+               <div class="card stats">
+                  <div class="content">
+                     <h3 class="title">
+                     Statatistics 1</h2>
+                     <p class="copy"></p>
+                     <a href="course/ns_23q1_ma1002" class="btn">Visit</a>
+                  </div>
+               </div>
+               <div class="card ct">
+                  <div class="content">
+                     <h3 class="title">
+                     Computational Thinking</h2>
+                     <p class="copy"></p>
+                     <a href="course/ns_23q1_cs1001" class="btn">Visit</a>
+                  </div>
+               </div>
+               <div class="card eng">
+                  <div class="content">
+                     <h3 class="title">
+                     English 1</h2>
+                     <p class="copy"></p>
+                     <a href="course/ns_23q1_hs1001" class="btn">Visit</a>
+                  </div>
+               </div>
+            </main>
+         </section>
+         <section class="slider" id="tab-esbuild">
+            <h1>NOTES</h1>
+            {% if not session.get('profile') %}
+            <h3>Login with student email id to get full access</h3>
+            {% endif %}
+<!-- ==================================================== -->
+            <main class="page-content">
+               <div class="card maths">
+                  <div class="content">
+                     <h3 class="title">
+                     Mathematics 1</h2>
+                     <p class="copy"></p>
+                     <a href="notes/ma1001" class="btn">Visit</a>
+                  </div>
+               </div>
+               <div class="card stats">
+                  <div class="content">
+                     <h3 class="title">
+                     Statatistics 1</h2>
+                     <p class="copy"></p>
+                     <a href="notes/ma1002" class="btn">Visit</a>
+                  </div>
+               </div>
+               <div class="card ct">
+                  <div class="content">
+                     <h3 class="title">
+                     Computational Thinking</h2>
+                     <p class="copy"></p>
+                     <a href="notes/cs1001" class="btn">Visit</a>
+                  </div>
+               </div>
+               <div class="card eng">
+                  <div class="content">
+                     <h3 class="title">
+                     English 1</h2>
+                     <p class="copy"></p>
+                     <a href="hs/ma1001" class="btn">Visit</a>
+                  </div>
+               </div>
+            </main>
+         </section>
+         <section class="slider" id="tab-next">
+            <h1>TOOLS</h1>
+            <main class="page-content">
+               <div class="card pyq">
+                  <div class="content">
+                     <h5 class="title">Previous Term papers</h5>
+                     <p class="copy"></p>
+                     <a href="/pyq" class="btn">View</a>
+                  </div>
+               </div>
+               <div class="card exam">
+                  <div class="content">
+                     <h3 class="title">
+                     Exam Evaluator</h2>
+                     <p class="copy"></p>
+                     <a href="https://exam.studify.space/" class="btn">View</a>
+                  </div>
+               </div>
+               <div class="card projection">
+                  <div class="content">
+                     <h3 class="title">
+                     Grade Projection</h2>
+                     <p class="copy"></p>
+                     <a href="/cal" class="btn">View</a>
+                  </div>
+               </div>
+               <div class="card cal">
+                  <div class="content">
+                     <h3 class="title">
+                     Grade Calculator</h2>
+                     <p class="copy"></p>
+                     <a href="/" class="btn"> View</a>
+                  </div>
+               </div>
+            </main>
+         </section>
+         <section class="slider" id="tab-typescript">
+            <h1>SOCIAL</h1>
+            <main class="page-content">
+               <div class="card whatsapp">
+                  <div class="content">
+                     <h3 class="title">
+                     &nbsp; &nbsp; &nbsp; &nbsp;WhatsApp &nbsp; &nbsp; &nbsp; &nbsp;</h2>
+                     <p class="copy"></p>
+                     <button class="btn">View</button>
+                  </div>
+               </div>
+               <div class="card telegram">
+                  <div class="content">
+                     <h3 class="title">
+                     &nbsp; &nbsp; &nbsp; &nbsp; Telegram &nbsp; &nbsp; &nbsp; &nbsp;</h2>
+                     <p class="copy"></p>
+                     <button class="btn">View</button>
+                  </div>
+               </div>
+               <div class="card insta">
+                  <div class="content">
+                     <h3 class="title">
+                     &nbsp; &nbsp; &nbsp; &nbsp; Instagram &nbsp; &nbsp; &nbsp; &nbsp;</h2>
+                     <p class="copy"></p>
+                     <button class="btn">View</button>
+                  </div>
+               </div>
+               <div class="card linkedin">
+                  <div class="content">
+                     <h3 class="title">
+                     LinkedIn </h2>
+                     <p class="copy"></p>
+                     <button class="btn">View</button>
+                  </div>
+               </div>
+            </main>
+         </section>
+         <!-- <div class="jrslm-white2 w3-center footer__copy">Made with&nbsp;<span class="heart">&#9829;</span>&nbsp;by Rajnish, Shashank & Sumit</div> -->
+      </main>
+      <canvas class="background"></canvas>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+   </body>
 </html>
