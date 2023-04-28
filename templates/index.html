@@ -43,14 +43,16 @@
                ><span class="m">S</span><span class="m">&nbsp;</span
                ><span class="m">D</span><span class="m">E</span><span class="m">G</span
                ><span class="m">R</span><span class="m">E</span
-               ><span class="m">E</span> <br> <br>
+               ><span class="m">E</span>
+         </h3>
+                <h3 class="span loader">
+                  <br> <br> <br> <br>
                 {% if 'profile'not in session %}
                 <a href="{{ url_for('login') }}" class="btn">Login with student email </a>
                                       
                 {% else %}
                 <a href="/term/23t1" class="btn">continue</a>
-                {% endif %}
-         </h3>
+                {% endif %}</h3>
          <div class="nav-container">
             <a class="nav-tab" href="#tab-svelte">LECTURES</a
                ><a class="nav-tab" href="#tab-esbuild">NOTES</a
@@ -103,9 +105,9 @@
          </section>
          <section class="slider" id="tab-esbuild">
             <h1>NOTES</h1>
-            {% if not session.get('profile') %}
-            <h3>Login with student email id to get full access</h3>
-            {% endif %}
+            <!-- {% if not session.get('profile') %}
+            <h2>Login with student email id to get full access</h2>
+            {% endif %} -->
 <!-- ==================================================== -->
             <main class="page-content">
                <div class="card maths">
@@ -184,7 +186,7 @@
                <div class="card whatsapp">
                   <div class="content">
                      <h3 class="title">
-                     &nbsp; &nbsp; &nbsp; &nbsp;WhatsApp &nbsp; &nbsp; &nbsp; &nbsp;</h2>
+                     &nbsp; &nbsp;WhatsApp &nbsp; &nbsp;</h2>
                      <p class="copy"></p>
                      <button class="btn">View</button>
                   </div>
@@ -192,7 +194,7 @@
                <div class="card telegram">
                   <div class="content">
                      <h3 class="title">
-                     &nbsp; &nbsp; &nbsp; &nbsp; Telegram &nbsp; &nbsp; &nbsp; &nbsp;</h2>
+                      &nbsp; &nbsp; Telegram &nbsp; &nbsp;</h2>
                      <p class="copy"></p>
                      <button class="btn">View</button>
                   </div>
@@ -200,7 +202,7 @@
                <div class="card insta">
                   <div class="content">
                      <h3 class="title">
-                     &nbsp; &nbsp; &nbsp; &nbsp; Instagram &nbsp; &nbsp; &nbsp; &nbsp;</h2>
+                      &nbsp; &nbsp; Instagram &nbsp; &nbsp;  </h2>
                      <p class="copy"></p>
                      <button class="btn">View</button>
                   </div>
@@ -208,7 +210,7 @@
                <div class="card linkedin">
                   <div class="content">
                      <h3 class="title">
-                     LinkedIn </h2>
+                      &nbsp; &nbsp; LinkedIn  &nbsp; &nbsp; </h2>
                      <p class="copy"></p>
                      <button class="btn">View</button>
                   </div>
