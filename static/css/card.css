@@ -175,6 +175,9 @@
     background-color: black;
     border: none;
 }
+.login-btn {
+    font-size: 1rem;
+}
 
 .btn:hover {
     background-color: #0d0d0d;
@@ -233,4 +236,11 @@
     .card:focus-within .content>*:not(.title) {
         transition-duration: 0s;
     }
+}
+
+.credit {
+    text-align: center;
+    color: aqua;
+    font-size: 30px;
+    background-color: #1e1f26;
 }
