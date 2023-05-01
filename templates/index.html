@@ -62,7 +62,6 @@
                 {% endif %}</h3>
          <div class="nav-container">
             <a class="nav-tab" href="#tab-svelte">LECTURES</a
-               ><a class="nav-tab" href="#tab-esbuild">NOTES</a
                ><a class="nav-tab" href="#tab-next">TOOLS</a
                ><a class="nav-tab" href="#tab-typescript">SOCIAL</a> ><span
                class="nav-tab-slider"
@@ -81,7 +80,8 @@
                      <h3 class="title">
                      Mathematics&nbsp;1</h2>
                      <p class="copy"></p>
-                     <a href="course/ns_23q1_ma1001" class="btn">Visit</a>
+                     <a href="notes/ma1001" class="btn">NOTES</a>
+                     <a href="course/ns_23q1_ma1001" class="btn">LECTURES</a>
                   </div>
                </div>
                <div class="card stats">
@@ -89,7 +89,8 @@
                      <h3 class="title">
                      Statatistics&nbsp;1</h2>
                      <p class="copy"></p>
-                     <a href="course/ns_23q1_ma1002" class="btn">Visit</a>
+                     <a href="notes/ma1002" class="btn">NOTES</a>
+                     <a href="course/ns_23q1_ma1002" class="btn">LECTURES</a>
                   </div>
                </div>
                <div class="card ct">
@@ -97,59 +98,22 @@
                      <h3 class="title">
                      Computational Thinking</h2>
                      <p class="copy"></p>
-                     <a href="course/ns_23q1_cs1001" class="btn">Visit</a>
+                     <a href="notes/cs1001" class="btn">NOTES</a>
+                     <a href="course/ns_23q1_cs1001" class="btn">LECTURES</a>
                   </div>
                </div>
                <div class="card eng">
                   <div class="content">
                      <h3 class="title">
-                     English 1</h2>
+                     English 1</h3>
                      <p class="copy"></p>
-                     <a href="course/ns_23q1_hs1001" class="btn">Visit</a>
+                     <a href="notes/hs1001" class="btn">NOTES</a>
+                     <a href="course/ns_23q1_hs1001" class="btn">LECTURES</a>
                   </div>
                </div>
             </main>
          </section>
-         <section class="slider" id="tab-esbuild">
-            <h1>NOTES</h1>
-            {% if not session.get('profile') %}
-            <h2>Login with student email id to get full access</h2>
-            {% endif %}
-            <main class="page-content">
-               <div class="card maths">
-                  <div class="content">
-                     <h3 class="title">
-                     Mathematics&nbsp;1</h2>
-                     <p class="copy"></p>
-                     <a href="notes/ma1001" class="btn">Visit</a>
-                  </div>
-               </div>
-               <div class="card stats">
-                  <div class="content">
-                     <h3 class="title">
-                     Statatistics&nbsp;1</h2>
-                     <p class="copy"></p>
-                     <a href="notes/ma1002" class="btn">Visit</a>
-                  </div>
-               </div>
-               <div class="card ct">
-                  <div class="content">
-                     <h3 class="title">
-                     Computational Thinking</h2>
-                     <p class="copy"></p>
-                     <a href="notes/cs1001" class="btn">Visit</a>
-                  </div>
-               </div>
-               <div class="card eng">
-                  <div class="content">
-                     <h3 class="title">
-                     English&nbsp;1</h2>
-                     <p class="copy"></p>
-                     <a href="hs/ma1001" class="btn">Visit</a>
-                  </div>
-               </div>
-            </main>
-         </section>
+
          <section class="slider" id="tab-next">
             <h1>TOOLS</h1>
             <main class="page-content">
