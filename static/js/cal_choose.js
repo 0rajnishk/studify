@@ -172,8 +172,8 @@ function submitClicked() {
     } else   if (qz2.value !== '' & end.value !== '') {  
     const result = calculateT(gaa.value, end.value, qz1.value, qz2.value, parseFloat(bonus.value));
     const grade = result.grade; // get the letter grade
-    const tWithGrade = `final score: ${result.T.toFixed(2)}`; // concatenate T and the letter grade
-    const tScore = `grade : ${grade}`;
+    const tWithGrade = `Final Score : ${result.T.toFixed(2)}`; // concatenate T and the letter grade
+    const tScore = `Grade : ${grade}`;
     resultElem.textContent = tWithGrade;
     resultScore.textContent = tScore;
     modal.style.display = "block";
@@ -194,8 +194,8 @@ window.onclick = function(event) {
   } else if (oppe1.value !== '' & oppe2.value != '' & end.value !== '') {
   const result = calculate(gaa.value, end.value, qz1.value, oppe1.value, oppe2.value, parseFloat(bonus.value));
     const grade = result.grade; // get the letter grade
-    const tWithGrade = `final score: ${result.T.toFixed(2)}`; // concatenate T and the letter grade
-    const tScore = `grade : ${grade}`;
+    const tWithGrade = `Final Score: ${result.T.toFixed(2)}`; // concatenate T and the letter grade
+    const tScore = `Grade : ${grade}`;
     resultElem.textContent = tWithGrade;
     resultScore.textContent = tScore;
     modal.style.display = "block";
