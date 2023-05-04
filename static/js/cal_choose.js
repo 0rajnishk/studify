@@ -88,21 +88,25 @@ function calculate(GAA, F, Qz1, PE1, PE2, bonus ) {
 
   const T = term1 + term2 + Math.max(term3, term4) + bonus;
   let grade;
-  if (T >= 90) {
-    grade = '10, S';
-  } else if (T >= 80) {
-    grade = '9,  A ';
-  } else if (T >= 70) {
-    grade = '8, B';
-  } else if (T >= 60) {
-    grade = '7, C';
-  } else if (T >= 50) {
-    grade = '6, D';
-  } else if (T >= 40) {
-    grade = '4, E';
-  } else {
-    grade = 'U  Fail';
-  }
+  if (PE1 > 40 | PE2> 40) { 
+       if (T >= 90) {
+          grade = '10, S';
+        } else if (T >= 80) {
+          grade = '9,  A ';
+        } else if (T >= 70) {
+          grade = '8, B';
+        } else if (T >= 60) {
+          grade = '7, C';
+        } else if (T >= 50) {
+          grade = '6, D';
+        } else if (T >= 40) {
+          grade = '4, E';
+        } else {
+          grade = 'U  Fail';
+        }
+    } else{
+      grade = 'U || Fail oppe > 40'
+    }
 
   return { T, grade };
 
