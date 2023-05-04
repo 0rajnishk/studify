@@ -108,7 +108,7 @@ function calculate(GAA, F, Qz1, PE1, PE2, bonus ) {
           grade = 'U  Fail';
         }
     } else{
-      grade = 'U || Fail oppe > 40'
+      grade = 'U Fail  |\u00A0oppe\u00A0<\u00A040\u00A0|'
     }
 
   return { T, grade };
