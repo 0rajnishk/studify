@@ -211,6 +211,8 @@
         id="oppe1"
         placeholder="OPPE 1"
         required
+        min="0"
+        max="100"
       />
       <label for="oppe2">OPPE 2 Score</label>
       <input
@@ -219,6 +221,8 @@
         id="oppe2"
         placeholder="OPPE 2"
         required
+        min="0"
+        max="100"
       />
     </div>
 
@@ -230,6 +234,8 @@
         id="quiz2"
         placeholder="Quiz 2"
         required
+        min="0"
+        max="100"
       />
     </div>
 
@@ -240,17 +246,21 @@
         name="endterm"
         id="end"
         placeholder="Endterm Score"
+        min="0"
+        max="100"
         required
       />
     </div>
     <div id="bonus-marks">
-      <label for="bonus">bonus marks </label>
+      <label for="bonus">Bonus marks:</label>
       <input
         type="number"
         name="bonus"
         id="bonus"
-        placeholder="bonus marks"
+        placeholder="Bonus marks"
         required
+        min="0"
+        max="10"
       />
     </div>
     <!-- Modal -->
