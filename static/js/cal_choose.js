@@ -74,6 +74,57 @@ optionSelected.addEventListener('change', (event) => {
       }
 });
 
+// =========================================================================================//
+function projectF1(ga, qz1, pe1, pe2) {
+  let arr = [0, 0, 0, 0, 0, 0];
+  for (let i = 0, j = 40; i < arr.length; i++, j += 10) {
+    const num1 = (j - ((0.1 * ga) + (0.1 * qz1) + (0.3 * (Math.max(pe1, pe2))) + (0.1 * (Math.min(pe1, pe2))))) / 0.4;
+    const num2 = (j - ((0.1 * ga) + (0.1 * qz1) + (0.2 * (Math.max(pe1, pe2))))) / 0.5;
+    if (num1 < num2) {
+      if (num1 <= 100) {
+        arr[i] = num1 <= 0 ? "Already Passed" : num1.toFixed(2);
+      }
+      else {
+        arr[i] = "not possible";
+      }
+    }
+    else {
+      if (num2 <= 100) {
+        arr[i] = num2 <= 0 ? "Already Passed" : num2.toFixed(2);
+      }
+      else {
+        arr[i] = "not possible";
+      }
+    }
+  }
+  return arr;
+}
+
+
+function projectF2(ga, qz1, qz2) {
+  let arr = [0, 0, 0, 0, 0, 0];
+  for (let i = 0, j = 40; i < arr.length; i++, j += 10) {
+    const num1 = (j - ((0.1 * ga) + (0.2 * qz1) + (0.3 * qz2))) / 0.4;
+    const num2 = (j - ((0.1 * ga) + (0.2 * (Math.max(qz1, qz2)))) / 0.6);
+    if (num1 < num2) {
+      if (num1 <= 100) {
+        arr[i] = num1 <= 0 ? "Already Passed" : num1.toFixed(2);
+      } else {
+        arr[i] = "not possible";
+      }
+    } else {
+      if (num2 <= 100) {
+        arr[i] = num2 <= 0 ? "Already Passed" : num2.toFixed(2);
+      } else {
+        arr[i] = "not possible";
+      }
+    }
+  }
+  return arr;
+}
+
+// =======================================================================================//
+
 function calculate(GAA, F, Qz1, PE1, PE2, bonus ) {
   const term1 = 0.1 * GAA;
   const term2 = 0.1 * Qz1;
