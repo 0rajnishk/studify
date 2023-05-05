@@ -138,11 +138,11 @@ function calculate(GAA, F, Qz1, PE1, PE2, bonus ) {
   const term4 = term4a + term4b + term4c;
 
   let T = term1 + term2 + Math.max(term3, term4);
-  if (T>40){
+  if (T>=40){
     T = T + bonus
   }
   let grade;
-  if (PE1 > 40 | PE2> 40) { 
+  if (PE1 >= 40 || PE2 >= 40) {
        if (T >= 90) {
           grade = '10, S';
         } else if (T >= 80) {
@@ -179,7 +179,7 @@ function calculateT(GAA, F, Qz1, Qz2, bonus) {
   const term3 = term3a + term3b + term3c;
 
   let T = term1 + Math.max(term2, term3);
-    if (T>40){
+    if (T>=40){
     T = T + bonus
   }
   let grade;

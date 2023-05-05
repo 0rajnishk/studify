@@ -54,22 +54,26 @@
 
       /* Style the form */
       form {
-        max-width: 500px;
+        max-width: 600px;
         margin: 0 auto;
+        border-radius: 10px;
+        border: 2px solid #0e0f10;
       }
 
       /* Style the label and select elements */
       label {
         display: block;
-        margin-bottom: 10px;
-        font-size: 18px;
+        margin-bottom: 5px;
+        margin-left: 2.1%;
+        font-size: 20px;
       }
 
       input[type="text"],
       input[type="number"],
       select {
         display: block;
-        width: 100%;
+        width: 96%;
+        margin-left: 2%;
         padding: 10px;
         font-size: 16px;
         border: 1px solid #ccc;
@@ -88,6 +92,7 @@
         display: block;
         margin: 20px auto 0;
         padding: 10px 20px;
+        margin-bottom: 4px;
         font-size: 18px;
         border: none;
         border-radius: 4px;
@@ -98,7 +103,7 @@
       }
 
       button:hover {
-        background-color: #0069d9;
+        background-color: #002752;
       }
 
       /* Media queries for smaller screens */
@@ -167,111 +172,160 @@
         text-align: center;
         margin-top: 20px;
       }
+      /* ============================================================= */
+      .radio-container {
+        display: inline;
+        align-items: center;
+        justify-content: center;
+      }
+      .radio-inline {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .radio-container input[type="radio"] {
+        display: none; /* to hide the actual radio input */
+      }
+
+      .radio-container label {
+        /* display: inline-block; */
+        padding: 5px 10px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #b3b5b6;
+        color: #0e0f10;
+        border-radius: 5px;
+      }
+
+      .radio-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .radio-container input[type="radio"]:checked + label {
+        background-color: #c50c0c; /* to highlight the selected radio */
+        color: #ffffff;
+      }
     </style>
   </head>
   <body>
-    <h1 style="display: none">Endterm Marks Projector</h1>
-    <h1>Final Score Calculator</h1>
+    <div class="radio-inline" style="display: none">
+      <div class="radio-container">
+        <input type="radio" id="option1" name="radio-group" />
+        <label for="option1">Final&nbsp;Score&nbsp;Calculator</label>
+      </div>
 
-    <label for="category-select">Select Level:</label>
-    <select id="category-select">
-      <option value="">Select Level</option>
-      <option value="foundation">Foundation</option>
-      <!-- <option value="diploma">Diploma</option>
-      <option value="degree">Degree</option> -->
-    </select>
-
-    <label for="option-select">Select Subject:</label>
-    <select id="option-select">
-      <option value="">Select an option</option>
-    </select>
-
-    <label for="gaa">Average Graded Score</label>
-    <input
-      type="number"
-      name="gaa"
-      id="gaa"
-      placeholder="Graded Assignment"
-      required
-    />
-    <label for="quiz1">Quiz 1 Score</label>
-    <input
-      type="number"
-      name="quiz-1"
-      id="quiz1"
-      placeholder="Quiz 1"
-      required
-    />
-
-    <div id="oppe-inputs" style="display: none">
-      <label for="oppe1">OPPE 1 Score</label>
-      <input
-        type="number"
-        name="oppe-1"
-        id="oppe1"
-        placeholder="OPPE 1"
-        required
-        min="0"
-        max="100"
-      />
-      <label for="oppe2">OPPE 2 Score</label>
-      <input
-        type="number"
-        name="oppe-2"
-        id="oppe2"
-        placeholder="OPPE 2"
-        required
-        min="0"
-        max="100"
-      />
-    </div>
-
-    <div id="quiz-inputs" style="display: none">
-      <label for="quiz2">Quiz 2 Score</label>
-      <input
-        type="number"
-        name="quiz-2"
-        id="quiz2"
-        placeholder="Quiz 2"
-        required
-        min="0"
-        max="100"
-      />
-    </div>
-
-    <div id="endterm">
-      <label for="endterm">Endterm Score </label>
-      <input
-        type="number"
-        name="endterm"
-        id="end"
-        placeholder="Endterm Score"
-        min="0"
-        max="100"
-        required
-      />
-    </div>
-    <div id="bonus-marks">
-      <label for="bonus">Bonus marks:</label>
-      <input
-        type="number"
-        name="bonus"
-        id="bonus"
-        placeholder="Bonus marks"
-        required
-        min="0"
-        max="10"
-      />
-    </div>
-    <!-- Modal -->
-    <div id="modal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <h1 id="score">Score</h1>
-        <p id="result"></p>
+      <div class="radio-container">
+        <input type="radio" id="option2" name="radio-group" />
+        <label for="option2">Endterm&nbsp;Marks&nbsp;Projector</label>
       </div>
     </div>
-    <button id="submit-btn">Submit</button>
+
+    <form>
+      <h1 style="display: none">Endterm Marks Projector</h1>
+      <h1>Final Score Calculator</h1>
+
+      <label for="category-select">Select Level:</label>
+      <select id="category-select">
+        <option value="">Select Level</option>
+        <option value="foundation">Foundation</option>
+        <!-- <option value="diploma">Diploma</option>
+      <option value="degree">Degree</option> -->
+      </select>
+      <label for="option-select">Select Subject:</label>
+      <select id="option-select">
+        <option value="">Select an option</option>
+      </select>
+
+      <label for="gaa">Average Graded Score</label>
+      <input
+        type="number"
+        name="gaa"
+        id="gaa"
+        placeholder="Graded Assignment"
+        required
+      />
+      <label for="quiz1">Quiz 1 Score</label>
+      <input
+        type="number"
+        name="quiz-1"
+        id="quiz1"
+        placeholder="Quiz 1"
+        required
+      />
+
+      <div id="oppe-inputs" style="display: none">
+        <label for="oppe1">OPPE 1 Score</label>
+        <input
+          type="number"
+          name="oppe-1"
+          id="oppe1"
+          placeholder="OPPE 1"
+          required
+          min="0"
+          max="100"
+        />
+        <label for="oppe2">OPPE 2 Score</label>
+        <input
+          type="number"
+          name="oppe-2"
+          id="oppe2"
+          placeholder="OPPE 2"
+          required
+          min="0"
+          max="100"
+        />
+      </div>
+
+      <div id="quiz-inputs" style="display: none">
+        <label for="quiz2">Quiz 2 Score</label>
+        <input
+          type="number"
+          name="quiz-2"
+          id="quiz2"
+          placeholder="Quiz 2"
+          required
+          min="0"
+          max="100"
+        />
+      </div>
+
+      <div id="endterm">
+        <label for="endterm">Endterm Score </label>
+        <input
+          type="number"
+          name="endterm"
+          id="end"
+          placeholder="Endterm Score"
+          min="0"
+          max="100"
+          required
+        />
+      </div>
+      <div id="bonus-marks">
+        <label for="bonus">Bonus marks:</label>
+        <input
+          type="number"
+          name="bonus"
+          id="bonus"
+          placeholder="Bonus marks"
+          required
+          min="0"
+          max="10"
+        />
+      </div>
+      <!-- Modal -->
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h1 id="score">Score</h1>
+          <p id="result"></p>
+        </div>
+      </div>
+      <button id="submit-btn">Submit</button>
+    </form>
 
     <script src="{{ url_for('static', filename='js/cal_choose.js') }}"></script>
   </body>
