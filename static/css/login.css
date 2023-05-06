@@ -3,6 +3,20 @@
     padding: 0;
     box-sizing: border-box;
 }
+:root {
+    --nav-bg-color: #212121;
+    --nav-hr-color: #424242(29, 172, 255);
+    --text-color: #333333;
+    --h-color: #444444(0, 0, 0);
+    --h-hr-color: #03dac6;
+    --btn-bg-color: #2196f3(0, 70, 128);
+    --btn-hr-color: #1565c0;
+    --bg-color: #fafafa;
+    --black-color: black;
+    --text-alt-color: #03dac6;
+
+
+}
 
 body {
     font-family: "ROBOTO", sans-serif;
@@ -15,7 +29,7 @@ body {
     align-items: center;
     height: 100vh;
     position: relative;
-    background-color: #1e1f26;
+    background-color: var(--bg-color);
     text-align: center;
     padding: 0 2em;
 }
@@ -26,7 +40,7 @@ body {
     margin: 0;
     padding-bottom: 0.5rem;
     letter-spacing: 0.5rem;
-    color: #03dac6;
+    color:  var(--h-color);
     transition: all 0.3s ease;
     z-index: 3;
 }
@@ -36,7 +50,7 @@ h3.span {
     letter-spacing: 0.7em;
     font-family: "ROBOTO", sans-serif;
     font-weight: 300;
-    color: #faebd7;
+    color: var(--text-color);
     z-index: 4;
 }
 
@@ -47,7 +61,7 @@ h3.span {
     align-items: center;
     height: 1000px;
     position: relative;
-    background-color: #1e1f26;
+    background-color: var(--bg-color);
     text-align: center;
     padding: 0 2em;
 }
@@ -80,7 +94,7 @@ h3.span {
 
 h1:hover {
     transform: translate3d(0, -10px, 22px);
-    color: #ff0266;
+    color: var(--h-hr-color);
 }
 
 .slider h2 {
@@ -88,17 +102,12 @@ h1:hover {
     letter-spacing: 0.3rem;
     font-family: "ROBOTO", sans-serif;
     font-weight: 300;
-    color: #faebd7;
+    color: rgb(20, 20, 20);
     z-index: 4;
 }
 
 
 
-span:hover {
-    color: #ff0266;
-    font-weight: 500;
-    font-size: 2.2vw;
-}
 
 a {
     text-decoration: none;
@@ -111,8 +120,8 @@ a {
     bottom: 0;
     width: 100%;
     height: 75px;
-    box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
-    background: #1e1f26;
+    box-shadow: 20px 20px 50px --h-color(99, 99, 99, 0.5);
+    background: var(--nav-bg-color);
     z-index: 10;
     transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 }
@@ -133,15 +142,15 @@ a {
     justify-content: center;
     align-items: center;
     flex: 1;
-    color: #03dac6;
+    color: var(--text-alt-color);
     letter-spacing: 0.1rem;
     transition: all 0.5s ease;
     font-size: 4vw;
 }
 
 .nav-tab:hover {
-    color: #1e1f26;
-    background: #03dac6;
+    color: var(--black-color);
+    background: var(--text-alt-color);
     transition: all 0.5s ease;
 }
 
@@ -150,7 +159,7 @@ a {
     bottom: 0;
     width: 0;
     height: 2px;
-    background: #03dac6;
+    background: var(--text-alt-color);
     transition: left 0.3s ease;
 }
 
@@ -165,9 +174,9 @@ a {
 }
 
 
-.login:hover {
-    transform: translate3d(0, -10px, 22px);
-    color: #ff0266;
+.login-btn:hover {
+    color: var(--black-color) !important;
+    background-color:  var(--text-alt-color) !important;
 }
 
 @media (min-width: 800px) {
@@ -200,8 +209,8 @@ a {
 }
 
 .loader span {
-    color: #faebd7;
-    text-shadow: 0 0 0 #faebd7;
+    color: var(--h-color);
+    text-shadow: 0 0 0 var(--h-hr-color);
     -webkit-animation: loading 1s ease-in-out infinite alternate;
     animation: loading 1s ease-in-out infinite alternate;
 }

@@ -240,7 +240,11 @@
 
 .credit {
     text-align: center;
-    color: aqua;
+    color: rgb(0, 0, 0);
     font-size: 30px;
-    background-color: #1e1f26;
+    background-color: #fafafa;
+}
+.credit:hover {
+    color: aqua;
+    font-size: 35px;
 }

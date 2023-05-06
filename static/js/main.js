@@ -5,19 +5,49 @@ window.onload = function () {
 };
 const particles = Particles.init({
   selector: ".background",
-  color: ["#03dac6", "#ff0266", "#000000"],
+  shape: {
+    type: "star",
+    stroke: {
+      width: 2,
+      color: "#ffffff"
+    },
+    polygon: {
+      nb_sides: 5
+    }
+  },
+  color: ["#f9d423", "#5c6e91", "#c0c5ce"],
   connectParticles: true,
+  size: {
+    value: 2,
+    random: true
+  },
   responsive: [
     {
-      breakpoint: 400,
+      breakpoint: 768,
       options: {
-        color: ["#faebd7", "#03dac6", "#ff0266"],
-        maxParticles: 40,
+        color: ["#f9d423", "#5c6e91", "#c0c5ce"],
+        size: {
+          value: 3,
+          random: true
+        }
+      },
+    },
+    {
+      breakpoint: 425,
+      options: {
+        color: ["#f9d423", "#5c6e91", "#c0c5ce"],
+        size: {
+          value: 4,
+          random: true
+        },
+        maxParticles: 20,
         connectParticles: false
-      }
-    }
-  ]
+      },
+    },
+  ],
 });
+
+
 
 class NavigationPage {
   constructor() {
