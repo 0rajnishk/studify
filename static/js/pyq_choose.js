@@ -34,7 +34,7 @@ function submitClicked() {
   }
 
   const url = `/pyq/${optionSelect.value}/${subjectselect.value}`;
-  window.location.href = url;
+  window.location.replace(url);
 }
 
 const categorySelect = document.getElementById('category-select');

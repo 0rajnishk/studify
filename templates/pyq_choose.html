@@ -39,7 +39,7 @@
       }
 
       /* Style the form */
-      form {
+      .form {
         max-width: 600px;
         padding: 20px;
         margin: 0 auto;
@@ -146,7 +146,7 @@
         {% endif %}
         </div>
       </div>
-        <form>
+        <div class="form">
       {% if not session.get('profile') %}
       <label for="select">Select Level:</label>
       <a href="/pyq/cs2001/quiz-2">
@@ -179,7 +179,7 @@
     </select>
 
     <button id="submit-btn">Submit</button>
-    </form>
+        </div>
 
     <script src="{{ url_for('static', filename='js/pyq_choose.js') }}"></script>
   </body>
