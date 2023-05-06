@@ -40,9 +40,18 @@
 
       /* Style the form */
       form {
-        max-width: 500px;
+        max-width: 600px;
+        padding: 20px;
         margin: 0 auto;
+        border-radius: 10px;
+        border: 2px solid #0e0f10;
       }
+      .para {
+        max-width: 600px;
+        padding: 20px;
+        margin: 0 auto;;
+      }
+
 
       /* Style the label and select elements */
       label {
@@ -50,7 +59,6 @@
         margin-bottom: 10px;
         font-size: 18px;
       }
-
       select {
         display: block;
         width: 100%;
@@ -111,6 +119,7 @@
     </script>
   </head>
   <body>
+    <div class="para">
     <h1>Previous Year Question paper</h1>
     {% if not session.get('profile') %}
     <a href="/pyq/cs2001/quiz-2" style="text-decoration: none; color: rgb(255, 255, 255);">
@@ -135,7 +144,17 @@
         <h3>Best of luck {{ session['profile']['name'].split()[0] }} for upcoming exam!!</h3>
         <!-- <a href="{{ url_for('logout') }}">Logout</a> -->
         {% endif %}
-
+        </div>
+      </div>
+        <form>
+      {% if not session.get('profile') %}
+      <label for="select">Select Level:</label>
+      <a href="/pyq/cs2001/quiz-2">
+      <select id="select">
+      <option value="">Select Level</option>
+      </select>
+    </a>
+    {% else %}
     <label for="category-select">Select Level:</label>
     <select id="category-select">
       <option value="">Select Level</option>
@@ -143,6 +162,9 @@
       <option value="diploma">Diploma</option>
       <option value="degree">Degree</option>
     </select>
+          {% endif %}
+
+
 
     <label for="option-select"> Select Subject:</label>
     <select id="option-select">
@@ -157,6 +179,7 @@
     </select>
 
     <button id="submit-btn">Submit</button>
+    </form>
 
     <script src="{{ url_for('static', filename='js/pyq_choose.js') }}"></script>
   </body>
