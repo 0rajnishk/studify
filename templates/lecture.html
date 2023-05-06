@@ -63,7 +63,7 @@
             <input class="ac-input" id="ac-{{r}}" name="ac-{{ r }}" type="checkbox" onclick="closeOtherWeeks('{{ r }}')" />
             <label class="ac-label" for="ac-{{r}}">{{ week['title'] }}</label>
             <article class="ac-text">
-               <div class="my-list">
+               <ul class="my-list">
                   {% for video in week['videos'] %}
                   <li>
                      <div><iframe src="https://www.youtube.com/embed/{{ video['yt_vid'] }}?rel=0"
@@ -79,7 +79,7 @@
                      </div>
                   </li>
                   {% endfor %}
-               </div>
+               </ul>
             </article>
          </div>
          {% endfor %}

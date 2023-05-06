@@ -36,3 +36,6 @@
     width: 100%;
 }
 
+.tool a {
+    text-decoration: none;
+}
