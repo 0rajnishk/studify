@@ -93,6 +93,8 @@ def ingest_course():
 @login_required
 def fetch_post(course_id):
     course_id = course_id.split("_")
+    if course_id[-1] == 'hs1001' or course_id[-1] == 'cs1001':
+        course_id[1] = course_id[1].replace('t', 'q')
 
     course_ref = db.collection(
         f"ds_courses/{course_id[1]}/{course_id[2]}").document("course")
