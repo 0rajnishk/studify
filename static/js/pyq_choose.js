@@ -27,11 +27,15 @@ function submitClicked() {
   const categorySelect = document.getElementById('category-select');
   const optionSelect = document.getElementById('option-select');
   const subjectselect = document.getElementById('subject-select');
+  const emailEndsWith = document.querySelector('#email-endswith').value;
 
 
   if (categorySelect.value === '' || optionSelect.value === '') {
     return;
   }
+if (emailEndsWith === 'false' && optionSelect.value !== 'cs1001' && optionSelect !== 'ma1001' && optionSelect !== 'hs1001' && optionSelect !== 'ma1002') {
+  alert('To access this content, login with a student email.');
+}
 
   const url = `/pyq/${optionSelect.value}/${subjectselect.value}`;
   window.location.replace(url);

@@ -18,11 +18,11 @@ admin_emails = ['surajnish02@gmail.com',
 def login_required(func):
     @wraps(func)
     def decorated_function(*args, **kwargs):
+        session.clear()
         if 'profile' not in session:
             if not (re.match("^/course/ns_[0-9]{2}q[1-4]?[0-9]_[a-z]{2}[0-9]{4}$", urlparse(request.url).path) or
-                    re.match("^/term/([2-3][3-9]q[1-3]|23q1)$", urlparse(request.url).path) or re.match("^/pyq/foundation/(cs1001|ma1001|cs1002|ma1002)/(quiz-1|quiz-2|endterm)$", urlparse(request.url).path)):
+                    re.match("^/term/([2-3][3-9]q[1-3]|23q1)$", urlparse(request.url).path) or re.match("^/pyq/(cs1001|ma1001|hs1001|ma1002)/(quiz-1|quiz-2|endterm)$", urlparse(request.url).path)):
                 return redirect(url_for('login', next=request.url))
-                # /pyq/foundation/ma1002/endterm
             else:
                 session.permanent = True
                 return func(*args, **kwargs)
@@ -39,7 +39,6 @@ def login_required(func):
                 session.permanent = True
                 return func(*args, **kwargs)
         else:
-            session.clear()
             return 'You are not authorized to access this page. Please use student email address.'
 
     return decorated_function

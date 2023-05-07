@@ -151,14 +151,8 @@
         </div>
       </div>
         <div class="form">
-      {% if not session.get('profile') %}
-      <label for="select">Select Level:</label>
-      <a href="/pyq/cs2001/quiz-2" class="select">
-      <select id="select">
-      <option value="">Select Level</option>
-      </select>
-    </a>
-    {% else %}
+
+    <input type="hidden" id="email-endswith" value="{% if session.get('profile') and session['profile']['email'].endswith('ds.study.iitm.ac.in') %}true{% else %}false{% endif %}">
     <label for="category-select">Select Level:</label>
     <select id="category-select">
       <option value="">Select Level</option>
@@ -166,10 +160,6 @@
       <option value="diploma">Diploma</option>
       <option value="degree">Degree</option>
     </select>
-          {% endif %}
-
-
-
     <label for="option-select"> Select Subject:</label>
     <select id="option-select">
       <option value="">Select an option</option>
@@ -182,8 +172,9 @@
       <option value="endterm">Endterm</option>
     </select>
 
+
     <button id="submit-btn">Submit</button>
-        </div>
+    </div>
 
     <script src="{{ url_for('static', filename='js/pyq_choose.js') }}"></script>
   </body>
