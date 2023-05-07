@@ -116,27 +116,29 @@ h2 {
 
 .tool {
   margin: 2rem;
-  padding: 1.5rem 2rem;
-  background-color: #007bff;
+  padding: 0.2rem 0.3rem;
+  background-color: #a2a2a2;
   border: none;
-  color: white;
+  color: rgb(20, 20, 20);
   border-radius: 0.5rem;
   text-align: center;
   transition: all 0.3s ease-in-out;
-  font-size: 1.5rem;
-  line-height: 1.5;
+  font-size: 1.2rem;
+  line-height: 1.2;
 }
 
 .tool:hover {
   transform: translateY(-5px);
+  background-color: #0059ff;
+  color: #ffffff;
 }
 
 @media (max-width: 576px) {
   .tool {
-    margin: 1rem;
-    padding: 1rem;
-    font-size: 1rem;
-    width: calc(80% - 2rem);
+    margin: 0.5rem;
+    padding: 0.3rem;
+    font-size: 0.8rem;
+    width: calc(70% - 2rem);
   }
 }
 
