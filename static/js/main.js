@@ -3,48 +3,85 @@ window.onload = function () {
     selector: ".background"
   });
 };
+
 const particles = Particles.init({
   selector: ".background",
+  color: {
+    value: ['#1abc9c', '#16a085', '#2ecc71', '#27ae60'],
+  },
+  connectParticles: false,
+  size: {
+    value: 2,
+    random: true
+  },
+  move: {
+    speed: 1
+  },
+  number: {
+    density: {
+      enable: true,
+      value_area: 500
+    },
+    value: 200
+  },
+  opacity: {
+    anim: {
+      enable: true,
+      opacity_min: 0.1,
+      speed: 1,
+      sync: false
+    },
+    random: true,
+    value: 0.5
+  },
   shape: {
-    type: "star",
+    type: "circle",
     stroke: {
-      width: 2,
+      width: 0,
       color: "#ffffff"
     },
     polygon: {
       nb_sides: 5
-    }
-  },
-  color: ["#f9d423", "#5c6e91", "#c0c5ce"],
-  connectParticles: true,
-  size: {
-    value: 2,
-    random: true
+    },
   },
   responsive: [
     {
       breakpoint: 768,
       options: {
-        color: ["#f9d423", "#5c6e91", "#c0c5ce"],
+        color: {
+          value: ['#1abc9c', '#16a085', '#2ecc71', '#27ae60'],
+        },
         size: {
-          value: 3,
+          value: 1,
           random: true
+        },
+        move: {
+          speed: 0.5
+        },
+        number: {
+          value: 100
         }
-      },
+      }
     },
     {
       breakpoint: 425,
       options: {
-        color: ["#f9d423", "#5c6e91", "#c0c5ce"],
+        color: {
+          value: ['#1abc9c', '#16a085', '#2ecc71', '#27ae60'],
+        },
         size: {
-          value: 4,
+          value: 1,
           random: true
         },
-        maxParticles: 20,
-        connectParticles: false
-      },
-    },
-  ],
+        move: {
+          speed: 0.3
+        },
+        number: {
+          value: 50
+        }
+      }
+    }
+  ]
 });
 
 
