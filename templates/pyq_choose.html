@@ -68,6 +68,7 @@
         border-radius: 4px;
         background-color: #fff;
         box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        cursor: pointer ;
         transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
       }
 
@@ -106,6 +107,9 @@
         button {
           font-size: 16px;
         }
+      }
+      .select {
+        text-decoration: none !important;
       }
     </style>
         <!-- Google tag (gtag.js) -->
@@ -149,7 +153,7 @@
         <div class="form">
       {% if not session.get('profile') %}
       <label for="select">Select Level:</label>
-      <a href="/pyq/cs2001/quiz-2">
+      <a href="/pyq/cs2001/quiz-2" class="select">
       <select id="select">
       <option value="">Select Level</option>
       </select>
