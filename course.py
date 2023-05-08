@@ -257,6 +257,7 @@ def cal_choose():
 
 
 @course.route('/wa')
+@login_required
 def wa_link():
     with open('static/res/wa_link.json') as f:
         data = json.load(f)
