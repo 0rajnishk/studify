@@ -65,7 +65,6 @@ def login():
         next_url = 'term/23t1'
     elif next_url and '23q1' in next_url:
         next_url = 'term/23q1'
-    print(next_url, "\n\n\n\n\n\n\n")
     redirect_uri = url_for('oauth_callback', _external=True,
                            _scheme=request.scheme, next=next_url)
     return google.authorize_redirect(redirect_uri)
@@ -110,25 +109,20 @@ def oauth_callback():
                     next_url = 'term/23t1'
                 elif next_url and 'term/23q1' in next_url:
                     next_url = 'term/23q1'
-                print(next_url, "\n\n\n\n\n\n\n")
                 if next_url:
                     return redirect(next_url)
                 else:
                     return redirect(url_for('course.get_term_metadata', term_id="23t1"))
-        else:
-            # if re.match("/course/ns_2[3-9]{1}q[1-3]{1}_[a-z]{2}[0-9]{4}", urlparse(request.url).path):
-            # session['profile'] = user_info
-            # session.permanent = True
+        elif domain not in allowed_domains:
             next_url = request.args.get('next')
             if next_url:
                 return redirect(next_url)
             else:
                 return redirect(url_for('course.get_term_metadata', term_id="23q1"))
-
-            # session.pop('profile', None)
-            # return 'You are not authorized to access this page. Please use student email address.'
+        else:
+            session.pop('profile', None)
+            return 'You are not authorized to access this page. Please use student email address.'
     except Exception as e:
-        # print(str(e))
         return 'Error: ' + str(e)
 
 
