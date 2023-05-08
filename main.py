@@ -65,6 +65,8 @@ def login():
         next_url = 'term/23t1'
     elif next_url and '23q1' in next_url:
         next_url = 'term/23q1'
+    elif next_url and 'wa' in next_url:
+        next_url = 'wa'
     print(next_url, "\n\n\n\n\n\n\n")
     redirect_uri = url_for('oauth_callback', _external=True,
                            _scheme=request.scheme, next=next_url)

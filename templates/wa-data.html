@@ -92,21 +92,21 @@
       <section class="container">
          {% for course_code, level in data.items() %}
          <div class="ac">
-            <input class="ac-input" id="ac-{{ level }}" name="ac-{{ level }}" type="checkbox" onclick="closeOtherWeeks('{{ level }}')" />
-            <label class="ac-label" for="ac-{{ level }}">{{ course_code.upper() }} GROUPS</label>
+            <input class="ac-input" id="ac-{{ course_code }}" name="ac-{{ course_code }}" type="checkbox" onclick="closeOtherWeeks('{{ course_code }}')" />
+            <label class="ac-label" for="ac-{{ course_code }}">{{ course_code.upper() }} GROUPS</label>
             <article class="ac-text">
                <div class="my-list">
                   <div id="Grid" class="sub-cont">
-{% for course_code, course_data in level.items() %}
-  <li class="container-wa">
-    <div>
-      <h5 class="">{{ course_data["course_name"] }}</h5>
-    </div>
-    <div class="btn-wa">
-      <a href="{{ course_data['wa_link'] }}" class="button-wa" style="text-decoration: none !important;" target="_blank">join&nbsp;group</a>
-    </div>
-  </li>
-{% endfor %}
+                    {% for course_code, course_data in level.items() %}
+                      <li class="container-wa">
+                        <div>
+                          <h5 class="">{{ course_data["course_name"] }}</h5>
+                        </div>
+                        <div class="btn-wa">
+                          <a href="{{ course_data['wa_link'] }}" class="button-wa" style="text-decoration: none !important;" target="_blank">join&nbsp;group</a>
+                        </div>
+                      </li>
+                    {% endfor %}
                   </div>
                </div>
             </article>
