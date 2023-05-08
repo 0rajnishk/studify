@@ -256,82 +256,8 @@ def cal_choose():
     # return jsonify(course_metadata)
 
 
-@course.route('/cal/<level>/<subject>/<gaa>/<qz1>/<qz2>')
-def cal(level, subject, gaa, qz1, qz2):
-    if subject != 'cs1001' and 'cs' in subject:
-        pe1 = qz2.split('_')[0]
-        pe2 = qz2.split('_')[-1]
-        print
-        # Convert string inputs to float
-        gaa = float(gaa)
-        qz1 = float(qz1)
-        pe1 = float(pe1)
-        pe2 = float(pe2)
-
-        # Calculate the minimum final marks required for different percentages
-        percentages = [40, 50, 60, 70, 80, 90]
-        min_marks = []
-        for percentage in percentages:
-            # Define the equation to solve
-            def equation(F):
-                total1 = 0.1*gaa + 0.1*qz1 + max(0.5*F + 0.2*max(pe1, pe2),
-                                                 0.4*F + 0.3*max(pe1, pe2) + 0.1*min(pe1, pe2))
-                return total1 - percentage
-
-            # Use the bisection method to find the root of the equation
-            a, b = 0, 100
-            while (b - a) > 0.0001:
-                mid = (a + b) / 2
-                if equation(mid) > 0:
-                    a, b = a, mid
-                else:
-                    a, b = mid, b
-            if b == 100:
-                min_marks.append("not possible")
-
-            elif round((a + b) / 2, 2) == 0:
-                print(((a + b) / 2, 2), '\n\n\n\n\n\n\n\n\n')
-                min_marks.append("already passed")
-            else:
-                min_marks.append(round((a + b) / 2, 2))
-
-        # return jsonify(min_marks)
-        return render_template('marks_calculator.html', level=level, subject=subject, percentages=percentages, min_marks=min_marks)
-
-    else:
-        # Convert string inputs to float
-        gaa = float(gaa)
-        qz1 = float(qz1)
-        qz2 = float(qz2)
-
-        # Calculate the minimum final marks required for different percentages
-        percentages = [40, 50, 60, 70, 80, 90]
-        min_marks = []
-        for percentage in percentages:
-            # Define the equation to solve
-            def equation(F):
-                total1 = 0.1*gaa + max(0.6*F + 0.2*max(qz1, qz2),
-                                       0.4*F + 0.2*qz1 + 0.3*qz2)
-                total2 = 0.1*gaa + 0.4*F + 0.2*qz1 + 0.3*qz2
-                return max(total1, total2) - percentage
-
-            # Use the bisection method to find the root of the equation
-            a, b = 0, 100
-            while (b - a) > 0.0001:
-                mid = (a + b) / 2
-                if equation(mid) > 0:
-                    a, b = a, mid
-                else:
-                    a, b = mid, b
-
-            if b == 100:
-                min_marks.append("not possible")
-            elif round((a + b) / 2, 2) == 0:
-                print(((a + b) / 2, 2), '\n\n\n\n\n\n\n\n\n')
-                min_marks.append("already passed")
-            else:
-                min_marks.append(round((a + b) / 2, 2))
-
-        # return jsonify(min_marks)
-
-        return render_template('marks_calculator.html', level=level, subject=subject, percentages=percentages, min_marks=min_marks)
+@course.route('/wa')
+def wa_link():
+    with open('static/res/wa_link.json') as f:
+        data = json.load(f)
+    return render_template('wa-data.html', data=data)
