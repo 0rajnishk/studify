@@ -129,7 +129,8 @@
           </select>
         </div>
         <h2>Choose courses</h2>
-        {% for level, courses in data.items() %}
+        {% for level, courses in data.items() %} {% if level =="diploma" or
+        level == "foundation" or level == "degree" %}
         <h3>{{level}}</h3>
         <div class="subjects-group">
           {% for course_code, course_data in courses.items() %}
@@ -146,7 +147,7 @@
           >
           {% endfor %}
         </div>
-        {% endfor %}
+        {% endif %} {% endfor %}
 
         <div class="form-group">
           <input type="submit" value="Submit" class="btn" />
