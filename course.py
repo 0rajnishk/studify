@@ -250,10 +250,25 @@ def cal_choose():
     # return jsonify(course_metadata)
 
 
-with open('static/res/wa_link.json', 'r') as f:
-    # Load the JSON data into a Python object
-    data = json.load(f)
-    print(data)
+@course.route('/submit-form', methods=['POST'])
+def submit_form():
+    name = request.form.get('name')
+    whatsapp_number = request.form.get('whatsapp_number')
+    city = request.form.get('city')
+    subjects = request.form.getlist('subject')
+
+    # roll = request.form.get('id')
+
+    # create a new document in the "forms" collection with the WhatsApp number as the document ID
+    # doc_ref = db.collection('forms').document()
+    # doc_ref.set({
+    #     'whatsapp_number': whatsapp_number,
+    #     'name': name,
+    #     'city': city,
+    #     'subjects': subjects
+    # })
+
+    return jsonify(name, city, subjects, whatsapp_number)
 
 
 @course.route('/wa')
@@ -261,3 +276,10 @@ def wa_link():
     with open('static/res/wa_link.json') as f:
         data = json.load(f)
     return render_template('wa-data.html', data=data)
+
+
+@course.route('/form')
+def form():
+    with open('static/res/wa_link.json') as f:
+        data = json.load(f)
+    return render_template('form.html', data=data)
