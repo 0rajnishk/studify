@@ -13,7 +13,6 @@
 		integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/course.css') }}">
-		<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-8E33B6L8TW"></script>
 	<script>
 	window.dataLayer = window.dataLayer || [];
@@ -28,12 +27,10 @@
 </head>
 
 <body class="">
-	<!-- partial:index.partial.html -->
 	<div class="page-wrapper">
 		<div class="nav-wrapper">
 			<div class="grad-bar"></div>
 			<nav class="navbar">
-				<!--img src="" alt="Studify"-->
 				<h5><img src="{{ url_for('static', filename='image/studify-logo.png') }}" alt="studify">
 				</h5>
 				<div class="menu-toggle" id="mobile-menu">
@@ -43,9 +40,7 @@
 				</div>
 				<ul class="nav no-search">
 					<li class="nav-item"><a href="/term/23t1">Home</a></li>
-					<!-- <li class="nav-item"><a href="#">Dashbord</a></li> -->
 					<li class="nav-item"><a href="#">Contact Us</a></li>
-					<!-- <i class="bx bx-moon change-theme" id="theme-button"></i> -->
 					<i class="fas fa-search" id="search-icon"></i>
 					<input class="search-input" type="text" placeholder="Search..">
 				</ul>
@@ -53,9 +48,8 @@
 			<div class="grad-bar"></div>
 		</div>
 		<section class="headline">
-			<!-- <h1>Studify</h1> -->
 			<h1>Studify</h1>
-			<h2>Study space for BS Degree Students</a></h2>
+			<h2>Study space for BS Degree Students</h2>
 		</section>
                
 		{% for exam_month, exam_info in data.items() %}
