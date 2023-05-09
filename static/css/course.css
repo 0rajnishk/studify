@@ -167,13 +167,15 @@ a.tool {
 
 .container-li {
   z-index: 1;
-  padding: 1;
-  margin: 10px;
   padding: 4px;
   border: 1px solid #999;
   min-height: 150px !important;
-  border-radius: 4px;
   color: #0059ff;
+  padding: 2px;
+  margin: 10px 0;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
 }
 
 @media screen and (max-width: 600px) {
@@ -191,7 +193,7 @@ a.tool {
   background-color: #dbdbdb !important;
   border-radius: 4px;
   color: #000000;
-
+  box-shadow: 0 3px 10px rgba(255, 0, 102, 0.8);
 }
 
 /* button ======================================================== */
