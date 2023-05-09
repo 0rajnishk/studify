@@ -193,7 +193,7 @@ a.tool {
   background-color: #dbdbdb !important;
   border-radius: 4px;
   color: #000000;
-  box-shadow: 0 3px 10px rgba(255, 0, 102, 0.8);
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
 }
 
 /* button ======================================================== */
