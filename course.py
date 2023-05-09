@@ -141,9 +141,6 @@ def get_term_metadata(term_id):
     term_data = term_metadata_ref.get()
     if term_data.exists:
         term_data = term_data.to_dict()
-        print(term_data)
-        # bundle qualifier content while
-        # fetching term content
         if term_id[2] == "t":
             qualifier_metadata_ref = db.document(
                 f"ds_courses/{term_id.replace('t', 'q')}")
@@ -188,9 +185,6 @@ def get_options(category):
         return jsonify(options)
     else:
         return jsonify([])  # return empty list if data doesn't exist
-
-
-# course = Blueprint('course', __name__)
 
 
 def sort_by_key(value):
@@ -256,9 +250,36 @@ def cal_choose():
     # return jsonify(course_metadata)
 
 
+@course.route('/submit-form', methods=['POST'])
+def submit_form():
+    name = request.form.get('name')
+    whatsapp_number = request.form.get('whatsapp_number')
+    city = request.form.get('city')
+    subjects = request.form.getlist('subject')
+
+    # roll = request.form.get('id')
+
+    # create a new document in the "forms" collection with the WhatsApp number as the document ID
+    # doc_ref = db.collection('forms').document()
+    # doc_ref.set({
+    #     'whatsapp_number': whatsapp_number,
+    #     'name': name,
+    #     'city': city,
+    #     'subjects': subjects
+    # })
+
+    return jsonify(name, city, subjects, whatsapp_number)
+
+
 @course.route('/wa')
-@login_required
 def wa_link():
     with open('static/res/wa_link.json') as f:
         data = json.load(f)
     return render_template('wa-data.html', data=data)
+
+
+@course.route('/form')
+def form():
+    with open('static/res/wa_link.json') as f:
+        data = json.load(f)
+    return render_template('form.html', data=data)

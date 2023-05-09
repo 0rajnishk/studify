@@ -29,13 +29,19 @@ function submitClicked() {
   const subjectselect = document.getElementById('subject-select');
   const emailEndsWith = document.querySelector('#email-endswith').value;
 
-
   if (categorySelect.value === '' || optionSelect.value === '') {
+    // Move this console.log statement before the return statement
+    console.log('You need to select a category and an option');
     return;
   }
-if (emailEndsWith === 'false' && optionSelect.value !== 'cs1001' && optionSelect !== 'ma1001' && optionSelect !== 'hs1001' && optionSelect !== 'ma1002') {
-  alert('To access this content, login with a student email.');
-}
+
+if (emailEndsWith == 'false') {
+  console.log('You need to login with student email id to access this content \n retry after login');
+  if (optionSelect.value !== 'cs1001' && optionSelect.value !== 'ma1001' && optionSelect.value !== 'hs1001' && optionSelect.value !== 'ma1002') {
+    alert('Retry after login\n\n login with student email id to access this content ');
+  }
+} 
+  
 
   const url = `/pyq/${optionSelect.value}/${subjectselect.value}`;
   window.location.replace(url);
