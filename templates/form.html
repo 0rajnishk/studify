@@ -116,10 +116,15 @@
             required
           />
         </div>
-        <div class="form-group">
+        <div class="city-group">
           <label for="city">City:</label>
           <input type="text" name="city" id="city" required />
         </div>
+        <div class="state-group">
+          <label for="state">state:</label>
+          <input type="text" name="city" id="state" required />
+        </div>
+        <h2>Choose courses</h2>
         {% for level, courses in data.items() %}
         <h3>{{level}}</h3>
         <div class="subjects-group">
