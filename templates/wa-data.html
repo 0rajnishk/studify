@@ -96,16 +96,16 @@
             <article class="ac-text">
                <div class="my-list">
                   <div id="Grid" class="sub-cont">
-{% for course_code, course_data in level.items() %}
-  <li class="container-wa">
-    <div>
-      <h5 class="">{{ course_data["course_name"] }}</h5>
-    </div>
-    <div class="btn-wa">
-      <a href="{{ course_data['wa_link'] }}" class="button-wa" style="text-decoration: none !important;">join&nbsp;group</a>
-    </div>
-  </li>
-{% endfor %}
+                {% for course_code, course_data in level.items() %}
+                  <li class="container-wa">
+                    <div>
+                      <h5 class="">{{ course_data["course_name"] }}</h5>
+                    </div>
+                    <div class="btn-wa">
+                      <a href="{{ course_data['wa_link'] }}" class="button-wa" style="text-decoration: none !important;">join&nbsp;group</a>
+                    </div>
+                  </li>
+                {% endfor %}
                   </div>
                </div>
             </article>
