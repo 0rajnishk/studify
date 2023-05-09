@@ -109,8 +109,13 @@
           value="{{ session['profile']['email'].split('@')[0] }}"
         />
         <div class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" name="name" id="name" required />
+          <input
+            type="hidden"
+            name="name"
+            id="name"
+            value="{{ session['profile']['name'] }}"
+            required
+          />
         </div>
 
         <div class="subjects-group">
