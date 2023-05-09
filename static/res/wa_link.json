@@ -103,5 +103,22 @@
             "course_name": "MLP Project",
             "wa_link": "https://chat.whatsapp.com/KzI1Tu27mkN11m1rTbisQp"  
         }
+    },
+    "state wise groups": {
+        "uttarpradesh": {
+            "course_name": "soon ...",
+            "wa_link": "/"  
+        },
+        "bihar": {
+            "course_name": "soon...",
+            "wa_link": "/"  
+        }
+
+    },
+    "Other social media handles": {
+        "Insta": {
+            "course_name": "soon...",
+            "wa_link": "/"  
+        }
     }
 }

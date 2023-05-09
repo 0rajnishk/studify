@@ -91,8 +91,8 @@
       <section class="container">
          {% for course_code, level in data.items() %}
          <div class="ac">
-            <input class="ac-input" id="ac-{{ level }}" name="ac-{{ level }}" type="checkbox" onclick="closeOtherWeeks('{{ level }}')" />
-            <label class="ac-label" for="ac-{{ level }}">{{ course_code }}</label>
+            <input class="ac-input" id="ac-{{ course_code }}" name="ac-{{ course_code }}" type="checkbox" onclick="closeOtherWeeks('{{ course_code }}')" />
+            <label class="ac-label" for="ac-{{ course_code }}">{{ course_code.capitalize() }} Groups</label>
             <article class="ac-text">
                <div class="my-list">
                   <div id="Grid" class="sub-cont">
