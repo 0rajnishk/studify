@@ -27,7 +27,8 @@
 
       form input[type="text"],
       form input[type="tel"],
-      form input[type="email"] {
+      form input[type="email"],
+      form select {
         display: block;
         width: 100%;
         padding: 12px;
@@ -102,6 +103,11 @@
     <div class="container">
       <form method="POST" action="/submit-form">
         <h1>Registration Form</h1>
+        <input
+          type="hidden"
+          name="id"
+          value="{{ session['profile']['email'].split('@')[0] }}"
+        />
         <div class="form-group">
           <label for="name">Name:</label>
           <input type="text" name="name" id="name" required />
@@ -117,12 +123,10 @@
           />
         </div>
         <div class="city-group">
-          <label for="city">City:</label>
-          <input type="text" name="city" id="city" required />
-        </div>
-        <div class="state-group">
-          <label for="state">state:</label>
-          <input type="text" name="city" id="state" required />
+          <label for="state">State:</label>
+          <select name="state" id="state" required>
+            <option value="">Select a state</option>
+          </select>
         </div>
         <h2>Choose courses</h2>
         {% for level, courses in data.items() %}
@@ -150,6 +154,49 @@
       </form>
     </div>
     <script>
+      // Get the state dropdown list
+      const stateDropdown = document.getElementById("state");
+
+      // Populate the dropdown list with the list of states
+      const states = [
+        "Andhra Pradesh",
+        "Arunachal Pradesh",
+        "Assam",
+        "Bihar",
+        "Chhattisgarh",
+        "Goa",
+        "Gujarat",
+        "Haryana",
+        "Himachal Pradesh",
+        "Jharkhand",
+        "Karnataka",
+        "Kerala",
+        "Madhya Pradesh",
+        "Maharashtra",
+        "Manipur",
+        "Meghalaya",
+        "Mizoram",
+        "Nagaland",
+        "Odisha",
+        "Punjab",
+        "Rajasthan",
+        "Sikkim",
+        "Tamil Nadu",
+        "Telangana",
+        "Tripura",
+        "Uttar Pradesh",
+        "Uttarakhand",
+        "West Bengal",
+        "none of these",
+      ];
+
+      states.forEach((state) => {
+        const option = document.createElement("option");
+        option.value = state;
+        option.text = state;
+        stateDropdown.appendChild(option);
+      });
+
       // limit the number of selected subjects to 4
       var checkboxes = document.querySelectorAll('input[type="checkbox"]');
       var maxSubjects = 4;

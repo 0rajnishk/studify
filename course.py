@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, redirect, render_template, url_for
 from flask import jsonify
 import firebase_admin
 from firebase_admin import credentials
@@ -252,23 +252,24 @@ def cal_choose():
 
 @course.route('/submit-form', methods=['POST'])
 def submit_form():
+    id = request.form.get('id')
     name = request.form.get('name')
     whatsapp_number = request.form.get('whatsapp_number')
-    city = request.form.get('city')
+    state = request.form.get('state')
     subjects = request.form.getlist('subject')
 
     # roll = request.form.get('id')
 
     # create a new document in the "forms" collection with the WhatsApp number as the document ID
-    # doc_ref = db.collection('forms').document()
-    # doc_ref.set({
-    #     'whatsapp_number': whatsapp_number,
-    #     'name': name,
-    #     'city': city,
-    #     'subjects': subjects
-    # })
+    doc_ref = db.collection('users').document(id)
+    doc_ref.set({
+        'phone no': whatsapp_number,
+        'name': name,
+        'state': state,
+        'subjects': subjects
+    })
 
-    return jsonify(name, city, subjects, whatsapp_number)
+    return redirect(url_for('course.wa_link'))
 
 
 @course.route('/wa')
@@ -279,6 +280,7 @@ def wa_link():
 
 
 @course.route('/form')
+@login_required
 def form():
     with open('static/res/wa_link.json') as f:
         data = json.load(f)

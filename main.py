@@ -67,7 +67,8 @@ def login():
         next_url = 'term/23q1'
     elif next_url and 'wa' in next_url:
         next_url = 'wa'
-    print(next_url, "\n\n\n\n\n\n\n")
+    elif next_url and 'form' in next_url:
+        next_url = 'form'
     redirect_uri = url_for('oauth_callback', _external=True,
                            _scheme=request.scheme, next=next_url)
     return google.authorize_redirect(redirect_uri)
