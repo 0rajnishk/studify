@@ -102,7 +102,7 @@ def fetch_post(course_id):
 
     if data.exists:
         if request.args.get("json"):
-            return data.to_dict()
+            return jsonify(data.to_dict())
         return render_template("lecture.html", data=data.to_dict())
 
     else:
