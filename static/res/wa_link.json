@@ -25,8 +25,12 @@
             "wa_link": "https://chat.whatsapp.com/IuEk05roFjVCntkhcneKI4"  
         },
         "cs1002": {
-            "course_name": " Intro to Python",
+            "course_name": "OPPE Repeat (Python)",
             "wa_link": "https://chat.whatsapp.com/GLHxB7344G57D18bhv3LS2"  
+        },
+        "cs1002-1":{
+            "course_name": "",
+            "wa_link":"https://chat.whatsapp.com/Cx03wboBD4tFC1PqKAMiY5"
         },
         "ma1004": {
             "course_name": " Statistics 2",
@@ -106,11 +110,11 @@
     },
     "state wise groups": {
         "uttarpradesh": {
-            "course_name": "soon ...",
+            "up": "soon ...",
             "wa_link": "/"  
         },
         "bihar": {
-            "course_name": "soon...",
+            "bihar": "soon...",
             "wa_link": "/"  
         }
 
