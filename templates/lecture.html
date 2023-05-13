@@ -1,90 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <title> STUDIFY </title>
-      <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='image/icon.png') }}">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet">
-      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-         integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-      <link rel="stylesheet" href="{{ url_for('static', filename='css/lecture.css') }}">
-      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-      <!-- Google tag (gtag.js) -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-8E33B6L8TW"></script>
-      <script>
-         window.dataLayer = window.dataLayer || [];
-         function gtag(){dataLayer.push(arguments);}
-         gtag('js', new Date());
-         
-         gtag('config', 'G-8E33B6L8TW');
-      </script>
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-   </head>
-   <body class="">
-      <!-- partial:index.partial.html -->
-      <div class="page-wrapper">
-      <div class="nav-wrapper">
-         <div class="grad-bar"></div>
-         <nav class="navbar">
-            <!--img src="" alt="Studify"-->
-            <h3>
-            &nbsp; &nbsp; STUDIFY  &nbsp; &nbsp;
-            {{data.title.split(' - ')[-1]}}
-            <!-- <a href="{{data.forum_url}}">{{data.title.split(' - ')[-1]}}</a> -->
-            </h5>
-            <!-- <h3>{{data.title.split(' - ')[-1]}}</h1> -->
-            <div class="menu-toggle" id="mobile-menu">
-               <span class="bar"></span>
-               <span class="bar"></span>
-               <span class="bar"></span>
-            </div>
-            <ul class="nav no-search">
-               <li class="nav-item"><a href="/term/23t1">Home</a></li>
-               <!-- <li class="nav-item"><a href="#">Dashbord</a></li> -->
-               <li class="nav-item"><a href="https://forms.gle/2jUCjXNoj4hVKkVy9" target="_blank">Contact Us &nbsp;</a></li>
-               <!-- <i class="bx bx-moon change-theme" id="theme-button"></i> -->
-               <i class="fas fa-search" id="search-icon"></i>
-               <input class="search-input" type="text" placeholder="Search..">
-            </ul>
-         </nav>
-         <div class="grad-bar"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{{ url_for('static', filename='image/icon.png') }}"
+    />
+    {% if ':' in data.title %}
+    <title class="">{{ data.title.split(':')[-1] }}</title>
+    {% else %}
+    <title class="">{{ data.title.split(' - ')[-1] }}</title>
+    {% endif %}
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-8E33B6L8TW"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-8E33B6L8TW");
+    </script>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/lecture.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="main-video">
+        {% if ':' in data.title %}
+        <h1 class="">{{ data.title.split(':')[-1] }}</h1>
+        {% else %}
+        <h1 class="">{{ data.title.split(' - ')[-1] }}</h1>
+        {% endif %}
+        <!-- <h6 class="">{{ data.title.upper() }}</h6> -->
+        <div class="video">
+          <iframe
+            width="600"
+            height="337.5"
+            src="https://www.youtube.com/embed/{{data.week_wise[0].videos[0].yt_vid}}?rel=0"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+          <h3 class="title">{{data.week_wise[0].videos[0].title}}</h3>
+        </div>
       </div>
-      <!-- <section class="headline">
-         <h1><a href="{{data.forum_url}}">{{data.title.split(' - ')[-1]}}</a></h1>
-         <p><a href=""> click here for notes</a></p>
-         </section> -->
-      <section class="container">
-         {% for week in data['week_wise'] %}
-         {% set r = week['title'] %}
-         <div class="ac">
-            <input class="ac-input" id="ac-{{r}}" name="ac-{{ r }}" type="checkbox" onclick="closeOtherWeeks('{{ r }}')" />
-            <label class="ac-label" for="ac-{{r}}">{{ week['title'] }}</label>
-            <article class="ac-text">
-               <ul class="my-list">
-                  {% for video in week['videos'] %}
-                  <li>
-                     <div><iframe src="https://www.youtube.com/embed/{{ video['yt_vid'] }}?rel=0"
-                        title="{{ video['title'] }}" frameborder="1"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen loading="lazy"></iframe></div>
-                     <div class="youtube_title">
-                        <h5>{{ video['title'] }}</h5>
-                     </div>
-                     <div class="btn-wrapper">
-                        <a href="https://ssyoutube.com/watch?v={{ video['yt_vid'] }}" class="card-link" target="_blank"><button
-                           class="btn btn-primary">Download</button></a>
-                     </div>
-                  </li>
-                  {% endfor %}
-               </ul>
-            </article>
-         </div>
-         {% endfor %}
-      </section>
-      <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-      <script src="{{ url_for('static', filename='js/course.js') }}"></script>
-   </body>
+      <div class="video-list">
+        {% for data in data.week_wise %}
+        <div class="accordion-item">
+          <div class="accordion-header">{{ data.title }}</div>
+          <div class="accordion-content">
+            {% for week in data.videos %}
+            <div class="vid">
+              <img
+                src="https://img.youtube.com/vi/{{ week.yt_vid }}/default.jpg"
+                alt="YouTube Video Thumbnail"
+              />
+              <h3 class="title">{{ week.title }}</h3>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <script>
+      let listVideo = document.querySelectorAll(".video-list .vid");
+      let mainVideo = document.querySelector(".main-video video iframe");
+      const iframe = document.querySelector(".main-video iframe");
+      let title = document.querySelector(".main-video .title");
+
+      listVideo.forEach((video) => {
+        video.onclick = () => {
+          listVideo.forEach((vid) => vid.classList.remove("active"));
+          video.classList.add("active");
+          if (video.classList.contains("active")) {
+            let thumbnailUrl = video.children[0].getAttribute("src");
+            let videoId = thumbnailUrl.split("/")[4];
+            iframe.setAttribute(
+              "src",
+              `https://www.youtube.com/embed/${videoId}?rel=0`
+            );
+
+            let text = video.children[1].innerHTML;
+            title.innerHTML = text;
+          }
+        };
+      });
+      //=================== Accordion starts here====================================
+      const accordionHeaders = document.querySelectorAll(".accordion-header");
+
+      accordionHeaders.forEach((header) => {
+        header.addEventListener("click", () => {
+          const accordionContent = header.nextElementSibling;
+          const isActive = header.classList.contains("active");
+
+          // Close all other open accordion sections
+          accordionHeaders.forEach((header) => {
+            if (
+              header !== accordionContent.previousElementSibling &&
+              header.classList.contains("active")
+            ) {
+              header.classList.remove("active");
+              header.nextElementSibling.style.display = "none";
+            }
+          });
+          // Toggle the clicked accordion section
+          header.classList.toggle("active");
+          if (isActive) {
+            accordionContent.style.display = "none";
+          } else {
+            accordionContent.style.display = "block";
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
