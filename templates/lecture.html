@@ -45,7 +45,7 @@
           <iframe
             width="600"
             height="337.5"
-            src="https://www.youtube.com/embed/{{data.week_wise[0].videos[0].yt_vid}}?rel=0"
+            src="https://www.youtube.com/embed/{{data.week_wise[0].videos[0].yt_vid}}?start=10&rel=0"
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -89,7 +89,7 @@
             let videoId = thumbnailUrl.split("/")[4];
             iframe.setAttribute(
               "src",
-              `https://www.youtube.com/embed/${videoId}?rel=0`
+              `https://www.youtube.com/embed/${videoId}?start=10&rel=0`
             );
 
             let text = video.children[1].innerHTML;
