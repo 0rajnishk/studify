@@ -84,7 +84,7 @@ blocked_emails = ['user@example.com']
 
 # Define a list of admin emails
 admin_emails = ['surajnish02@gmail.com',
-                'studify.iitm@gmail.com', 'studify.dummy@gmail.com', 'agaikwad703@gmail.com']
+                'studify.iitm@gmail.com', 'studify.dummy@gmail.com', 'agaikwad703@gmail.com', 'sharmadinkar44@gmail.com']
 
 
 @app.route('/oauth-callback')
