@@ -54,6 +54,14 @@ def ingest_course():
     course_id = data['course_id'].split("_")
     course_level = ["foundation", "diploma",
                     "BSc degree", "BS degree"][int(course_id[2][2])-1]
+    
+    # change the course title to remove month/year
+    # term course
+    if course_id[1][2] == "t":
+        data['title'] = data['title'].split("-")[-1].strip()
+    # qualifier course
+    elif course_id[1][2] == "q":
+        data['title'] = data['title'].split(":")[-1].strip()
 
     # store  the contents corresponding to the course
     course_ref = db.collection("ds_courses").document(
