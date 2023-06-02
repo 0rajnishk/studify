@@ -89,11 +89,7 @@
                      {% for course_code, course_name in data['course_metadata'][level].items() %}
                      <li class="container-li">
                         <div>
-                           {% if ':' in course_name %}
-                              <h5 class="">{{ course_name.split(':')[-1] }}</h5>
-                           {% else %}
-                              <h5 class="">{{ course_name.split(' - ')[-1] }}</h5>
-                           {% endif %}
+                           <h5>{{course_name}}</h5>
                            <h6 class="">{{ course_code.upper() }}</h6>
                         </div>
                         <div class="btn-wrapper">
