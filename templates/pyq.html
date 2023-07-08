@@ -53,7 +53,7 @@
 		</section>
                
 		{% for exam_month, exam_info in data.items() %}
-			<div class="ac">
+			<div class="ac" style="margin-right: 20px !important; margin-left: 20px !important;">
 				<input class="ac-input" id="ac-{{ exam_month }}" name="ac-{{ exam_month }}" type="checkbox" onclick="closeOtherWeeks('{{ exam_month }}')" />
 				<label class="ac-label" for="ac-{{ exam_month }}">{{ exam_month }}</label>
 				<article class="ac-text">
