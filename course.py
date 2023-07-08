@@ -182,7 +182,7 @@ def index():
 
 @course.route('/get_options/<category>')
 def get_options(category):
-    metadata_ref = db.document(f"pyq/meta_data")
+    metadata_ref = db.document(f"ds_pyq/meta_data")
     data = metadata_ref.get()
     if data.exists:
         data = data.to_dict()
