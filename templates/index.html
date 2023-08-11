@@ -9,117 +9,122 @@
   <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
   <!--========== CSS ==========-->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
 
-<link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='image/icon.png') }}">
+  <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='image/icon.png') }}">
 
-        <title>Studify - Study space for BS Degree Students </title>
-        </head>
-        
-        <body>
-        
-          <!--========== SCROLL TOP ==========-->
-          <a href="#" class="scrolltop" id="scroll-top">
-            <i class='bx bx-chevron-up scrolltop__icon'></i>
-        
-          </a>
-        
-          <!--========== HEADER ==========-->
-          <header class="l-header" id="header">
-            <nav class="nav bd-container">
-              <a href="#" class="nav__logo">DATA SCIENCE</a>
-        
-              <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                  <!-- <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li> -->
-                  <li class="nav__item"><a href="https://exam.studify.space/" target="_blank" class="nav__link">Quiz Evaluator</a></li>
-                  <li class="nav__item"><a href="https://replit.com/@RajnishKumar37/Least-marks-you-need-to-get-in-end-quiz-to-pass-the-subject?v=1" class="nav__link" target="_blank">Pass Marks Calculator</a></li>
-                  <li class="nav__item"><a href="https://forms.gle/2jUCjXNoj4hVKkVy9" class="nav__link" target="_blank">Contact us</a></li>
-        
-                </ul>
-              </div>
-        
-              <div class="nav__toggle" id="nav-toggle">
-                <i class='bx bx-menu'></i>
-              </div>
-        
-            </nav>
-            <div><i class='bx bx-moon change-theme' id="theme-button"></i></div>
-          </header>
-        
-          <main class="l-main">
-            <!--========== HOME ==========-->
-            <section class="home" id="home">
-              <div class="home__container bd-container bd-grid">
-                <div class="home__data">
-                  <h1 class="home__title">Studify</h1>
-                  <h2 class="home__subtitle">Study space for BS Degree Students</h2>
-                  <a href="{{ url_for('login') }}" class="button">login to continue</a>
-                </div>
-        
-        
-              </div>
-        
-            </section>
-        
-        
-            <!----================================Important Link======================================-->
-            <section class="menu section bd-container" id="Importantlink">
-        
-              <h1 class="section-title"><span class="section-subtitle">Qualifier Content</span></h1>
-        
-              <div class="menu__container bd-grid">
-                <div class="menu__content">
-                  <img src="" alt="" class="menu__img">
-        
-                  
-                    <h3 class="services__title">Maths - I</h3>
-                  <span class="menu__detail">&nbsp;</span>
-                  <span>
-                    <a href="/notes/ma1001" class="button menu__button1" style="float: left;">Notes</a>
-                    <a href="/course/ns_23q1_ma1001" class="button menu__button">Lectures</a>
-                  </span>
-                </div>
-        
-                <div class="menu__content">
-                  <img src="" alt="" class="menu__img"></a>
-                    <h3 class="services__title">Statistics - I</h3>
-                 
-                  <span class="menu__detail">&nbsp;</span>
-                  <span>
-                    <a href="notes/ma1002" class="button menu__button1" style="float: left;">Notes</a>
-                    <a href="/course/ns_23q1_ma1002" class="button menu__button">Lectures</a>
-                  </span>
-                </div>
-        
-                <div class="menu__content">
-                  <img src="" alt="" class="menu__img">
-                  <h3 class="services__title">CT</h3>
-                  <span class="menu__detail">&nbsp;</span>
-                  <span>
-                    <a href="/notes/cs1001" class="button menu__button1" style="float: left;">Notes</a>
-                    <a href="course/ns_23q1_cs1001" class="button menu__button">Lectures</a>
-                  </span>
-                </div>
-        
-        
-                <div class="menu__content">
-                  <img src="" alt="" class="menu__img">
-                  <h3 class="services__title">English - I</h3>
-                  <span class="menu__detail">&nbsp;</span>
-                  <span>
-                    <a href="/notes/hs1001" class="button menu__button1" style="float: left;">Notes</a>
-                    <a href="/course/ns_23q1_hs1001" class="button menu__button" >Lectures</a>
-                  </span>
+  <title>Studify - Study space for BS Degree Students </title>
+</head>
 
-                </div>
-        
-        
-              </div>
-            </section>  
-          </main>
-          <div class="jrslm-white2 w3-center footer__copy">Made with&nbsp;<span class="heart">&#9829;</span>&nbsp;by Rajnish, Shashank & Sumit</div>
-          <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-  </body>
-        
+<body>
+
+  <!--========== SCROLL TOP ==========-->
+  <a href="#" class="scrolltop" id="scroll-top">
+    <i class='bx bx-chevron-up scrolltop__icon'></i>
+
+  </a>
+
+  <!--========== HEADER ==========-->
+  <header class="l-header" id="header">
+    <nav class="nav bd-container">
+      <a href="#" class="nav__logo">DATA SCIENCE</a>
+
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <!-- <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li> -->
+          <li class="nav__item"><a href="https://exam.studify.space/" target="_blank" class="nav__link">Quiz
+              Evaluator</a></li>
+          <li class="nav__item"><a
+              href="https://replit.com/@RajnishKumar37/Least-marks-you-need-to-get-in-end-quiz-to-pass-the-subject?v=1"
+              class="nav__link" target="_blank">Pass Marks Calculator</a></li>
+          <li class="nav__item"><a href="https://forms.gle/2jUCjXNoj4hVKkVy9" class="nav__link" target="_blank">Contact
+              us</a></li>
+
+        </ul>
+      </div>
+
+      <div class="nav__toggle" id="nav-toggle">
+        <i class='bx bx-menu'></i>
+      </div>
+
+    </nav>
+    <div><i class='bx bx-moon change-theme' id="theme-button"></i></div>
+  </header>
+
+  <main class="l-main">
+    <!--========== HOME ==========-->
+    <section class="home" id="home">
+      <div class="home__container bd-container bd-grid">
+        <div class="home__data">
+          <h1 class="home__title">Studify</h1>
+          <h2 class="home__subtitle">Study space for BS Degree Students</h2>
+          <a href="{{ url_for('login') }}" class="button">login to continue</a>
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+    <!----================================Important Link======================================-->
+    <section class="menu section bd-container" id="Importantlink">
+
+      <h1 class="section-title"><span class="section-subtitle">Qualifier Content</span></h1>
+
+      <div class="menu__container bd-grid">
+        <div class="menu__content">
+          <img src="" alt="" class="menu__img">
+
+
+          <h3 class="services__title">Maths - I</h3>
+          <span class="menu__detail">&nbsp;</span>
+          <span>
+            <a href="/notes/ma1001" class="button menu__button1" style="float: left;">Notes</a>
+            <a href="/course/ns_23q1_ma1001" class="button menu__button">Lectures</a>
+          </span>
+        </div>
+
+        <div class="menu__content">
+          <img src="" alt="" class="menu__img"></a>
+          <h3 class="services__title">Statistics - I</h3>
+
+          <span class="menu__detail">&nbsp;</span>
+          <span>
+            <a href="notes/ma1002" class="button menu__button1" style="float: left;">Notes</a>
+            <a href="/course/ns_23q1_ma1002" class="button menu__button">Lectures</a>
+          </span>
+        </div>
+
+        <div class="menu__content">
+          <img src="" alt="" class="menu__img">
+          <h3 class="services__title">CT</h3>
+          <span class="menu__detail">&nbsp;</span>
+          <span>
+            <a href="/notes/cs1001" class="button menu__button1" style="float: left;">Notes</a>
+            <a href="course/ns_23q1_cs1001" class="button menu__button">Lectures</a>
+          </span>
+        </div>
+
+
+        <div class="menu__content">
+          <img src="" alt="" class="menu__img">
+          <h3 class="services__title">English - I</h3>
+          <span class="menu__detail">&nbsp;</span>
+          <span>
+            <a href="/notes/hs1001" class="button menu__button1" style="float: left;">Notes</a>
+            <a href="/course/ns_23q1_hs1001" class="button menu__button">Lectures</a>
+          </span>
+
+        </div>
+
+
+      </div>
+    </section>
+  </main>
+  <div class="jrslm-white2 w3-center footer__copy">Made with&nbsp;<span class="heart">&#9829;</span>&nbsp;by Rajnish,
+    Shashank</div>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
 </html>
