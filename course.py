@@ -14,8 +14,7 @@ import datetime
 
 from utils import login_required
 
-# Use the application default credentials.
-cred = credentials.ApplicationDefault()
+cred = credentials.Certificate('static/cred/studify2.0.json')
 
 firebase_admin.initialize_app(cred)
 db = firestore.client()
@@ -246,7 +245,7 @@ def cal_choose():
     if data.exists:
         data = data.to_dict()
         course_metadata = data["course_metadata"]
-    return render_template('cal_choose.html', data=course_metadata)
+    return render_template('marks_calculator.html', data=course_metadata)
     # return jsonify(course_metadata)
 
 
