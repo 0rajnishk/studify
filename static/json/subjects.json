@@ -1,0 +1,34 @@
+{
+    "term": "23t1",
+    "course_metadata": {
+        "foundation": {
+            "cs1001": "CT",
+            "hs1002": "English II",
+            "ma1002": "Statistics I",
+            "ma1004": "Statistics II",
+            "ma1003": "Mathematics II",
+            "ma1001": "Mathematics I",
+            "cs1002": "Python"
+        },
+        "degree": {
+            "ma2001": "Linear Statistical Models",
+            "gn3001": "Strategies for Professional Growth",
+            "cs3001": "Software Engineering"
+        },
+        "diploma": {
+            "cs2004": "ML Foundations",
+            "cs2007": "MLT",
+            "cs2005": "JAVA",
+            "ms2001": "BDM",
+            "ms2002": "BA",
+            "cs2008": "MLP",
+            "se2001": "System Commands",
+            "cs2006": "MAD II",
+            "se2002": "TDS",
+            "cs2003": "MAD I",
+            "cs2002": "PDSA",
+            "cs2001": "DBMS"
+        }
+    },
+    "prefix": "ns"
+}

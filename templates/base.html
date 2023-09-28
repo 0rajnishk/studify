@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/style.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/icon.png') }}">
+
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q6ZKWZ93YC"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-Q6ZKWZ93YC');
+    </script>
+
+
+
+
+    <title>{% block title %}Studify{% endblock %}</title>
+
+</head>
+
+<body>
+    <script>
+        const gCookie = (name) => {
+            const cookies = document.cookie.split("; ");
+            for (const cookie of cookies) {
+                const [cookieName, cookieValue] = cookie.split("=");
+                if (cookieName === name) {
+                    return decodeURIComponent(cookieValue);
+                }
+            }
+            return null;
+        };
+
+        const formData = JSON.parse(gCookie('formData'));
+    </script>
+
+    <!-- Sidebar -->
+    <div class="sidebar close">
+        <a href="" class="logo">
+            <i class='bx bxl-squarespace' style="visibility: hidden;"></i>
+
+            <div class="logo-name"><span>Stud</span>ify</div>
+        </a>
+        <ul class="side-menu">
+            <li {% if active_page=='dashboard' %} class="active" {% endif %}><a href="/"><i
+                        class='bx bxs-dashboard'></i>Dashboard</a></li>
+            <li id="pyq" {% if active_page=='pyq' %} class="active" {% endif %}><a href="/pyq"><i
+                        class='bx bx-skip-previous'></i>PYQ</a></li>
+            <li {% if active_page=='notes' %} class="active" {% endif %}><a href="/notes"><i
+                        class='bx bx-book'></i>Notes</a></li>
+            {#<li {% if active_page=='exam' %} class="active" {% endif %}><a href="/exam_eval"><i
+                        class='bx bx-message-square-dots'></i>Exam</a></li>#}
+            <li {% if active_page=='marks' %} class="active" {% endif %}><a href="/Fmarks"><i
+                        class='bx bx-calculator'></i>Marks cal..</a></li>
+            <li {% if active_page=='shop' %} class="active" {% endif %}><a href="/shop"><i
+                        class='bx bxl-whatsapp'></i>Groups</a></li>
+            <li {% if active_page=='settings' %} class="active" {% endif %}><a href="/settings"><i
+                        class='bx bx-cog'></i>Settings</a></li>
+        </ul>
+
+
+        <ul class="side-menu">
+            <li>
+                <a href="/logout" class="logout">
+                    <i class='bx bx-circle'></i>
+                    About us
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- End of Sidebar -->
+
+    <!-- Main Content -->
+    <div class="content">
+        <!-- Navbar -->
+        <nav>
+            <i class='bx bx-menu'></i>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search...">
+                    <button title="search-submit" class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+            <input type="checkbox" id="theme-toggle" hidden>
+            <label for="theme-toggle" class="theme-toggle"></label>
+            <a href="#" title="notification" class="notif">
+                <i class='bx bx-bell'></i>
+                <!-- <span class="count">0</span> -->
+            </a>
+            <a href="#" class="profile">
+                <img src="{{ url_for('static', filename='images/icon.png') }}" alt="icon">
+            </a>
+        </nav>
+
+        <!-- End of Navbar -->
+
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+
+
+    </div>
+
+    <script src="{{ url_for('static', filename='scripts/index.js') }}"></script>
+
+</body>
+
+
+</html>

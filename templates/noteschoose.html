@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block title %}Notes - Studify{% endblock %}
+{% block content %}
+
+<style>
+    .box {
+        max-width: 150px;
+        border: 2px solid #007bff;
+        padding: 10px;
+        cursor: pointer;
+        text-decoration-color: var(--dark);
+        transition: border-color 0.3s;
+        width: 100%;
+        text-align: center;
+        margin: 5px;
+        background-color: #000a48;
+        color: white;
+        font-size: 16px;
+        border-radius: 5px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    h4 {
+        color: var(--dark);
+    }
+
+    .box:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+</style>
+<h3>Notes</h3>
+<h4>Select Subject</h4>
+
+<div class="container">
+    <div class="box-row" id="buttonContainer">
+        <!-- Buttons will be dynamically added here -->
+    </div>
+</div>
+<h3 id="notFound"></h3>
+
+
+
+<script>
+    const courseData = {
+        "term": "23t1",
+        "course_metadata": {
+            "foundation": {
+                "cs1001": "CT",
+                "hs1002": "English II",
+                "ma1002": "Statistics I",
+                "hs1001": "English I",
+                "ma1004": "Statistics II",
+                "ma1003": "Mathematics II",
+                "ma1001": "Mathematics I",
+                "cs1002": "Python"
+            },
+            "degree": {
+                "ma2001": "Linear Statistical Models",
+                "gn3001": "Strategies for Professional Growth",
+                "cs3001": "Software Engineering"
+            },
+            "diploma": {
+                "cs2004": "ML Foundations",
+                "cs2007": "MLT",
+                "cs2005": "JAVA",
+                "ms2001": "BDM",
+                "ms2002": "BA",
+                "cs2008": "MLP",
+                "se2001": "System Commands",
+                "cs2006": "MAD II",
+                "se2002": "TDS",
+                "cs2003": "MAD I",
+                "cs2002": "PDSA",
+                "cs2001": "DBMS"
+            }
+        },
+        "prefix": "ns"
+    };
+
+
+    // Function to get the subject code from its name
+    function getSubjectCode(subjectName) {
+        for (const level in courseData.course_metadata) {
+            const subjects = courseData.course_metadata[level];
+            for (const code in subjects) {
+                if (subjects[code] === subjectName) {
+                    return code;
+                }
+            }
+        }
+        return null; // Return null if subject name is not found
+    }
+</script>
+<script>
+    // Assuming formData is defined and contains an array of subjects
+    const subjects = formData['subjects'];
+    const buttonContainer = document.getElementById('buttonContainer');
+    const notFound = document.getElementById("notFound");
+
+    if (subjects.length > 0) {
+        subjects.forEach(subject => {
+            const button = document.createElement('button');
+            button.textContent = subject;
+            button.classList.add('box'); // You can add any existing classes you need
+            button.addEventListener('click', () => {
+                console.log(`Button for ${subject} clicked.`);
+                subjectCode = getSubjectCode(subject);
+                window.location.href = `/notes/${subjectCode}`;
+            });
+            buttonContainer.appendChild(button);
+        });
+    } else {
+        // Create a new anchor (link) element
+        const linkElement = document.createElement("a");
+        linkElement.href = "/settings"; // Set the URL for the link
+        linkElement.textContent = "Click Here to Select Subject";
+        notFound.appendChild(linkElement);
+        alert("select subejects")
+        window.location.href = '/';
+    }
+
+
+</script>
+{% endblock %}

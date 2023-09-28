@@ -1,0 +1,317 @@
+{% extends "base.html" %}
+{% block title %}Settings - Studify{% endblock %}
+{% block content %}
+
+<style>
+    /* Main content styles */
+    .container {
+        margin-bottom: 50px;
+        background-color: var(--light);
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+        color: var(--dark);
+    }
+
+    .box-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        margin-bottom: 10px;
+    }
+
+    .box {
+        background-color: var(--light);
+        border: 2px solid var(--grey);
+        padding: 10px;
+        color: var(--dark);
+        cursor: pointer;
+        transition: all 0.3s;
+        text-align: center;
+        margin: 5px;
+        border-radius: 4px;
+        flex: 1;
+        box-sizing: border-box;
+    }
+
+    .box.selected {
+        border-color: var(--primary);
+        background-color: #007bff6a;
+        color: #000000;
+    }
+
+    .accordion-content {
+        display: none;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .subject-box {
+        background-color: var(--light);
+        border: 2px solid #ccc;
+        color: var(--dark-grey);
+        padding: 5px 10px;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin: 5px;
+        border-radius: 4px;
+        flex: 1;
+        box-sizing: border-box;
+    }
+
+    .subject-box.selected {
+        background-color: #3498db;
+        border-color: #3498db;
+        color: var(--light);
+    }
+
+    #formContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    input[type="text"] {
+        display: none;
+        border: 2px solid var(--grey);
+        padding: 8px;
+        border-radius: 4px;
+        margin: 5px;
+        width: 100%;
+        max-width: 300px;
+        outline: none;
+    }
+
+    #submitButton {
+        background-color: #007bff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        color: var(--light);
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+
+    #submitButton:hover {
+        background-color: #0056b3;
+    }
+
+    /* Responsive styles */
+    @media screen and (max-width: 768px) {
+        .box-row {
+            flex-direction: column;
+        }
+
+        .accordion-content {
+            flex-direction: column;
+        }
+    }
+</style>
+</head>
+
+<body>
+    <div class="container">
+        {% block welcome %}
+
+        {% endblock welcome %}
+        <h3>Select subjects</h3>
+        <input type="text" id="nameInput" placeholder="First Name">
+        <input type="text" id="rollNumberInput" placeholder="Last Name">
+        <div class="box-row">
+            <!-- Education level boxes will be dynamically generated here -->
+        </div>
+        <div id="formContainer">
+            <!-- Subject boxes for different education levels will be dynamically generated here -->
+        </div>
+        <button id="submitButton">Submit</button>
+    </div>
+    </div>
+    </div>
+
+
+
+    <script>
+        const courseData = {
+            "term": "23t1",
+            "course_metadata": {
+                "foundation": {
+                    "cs1001": "CT",
+                    "hs1002": "English II",
+                    "ma1002": "Statistics I",
+                    "hs1001": "English I",
+                    "ma1004": "Statistics II",
+                    "ma1003": "Mathematics II",
+                    "ma1001": "Mathematics I",
+                    "cs1002": "Python"
+                },
+                "degree": {
+                    "ma2001": "Linear Statistical Models",
+                    "gn3001": "Strategies for Professional Growth",
+                    "cs3001": "Software Engineering"
+                },
+                "diploma": {
+                    "cs2004": "ML Foundations",
+                    "cs2007": "MLT",
+                    "cs2005": "JAVA",
+                    "ms2001": "BDM",
+                    "ms2002": "BA",
+                    "cs2008": "MLP",
+                    "se2001": "System Commands",
+                    "cs2006": "MAD II",
+                    "se2002": "TDS",
+                    "cs2003": "MAD I",
+                    "cs2002": "PDSA",
+                    "cs2001": "DBMS"
+                }
+            },
+            "prefix": "ns"
+        };
+
+        function generateEducationAndSubjectBoxes() {
+            const boxRow = document.querySelector('.box-row');
+            const formContainer = document.getElementById('formContainer');
+
+            for (const level in courseData.course_metadata) {
+                const levelBox = document.createElement('div');
+                levelBox.className = 'box';
+                levelBox.id = `${level}Box`;
+                levelBox.textContent = level.charAt(0).toUpperCase() + level.slice(1);
+
+                levelBox.addEventListener('click', () => {
+                    // Your existing code to handle the click event
+                });
+
+                boxRow.appendChild(levelBox);
+
+                const accordionContent = document.createElement('div');
+                accordionContent.className = 'accordion-content';
+                accordionContent.id = `${level}Content`;
+
+                const subjects = courseData.course_metadata[level];
+                for (const code in subjects) {
+                    const subjectBox = document.createElement('div');
+                    subjectBox.className = 'subject-box';
+                    subjectBox.textContent = subjects[code];
+
+                    // Add event listener for subjectBox click (similar to your existing code)
+
+                    accordionContent.appendChild(subjectBox);
+                }
+
+                formContainer.appendChild(accordionContent);
+            }
+        }
+
+        generateEducationAndSubjectBoxes();
+    </script>
+
+
+
+
+    <script>
+        const boxes = document.querySelectorAll('.box');
+        const contents = document.querySelectorAll('.accordion-content');
+        const subjectBoxes = document.querySelectorAll('.subject-box');
+        const nameInput = document.getElementById('nameInput');
+        const rollNumberInput = document.getElementById('rollNumberInput');
+        const submitButton = document.getElementById('submitButton');
+        const futureDate = new Date(Date.now() + 10 * 365 * 24 * 60 * 60 * 1000);
+
+        const data = {
+            name: "",
+            rollNumber: "",
+            level: "",
+            subjects: []
+        };
+
+        const getCookie = (name) => {
+            const cookies = document.cookie.split("; ");
+            for (const cookie of cookies) {
+                const [cookieName, cookieValue] = cookie.split("=");
+                if (cookieName === name) {
+                    return decodeURIComponent(cookieValue);
+                }
+            }
+            return null;
+        };
+    </script>
+    {% block cookiesCheck %}
+    <script>
+        const storedData = JSON.parse(getCookie('formData'));
+
+        if (storedData) {
+            nameInput.value = storedData.name;
+            rollNumberInput.value = storedData.rollNumber;
+            boxes.forEach(box => {
+                if (box.textContent.trim() === storedData.level) {
+                    box.click();
+                }
+            });
+            storedData.subjects.forEach(subject => {
+                subjectBoxes.forEach(subjectBox => {
+                    if (subjectBox.textContent === subject) {
+                        subjectBox.click();
+                    }
+                });
+            });
+        }
+    </script>
+    {% endblock %}
+    <script>
+
+        boxes.forEach(box => {
+            box.addEventListener('click', () => {
+                boxes.forEach(b => b.classList.remove('selected'));
+                box.classList.add('selected');
+                data.level = box.textContent.trim();
+                // Show the corresponding content
+                contents.forEach(content => {
+                    content.style.display = 'none';
+                });
+                const contentId = box.id.replace('Box', 'Content');
+                const content = document.getElementById(contentId);
+                content.style.display = 'flex';
+                // Update the cookies
+                document.cookie = `formData=${encodeURIComponent(JSON.stringify(data))}; expires=${futureDate.toUTCString()}; path=/`;
+            });
+        });
+
+        subjectBoxes.forEach(subjectBox => {
+            subjectBox.addEventListener('click', () => {
+                subjectBox.classList.toggle('selected');
+                const subject = subjectBox.textContent;
+                if (data.subjects.includes(subject)) {
+                    data.subjects = data.subjects.filter(item => item !== subject);
+                } else {
+                    data.subjects.push(subject);
+                }
+                // Update the cookies
+                document.cookie = `formData=${encodeURIComponent(JSON.stringify(data))}; expires=${futureDate.toUTCString()}; path=/`;
+            });
+        });
+
+        submitButton.addEventListener('click', () => {
+            data.name = nameInput.value;
+            data.rollNumber = rollNumberInput.value;
+
+            // Store data in cookies
+            document.cookie = `formData=${encodeURIComponent(JSON.stringify(data))}; expires=${futureDate.toUTCString()}; path=/`;
+
+            // Redirect to the dashboard page
+            window.location.href = '/';
+        });
+
+    </script>
+
+    {% endblock %}

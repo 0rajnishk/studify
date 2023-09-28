@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}Exam - Studify{% endblock %}
+{% block content %}
+
+<style>
+    body {
+        background-color: var(--exam);
+    }
+
+    iframe {
+        width: 90%;
+        height: 600px;
+    }
+
+    /* Style the buttons */
+    button {
+        background-color: #007BFF;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    /* Style the selected button */
+    .active {
+        background-color: #0056b3;
+        display: none;
+    }
+
+    /* Responsive styles for buttons */
+    @media (max-width: 768px) {
+        button {
+            width: 100%;
+            margin-top: 10px;
+        }
+    }
+</style>
+
+<!-- Define the three server URLs -->
+<script>
+    const serverUrls = [
+        "https://exam-eval-3uoftpsktq-el.a.run.app/",
+        "https://exam-eval-3uoftpsktq-em.a.run.app",
+        "https://exam-eval-3uoftpsktq-as.a.run.app"
+    ];
+
+    // Function to load a specific server URL
+    function loadServer(serverIndex) {
+        const serverUrl = serverUrls[serverIndex];
+        document.getElementById("serverFrame").src = serverUrl;
+
+        // Highlight the selected button
+        document.querySelectorAll("button").forEach((btn, index) => {
+            btn.classList.remove("active");
+        });
+        document.querySelector(`#server${serverIndex + 1}`).classList.add("active");
+    }
+
+    // Automatically load a random server on page load
+    window.onload = function () {
+        const randomIndex = Math.floor(Math.random() * serverUrls.length);
+        loadServer(randomIndex);
+    };
+</script>
+
+<!-- Add buttons to switch between servers -->
+<button id="server1" onclick="loadServer(0)">Server 1</button>
+<button id="server2" onclick="loadServer(1)">Server 2</button>
+<button id="server3" onclick="loadServer(2)">Server 3</button>
+<a href="/Fmarks"><button>Final Marks cal..</button></a>
+<a href="https://docs.google.com/document/u/1/d/e/2PACX-1vS_vxkPcqJV0iT9XxW_3YMhh8_8I0CIDBDvs7AUQtyCriisYxPLrbEqv1OhwXrE_A/pub#h.35nkun2"
+    title="grading" target="_blank"><button id="grading">Grading document</button></a>
+
+<iframe id="serverFrame" title="server" frameborder="0"></iframe>
+
+{% endblock %}

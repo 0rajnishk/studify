@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marks Calculator</title>
+    <style>
+        /* Add your CSS styles here for better arrangement */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 800px;
+        }
+
+        /* Style the button container */
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            /* Adjust the gap between buttons as needed */
+            justify-content: center;
+            /* Center the buttons horizontally */
+        }
+
+        /* Style the subject buttons */
+        .subject-button {
+            padding: 10px 20px;
+            /* Adjust padding as needed */
+            margin: 5px;
+            background-color: #3498db;
+            /* Change the background color */
+            color: #fff;
+            /* Text color */
+            border: none;
+            border-radius: 5px;
+            /* Rounded corners */
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            /* Add transform and background-color transitions */
+        }
+
+        .subject-button:hover {
+            background-color: #2980b9;
+            /* Change the background color on hover */
+            transform: rotate(10deg);
+            /* Add a rocking effect on hover */
+        }
+
+        .form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+
+        .submit-btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Pop-up Styles */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+
+        .popup {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Marks Calculator</h1>
+        <div class="button-container">
+            <div class="subject-buttons">
+                <button class="subject-button" data-subject="Maths 1">Maths 1</button>
+                <button class="subject-button" data-subject="English 1">English 1</button>
+                <button class="subject-button" data-subject="CT">CT</button>
+                <button class="subject-button" data-subject="software engineering">Software Engineering</button>
+            </div>
+
+        </div>
+        <!-- Container for dynamic forms -->
+        <div id="form-container"></div>
+
+        <!-- Pop-up Markup -->
+        <div class="overlay" id="popupOverlay">
+            <div class="popup">
+                <p id="result"></p>
+                <button id="closePopupButton">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to dynamically create a form for a subject
+        function createSubjectForm(subject) {
+            const form = document.createElement("form");
+            form.className = "form";
+            form.dataset.subject = subject;
+
+            // Define input fields based on the subject
+            const inputFields = {
+                "Maths 1": ["GAA", "Qz1", "Qz2", "F", "bonusMarks"],
+                "english 1": ["GAA", "Qz1", "Qz2", "F", "bonusMarks"],
+
+            };
+
+            // Create input fields for the subject
+            inputFields[subject].forEach(fieldName => {
+                const div = document.createElement("div");
+                div.className = "form-group";
+                const label = document.createElement("label");
+                label.setAttribute("for", fieldName);
+                label.textContent = `${fieldName} Score:`;
+                const input = document.createElement("input");
+                input.type = "number";
+                input.id = fieldName;
+                input.placeholder = `Enter ${fieldName}`;
+                input.step = "0.01";
+                input.value = "0";
+                div.appendChild(label);
+                div.appendChild(input);
+                form.appendChild(div);
+            });
+
+            // Create the "Calculate Score" button
+            const calculateButton = document.createElement("button");
+            calculateButton.type = "button";
+            calculateButton.className = "submit-btn";
+            calculateButton.textContent = "Calculate Score";
+            calculateButton.addEventListener("click", () => calculateT(subject));
+            form.appendChild(calculateButton);
+
+            return form;
+        }
+
+        // Event listener for subject buttons
+        const subjectButtons = document.querySelectorAll(".subject-button");
+        subjectButtons.forEach(button => {
+            button.addEventListener("click", function () {
+                // Remove any existing forms
+                const formContainer = document.getElementById("form-container");
+                formContainer.innerHTML = "";
+
+                // Show the form specific to the clicked subject
+                const subject = this.getAttribute("data-subject");
+                const form = createSubjectForm(subject);
+                formContainer.appendChild(form);
+                form.classList.add("active");
+            });
+        });
+
+        // Function to calculate T based on subject's formula
+        function calculateT(subject) {
+            // Initialize variables for input values
+            let bonusMarks, GAA, F, Qz1, Qz2, PE1, PE2, GA, WTA;
+
+            // Check if the input fields exist and parse their values
+            if (document.getElementById("bonusMarks")) {
+                bonusMarks = parseFloat(document.getElementById("bonusMarks").value);
+                console.log(`Bonus: ${bonusMarks}`);
+            }
+
+            let T;
+
+            // Calculate T based on the selected subject's formula
+            switch (subject) {
+                case "Maths 1" || "Maths 2" || "Eenglish 1" || "english 2" || "MLF":
+                    T = 0.1 * GAA + Math.max(0.6 * F + 0.2 * Math.max(Qz1, Qz2), 0.4 * F + 0.2 * Qz1 + 0.3 * Qz2);
+                    break;
+                case "python":
+                    T = (0.1 * GAA) + (0.1 * Qz1) + (Math.max((0.4 * F) + (0.2 * Math.max(PE1, PE2)), (0.4 * F) + (0.25 * Math.max(PE1, PE2)) + 0.15 * Math.min(PE1, PE2))) + (0.05 * WTA);
+                    alert(T);
+                    break;
+                default:
+                    // Handle cases where the subject is not found
+                    alert("Subject not found.");
+                    break;
+
+
+
+                // Add cases for other subjects here
+            }
+
+            // Apply additional logic (bonus, cap) if needed
+            if (T > 39) {
+                T += bonusMarks;
+            }
+            if (T > 100) {
+                T = 100;
+            }
+
+            const resultMessage = `Final Marks for ${subject} = ${T.toFixed(2)}`;
+
+            // Display the pop-up with the result
+            document.getElementById("result").textContent = resultMessage;
+            document.getElementById("popupOverlay").style.display = "flex";
+        }
+
+        // Close the pop-up when the "Close" button is clicked
+        document.getElementById("closePopupButton").addEventListener("click", function () {
+            document.getElementById("popupOverlay").style.display = "none";
+        });
+    </script>
+</body>
+
+</html>

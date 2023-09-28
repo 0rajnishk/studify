@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - Studify{% endblock %}
+
+{% block content %}
+<main>
+    <div class="header">
+        <div class="left">
+            <h1>Lectures</h1>
+        </div>
+    </div>
+
+    <div class="subjects">
+        <!-- JavaScript will dynamically load subjects here -->
+    </div>
+    <h3 id="notFound"></h3>
+
+    <div class="bottom-data">
+        <div class="events">
+            <div class="header">
+                <i class='bx bx-receipt'></i>
+                <h3>Upcoming Events</h3>
+                <i class='bx bx-filter'></i>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>organised&nbsp;by</th>
+                        <th>Details</th>
+                        <th>date</th>
+                        <th>time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <p>System commands</p>
+                        </td>
+                        <td>DECODING DATA SCIENCE AND MBA</td>
+                        <td>&nbsp;&nbsp;&nbsp;<span>18/08/23</span></td>
+                        <td>&nbsp;&nbsp;&nbsp;<span class="time completed">08:45</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p> Maths 1</p>
+                        </td>
+                        <td>Open Session</td>
+                        <td>&nbsp;&nbsp;&nbsp;<span>14/08/23</span></td>
+                        <td>&nbsp;&nbsp;&nbsp;<span class="time completed">&nbsp;08:45</span></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p> Stats 1</p>
+                        </td>
+                        <td>Solve with us</td>
+                        <td>&nbsp;&nbsp;&nbsp;<span>14/08/23</span></td>
+                        <td>&nbsp;&nbsp;&nbsp;<span class="time completed">&nbsp;08:45</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</main>
+<script>
+    const courseData = {
+        "term": "23t1",
+        "course_metadata": {
+            "foundation": {
+                "cs1001": "CT",
+                "hs1002": "English II",
+                "ma1002": "Statistics I",
+                "hs1001": "English I",
+                "ma1004": "Statistics II",
+                "ma1003": "Mathematics II",
+                "ma1001": "Mathematics I",
+                "cs1002": "Python"
+            },
+            "degree": {
+                "ma2001": "Linear Statistical Models",
+                "gn3001": "Strategies for Professional Growth",
+                "cs3001": "Software Engineering"
+            },
+            "diploma": {
+                "cs2004": "ML Foundations",
+                "cs2007": "MLT",
+                "cs2005": "JAVA",
+                "ms2001": "BDM",
+                "ms2002": "BA",
+                "cs2008": "MLP",
+                "se2001": "System Commands",
+                "cs2006": "MAD II",
+                "se2002": "TDS",
+                "cs2003": "MAD I",
+                "cs2002": "PDSA",
+                "cs2001": "DBMS"
+            }
+        },
+        "prefix": "ns"
+    };
+
+
+    // Function to get the subject code from its name
+    function getSubjectCode(subjectName) {
+        for (const level in courseData.course_metadata) {
+            const subjects = courseData.course_metadata[level];
+            for (const code in subjects) {
+                if (subjects[code] === subjectName) {
+                    return code;
+                }
+            }
+        }
+        return null; // Return null if subject name is not found
+    }
+</script>
+
+<script>
+    // Function to capitalize the first letter of a string
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    // Function to get the subject URL from its name
+    function getSubjectURL(subject) {
+        subjectCode = getSubjectCode(subject)
+        return `/course/ns_23t1_${subjectCode}`;
+    }
+
+    const subjectsContainer = document.querySelector('.subjects');
+
+    const storedData = JSON.parse(getCookie('formData'));
+    const selectedSubjects = storedData ? storedData.subjects : [];
+
+    if (selectedSubjects.length > 0) {
+        subjectsContainer.innerHTML = '<ul class="subjects"></ul>';
+        const subjectsList = subjectsContainer.querySelector('.subjects');
+
+        selectedSubjects.forEach(subject => {
+            const subjectItem = document.createElement('li');
+            const subjectLink = document.createElement('a');
+            subjectLink.href = getSubjectURL(subject);
+            const subjectSpan = document.createElement('span');
+            subjectSpan.classList.add('subject');
+            const subjectHeading = document.createElement('h3');
+            subjectHeading.textContent = subject;
+            subjectSpan.appendChild(subjectHeading);
+            subjectLink.appendChild(subjectSpan);
+            subjectItem.appendChild(subjectLink);
+            subjectLink.target = "_blank";
+            subjectsList.appendChild(subjectItem);
+        });
+    } else {
+        const notFound = document.getElementById("notFound");
+        const linkElement = document.createElement("a");
+        linkElement.href = "/settings"; // Set the URL for the link
+        linkElement.textContent = "Click Here to Select Subject";
+
+        // Append the link element to the subjectsContainer
+        notFound.appendChild(linkElement);
+        window.location.href = '/settings'
+    }
+    
+
+    // Retrieve the cookie value
+    function getCookie(name) {
+        const match = document.cookie.match(new RegExp(`${name}=([^;]+)`));
+        if (match) return decodeURIComponent(match[1]);
+    }
+
+
+</script>
+
+{% endblock %}

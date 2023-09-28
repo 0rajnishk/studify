@@ -1,0 +1,488 @@
+{% extends "base.html" %}
+{% block title %}Studify - Marks Calculator{% endblock %}
+{% block content %}
+<style>
+    .container {
+        background-color: var(--light);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px var(--dark);
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        /* Center the container horizontally */
+    }
+
+    /* Style the button container */
+    .button-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+
+    h1,
+    h2 {
+        text-align: center;
+        color: var(--dark);
+    }
+
+    /* Style the subject buttons */
+    .subject-button {
+        padding: 10px 20px;
+        margin: 5px;
+        background-color: #3498db;
+        color: var(--light);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .subject-button:hover {
+        background-color: #2980b9;
+        transform: rotate(10deg);
+    }
+
+    /* Hide the subject buttons when a form is active */
+    .form.active+.subject-buttons {
+        display: none;
+    }
+
+    /* Show the subject buttons by default */
+    .subject-buttons {
+        display: block;
+    }
+
+    .form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        /* Two columns for larger screens */
+        gap: 30px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    label {
+        font-weight: bold;
+        color: var(--dark);
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        width: 100%;
+        /* Take up the full width of the container */
+        padding: 10px;
+        border: 1px solid var(--dark-grey);
+        color: var(--dark);
+        background: var(--light);
+        border-radius: 5px;
+        font-size: 16px;
+        margin-top: 5px;
+    }
+
+    .submit-btn {
+        background-color: #007bff;
+        color: var(--light);
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        width: 100%;
+        /* Take up the full width of the container */
+    }
+
+    .submit-btn:hover {
+        background-color: #0056b3;
+    }
+
+    /* Pop-up Styles */
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(23, 23, 24, 0.8);
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+    }
+
+    .popup {
+        background-color: var(--light);
+        padding: 30px;
+        margin-left: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 0 10px var(--dark);
+        text-align: center;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    @media (max-width: 768px) {
+
+        /* Adjust styles for screens smaller than 768px width */
+        .container {
+            padding: 10px;
+            /* Reduce padding */
+        }
+
+        .form {
+            grid-template-columns: 1fr;
+            /* Change to a single column layout */
+            gap: 15px;
+            /* Reduce gap between form elements */
+        }
+
+        .subject-button {
+            padding: 8px 16px;
+            /* Reduce button padding */
+        }
+    }
+</style>
+
+
+
+<div class="container">
+    <h1>Marks Calculator</h1>
+    <div class="button-container" id="subjectButtonsContainer">
+        <div class="subject-buttons">
+            <button class="subject-button" data-subject="Maths 1">Maths 1</button>
+            <button class="subject-button" data-subject="English 1">English 1</button>
+            <button class="subject-button" data-subject="CT">CT</button>
+            <button class="subject-button" data-subject="Stats 1">Stats 1</button>
+            <button class="subject-button" data-subject="Stats 2">Stats 2</button>
+            <button class="subject-button" data-subject="Maths 2">Maths 2</button>
+            <button class="subject-button" data-subject="English 2">English 2</button>
+            <button class="subject-button" data-subject="MLF">MLF</button>
+            <button class="subject-button" data-subject="python">Python</button>
+            <button class="subject-button" data-subject="BDM">BDM</button>
+            <button class="subject-button" data-subject="PDSA">PDSA</button>
+            <button class="subject-button" data-subject="DBMS">DBMS</button>
+            <button class="subject-button" data-subject="App Dev 1">App Dev 1</button>
+            <button class="subject-button" data-subject="JAVA">JAVA</button>
+            <button class="subject-button" data-subject="MLT">MLT</button>
+            <button class="subject-button" data-subject="MLP">MLP</button>
+            <button class="subject-button" data-subject="BA">BA</button>
+            <button class="subject-button" data-subject="TDS">TDS</button>
+            <button class="subject-button" data-subject="System commands">System commands</button>
+            <button class="subject-button" data-subject="App dev 2">App dev 2</button>
+            <button class="subject-button" data-subject="strategies for Professional Growth">Strategies for
+                Professional
+                Growth</button>
+            <button class="subject-button" data-subject="software engineering">Software Engineering</button>
+        </div>
+    </div>
+    <!-- Container for dynamic forms -->
+    <div id="form-container"></div>
+
+    <!-- Pop-up Markup -->
+    <div class="overlay" id="popupOverlay">
+        <div class="popup">
+            <h2 id="result"></h2>
+            <button id="closePopupButton">Close</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Function to dynamically create a form for a subject
+    function createSubjectForm(subject) {
+        const form = document.createElement("form");
+        form.className = "form";
+        form.dataset.subject = subject;
+
+        // Define input fields based on the subject
+        const inputFields = {
+            "Maths 1": ["GAA", "Qz1", "Qz2", "F", "bonusMarks"],
+            "English 1": ["GAA", "Qz1", "Qz2", "F", "bonusMarks"],
+            "CT": ["GAA", "Qz1", "Qz2", "F", "bonusMarks"],
+            "Stats 1": ["GAA", "Qz1", "Qz2", "F", "bonusMarks"],
+            "Maths 2": ["GAA", "Qz1", "Qz2", "F", "bonusMarks"],
+            "Stats 2": ["GAA", "Qz1", "Qz2", "F", "ActivityBonus", "bonusMarks"],
+            "English 2": ["GAA", "Qz1", "Qz2", "F", "bonusMarks"],
+            "MLF": ["GAA", "Qz1", "Qz2", "F", "bonusMarks"],
+            MLF: ["GAA", "Qz1", "Qz2", "F", "bonusMarks"],
+            python: ["GAA", "Qz1", "PE1", "PE2", "F", "WTA", "bonusMarks"],
+            tyson: ["GAA", "Qz1", "PE1", "PE2", "F", "WTA", "bonusMarks"],
+            BDM: ["Qz1", "Qz2", "GA", "F", "bonusMarks"],
+            PDSA: ["GAA", "Qz1", "Qz2", "F", "OP", "bonusMarks"],
+            DBMS: ["GAA1", "GAA2", "GAA3", "OP", "Qz1", "Qz2", "F", "bonusMarks"],
+            "App Dev 1": ["GLA", "GA", "F", "Qz1", "Qz2", "bonusMarks"],
+            JAVA: ["GAA", "F", "PE1", "PE2", "Qz1", "Qz2", "bonusMarks"],
+            MLT: ["GAA", "F", "Qz1", "Qz2", "bonusMarks"],
+            MLP: ["GAA", "F", "OPE1", "OPE2", "Qz1", "Qz2", "bonusMarks"],
+            TDS: ["GAA", "ROE1", "P1", "P2", "F", "bonusMarks"],
+            "System commands": ["GAA1", "GAA2", "GAA3", "Qz1", "Qz2", "OPE1", "OPE2", "F", "VMT", "bonusMarks"],
+            "App dev 2": ["GAA1", "GAA2", "F", "Qz1", "Qz2", "bonusMarks"],
+            "strategies for Professional Growth": ["GAA", "GP", "F", "Qz2", "bonusMarks"],
+            "software engineering": ["GAA", "Qz2", "F", "GP1", "GP2", "CP", "bonusMarks"]
+
+        };
+
+        // Create input fields for the subject
+        inputFields[subject].forEach(fieldName => {
+            const div = document.createElement("div");
+            div.className = "form-group";
+            const label = document.createElement("label");
+            label.setAttribute("for", fieldName);
+            label.textContent = `${fieldName} Score:`;
+            const input = document.createElement("input");
+            input.type = "number";
+            input.id = fieldName;
+            input.placeholder = `Enter ${fieldName}`;
+            input.step = "0.01";
+            input.value = "0";
+            div.appendChild(label);
+            div.appendChild(input);
+            form.appendChild(div);
+        });
+
+        // Create the "Calculate Score" button
+        const calculateButton = document.createElement("button");
+        calculateButton.type = "button";
+        calculateButton.className = "submit-btn";
+        calculateButton.textContent = "Calculate Score";
+        calculateButton.addEventListener("click", () => calculateT(subject));
+        form.appendChild(calculateButton);
+
+        return form;
+    }
+
+    // Event listener for subject buttons
+    const subjectButtons = document.querySelectorAll(".subject-button");
+    subjectButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            // Remove any existing forms
+            const formContainer = document.getElementById("form-container");
+            formContainer.innerHTML = "";
+
+            // Show the form specific to the clicked subject
+            const subject = this.getAttribute("data-subject");
+            const form = createSubjectForm(subject);
+            formContainer.appendChild(form);
+            form.classList.add("active");
+            // Hide the subject buttons container
+            const subjectButtonsContainer = document.getElementById("subjectButtonsContainer");
+            subjectButtonsContainer.classList.add("hidden");
+        });
+    });
+
+    // Function to calculate T based on subject's formula
+    function calculateT(subject) {
+        // Initialize variables for input values
+        let bonusMarks, GAA, F, Qz1, Qz2, PE1, PE2, GA, WTA, OP, GAA1, GAA2, GAA3, GLA, OPE1, OPE2, ROE1, P1, P2, VMT, GP, GP1, GP2, CP;
+
+        // Check if the input fields exist and parse their values
+        if (document.getElementById("bonusMarks")) {
+            bonusMarks = parseFloat(document.getElementById("bonusMarks").value);
+            console.log(`Bonus: ${bonusMarks}`);
+        }
+        // Check if the input fields exist and parse their values
+        if (document.getElementById("GAA")) {
+            GAA = parseFloat(document.getElementById("GAA").value);
+            console.log(`GAA: ${GAA}`);
+        }
+        if (document.getElementById("F")) {
+            F = parseFloat(document.getElementById("F").value);
+            console.log(`F: ${F}`);
+        }
+        if (document.getElementById("Qz1")) {
+            Qz1 = parseFloat(document.getElementById("Qz1").value);
+            console.log(`Qz1: ${Qz1}`);
+        }
+        if (document.getElementById("Qz2")) {
+            Qz2 = parseFloat(document.getElementById("Qz2").value);
+            console.log(`Qz2: ${Qz2}`);
+        }
+        if (document.getElementById("PE1")) {
+            PE1 = parseFloat(document.getElementById("PE1").value);
+            console.log(`PE1: ${PE1}`);
+        }
+        if (document.getElementById("PE2")) {
+            PE2 = parseFloat(document.getElementById("PE2").value);
+            console.log(`PE2: ${PE2}`);
+        }
+        if (document.getElementById("GA")) {
+            GA = parseFloat(document.getElementById("GA").value);
+            console.log(`GA: ${GA}`);
+        }
+        if (document.getElementById("WTA")) {
+            WTA = parseFloat(document.getElementById("WTA").value);
+            console.log(`WTA: ${WTA}`);
+        }
+        if (document.getElementById("OP")) {
+            OP = parseFloat(document.getElementById("OP").value);
+            console.log(`OP: ${OP}`);
+        }
+        if (document.getElementById("GAA1")) {
+            GAA1 = parseFloat(document.getElementById("GAA1").value);
+            console.log(`GAA1: ${GAA1}`);
+        }
+        if (document.getElementById("GAA2")) {
+            GAA2 = parseFloat(document.getElementById("GAA2").value);
+            console.log(`GAA2: ${GAA2}`);
+        }
+        if (document.getElementById("GAA3")) {
+            GAA3 = parseFloat(document.getElementById("GAA3").value);
+            console.log(`GAA3: ${GAA3}`);
+        }
+        if (document.getElementById("GLA")) {
+            GLA = parseFloat(document.getElementById("GLA").value);
+            console.log(`GLA: ${GLA}`);
+        }
+        if (document.getElementById("OPE1")) {
+            OPE1 = parseFloat(document.getElementById("OPE1").value);
+            console.log(`OPE1: ${OPE1}`);
+        }
+        if (document.getElementById("OPE2")) {
+            OPE2 = parseFloat(document.getElementById("OPE2").value);
+            console.log(`OPE2: ${OPE2}`);
+        }
+        if (document.getElementById("ROE1")) {
+            ROE1 = parseFloat(document.getElementById("ROE1").value);
+            console.log(`ROE1: ${ROE1}`);
+        }
+        if (document.getElementById("P1")) {
+            P1 = parseFloat(document.getElementById("P1").value);
+            console.log(`P1: ${P1}`);
+        }
+        if (document.getElementById("P2")) {
+            P2 = parseFloat(document.getElementById("P2").value);
+            console.log(`P2: ${P2}`);
+        }
+        if (document.getElementById("VMT")) {
+            VMT = parseFloat(document.getElementById("VMT").value);
+            console.log(`VMT: ${VMT}`);
+        }
+        if (document.getElementById("GP")) {
+            GP = parseFloat(document.getElementById("GP").value);
+            console.log(`GP: ${GP}`);
+        }
+        if (document.getElementById("GP1")) {
+            GP1 = parseFloat(document.getElementById("GP1").value);
+            console.log(`GP1: ${GP1}`);
+        }
+        if (document.getElementById("GP2")) {
+            GP2 = parseFloat(document.getElementById("GP2").value);
+            console.log(`GP2: ${GP2}`);
+        }
+        if (document.getElementById("CP")) {
+            CP = parseFloat(document.getElementById("CP").value);
+            console.log(`CP: ${CP}`);
+        }
+        if (document.getElementById("ActivityBonus")) {
+            ActivityBonus = parseFloat(document.getElementById("ActivityBonus").value);
+            console.log(`ActivityBonus: ${ActivityBonus}`);
+        }
+
+        let T;
+
+        // Calculate T based on the selected subject's formula
+        switch (subject) {
+            case "Maths 1":
+                T = 0.1 * GAA + Math.max(0.6 * F + 0.2 * Math.max(Qz1, Qz2), 0.4 * F + 0.2 * Qz1 + 0.3 * Qz2);
+                break;
+            case "Stats 2":
+                T = 0.1 * GAA + Math.max(0.6 * F + 0.2 * Math.max(Qz1, Qz2), 0.4 * F + 0.2 * Qz1 + 0.3 * Qz2) + ActivityBonus;
+                break;
+            case "Maths 2":
+                T = 0.1 * GAA + Math.max(0.6 * F + 0.2 * Math.max(Qz1, Qz2), 0.4 * F + 0.2 * Qz1 + 0.3 * Qz2);
+                break;
+            case "English 1":
+                T = 0.1 * GAA + Math.max(0.6 * F + 0.2 * Math.max(Qz1, Qz2), 0.4 * F + 0.2 * Qz1 + 0.3 * Qz2);
+                break;
+            case "English 2":
+                T = 0.1 * GAA + Math.max(0.6 * F + 0.2 * Math.max(Qz1, Qz2), 0.4 * F + 0.2 * Qz1 + 0.3 * Qz2);
+                break;
+            case "MLF":
+                T = 0.1 * GAA + Math.max(0.6 * F + 0.2 * Math.max(Qz1, Qz2), 0.4 * F + 0.2 * Qz1 + 0.3 * Qz2);
+                break;
+            case "CT":
+                T = 0.1 * GAA + Math.max(0.6 * F + 0.2 * Math.max(Qz1, Qz2), 0.4 * F + 0.2 * Qz1 + 0.3 * Qz2);
+                break;
+            case "Stats 1":
+                T = 0.1 * GAA + Math.max(0.6 * F + 0.2 * Math.max(Qz1, Qz2), 0.4 * F + 0.2 * Qz1 + 0.3 * Qz2);
+                break;
+            case "python":
+                T = (0.1 * GAA) + (0.1 * Qz1) + (Math.max((0.4 * F) + (0.2 * Math.max(PE1, PE2)), (0.4 * F) + (0.25 * Math.max(PE1, PE2)) + 0.15 * Math.min(PE1, PE2))) + (0.05 * WTA);
+                break;
+            case "BDM":
+                T = 0.2 * Math.max(Qz1, Qz2) + 0.45 * GA + 0.35 * F;
+                break;
+            case "PDSA":
+                T = 0.1 * GAA + 0.4 * F + 0.2 * OP + Math.max(0.2 * Math.max(Qz1, Qz2), (0.15 * Qz1 + 0.15 * Qz2));
+                console.log(T);
+                break;
+            case "DBMS":
+                T = 0.04 * GAA1 + 0.03 * GAA2 + 0.03 * GAA3 + 0.2 * OP + Math.max(0.45 * F + 0.15 * Math.max(Qz1, Qz2), 0.4 * F + (0.10 * Qz1 + 0.20 * Qz2));
+                break;
+            case "App Dev 1":
+                T = 0.15 * GLA + 0.05 * GA + Math.max(0.35 * F + 0.2 * Qz1 + 0.25 * Qz2, 0.4 * F + 0.3 * Math.max(Qz1, Qz2));
+                break;
+            case "JAVA":
+                T = 0.1 * GAA + 0.3 * F + 0.2 * Math.max(PE1, PE2) + 0.10 * Math.min(PE1, PE2) + Math.max(0.25 * Math.max(Qz1, Qz2), 0.15 * Qz1 + 0.25 * Qz2);
+                break;
+            case "MLT":
+                T = 0.2 * GAA + 0.4 * F + Math.max(0.2 * Qz1 + 0.2 * Qz2, 0.3 * Math.max(Qz1, Qz2));
+                break;
+            case "MLP":
+                T = 0.1 * GAA + 0.3 * F + 0.15 * OPE1 + 0.15 * OPE2 + Math.max(0.15 * Qz1 + 0.15 * Qz2, 0.2 * Math.max(Qz1, Qz2));
+                break;
+            case "TDS":
+                T = 0.1 * GAA + 0.2 * ROE1 + 0.2 * P1 + 0.2 * P2 + 0.3 * F;
+                break;
+            case "System commands":
+                T = 0.06 * GAA1 + 0.02 * GAA2 + 0.02 * GAA3 + 0.15 * Qz1 + 0.15 * Qz2 + 0.15 * OPE1 + 0.15 * OPE2 + 0.3 * F + 0.1 * VMT;
+                if (T > 100) {
+                    T = 100;
+                }
+                break;
+            case "App dev 2":
+                T = 0.05 * GAA1 + 0.05 * GAA2 + Math.max(0.35 * F + 0.25 * Qz1 + 0.3 * Qz2, 0.5 * F + 0.3 * Math.max(Qz1, Qz2));
+                break;
+            case "strategies for Professional Growth":
+                T = 0.1 * GAA + 0.3 * GP + Math.max(0.5 * F, 0.2 * Qz2 + 0.4 * F);
+                break;
+            case "software engineering":
+                T = 0.1 * GAA + Math.max(0.25 * Qz2 + 0.4 * F, 0.55 * F) + 0.1 * GP1 + 0.1 * GP2 + 0.05 * CP;
+                break;
+            default:
+                // Handle cases where the subject is not found
+                alert("Subject not found.");
+                break;
+
+            // Add cases for other subjects here
+        }
+
+        // Apply additional logic (bonus, cap) if needed
+        if (T > 39) {
+            T += bonusMarks;
+        }
+        if (T > 100) {
+            T = 100;
+        }
+
+        const resultMessage = `Final Marks for ${subject} = ${T.toFixed(2)}`;
+
+        // Display the pop-up with the result
+        document.getElementById("result").textContent = resultMessage;
+        document.getElementById("popupOverlay").style.display = "flex";
+    }
+
+    // Close the pop-up when the "Close" button is clicked
+    document.getElementById("closePopupButton").addEventListener("click", function () {
+        document.getElementById("popupOverlay").style.display = "none";
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,14 @@
+
+{% extends "settings.html" %}
+{% block welcome %}
+    <h1>Welcome to studify</h1>
+{% endblock welcome %}
+{% block cookiesCheck %}
+<script>
+    const storedData = JSON.parse(getCookie('formData'));
+
+    if (storedData) {
+        window.location.href = '/dashboard'
+    }
+</script>
+{% endblock %}

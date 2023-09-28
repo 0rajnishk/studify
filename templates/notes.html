@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Notes - Studify{% endblock %}
+{% block content %}
+<style>
+   body {
+      font-family: Arial, sans-serif;
+   }
+
+   .box {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   }
+
+   .box h3 {
+      margin-top: 0;
+   }
+
+   .link {
+      margin: 5px 0;
+   }
+
+   @media (max-width: 768px) {
+      .box {
+         padding: 8px;
+      }
+   }
+
+   h1,
+   h2,
+   h3,
+   p,
+   h4 {
+      color: var(--dark);
+   }
+
+   a {
+      text-decoration: none;
+      color: var(--dark);
+   }
+</style>
+{% if notesexist == True %}
+<h3>Notes</h3>
+<div class="box">
+   {% for source, notes_links in data['Notes'].items() %}
+   <div class="box">
+      <h3>{{ source }}</h3>
+      <div>
+         {% for name, link in notes_links|dictsort %}
+         {% set modified_name = name|replace(' ', '&nbsp;') %}
+         <div class="link">
+            <a href="{{ link }}" target="_blank">{{ modified_name|safe }}</a>
+         </div>
+         {% endfor %}
+      </div>
+   </div>
+   {% endfor %}
+</div>
+{% else %}
+<h1>No Notes Available</h1>
+{% endif %}
+
+{% endblock %}

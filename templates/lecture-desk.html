@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% block title %} Studify Playlist laptop{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='image/icon.png') }}" />
+
+  {% if ':' in data.title %}
+  <title class="">{{ data.title.split(':')[-1] }}</title>
+  {% else %}
+  <title class="">{{ data.title.split(' - ')[-1] }}</title>
+  {% endif %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='style/lecture.css') }}" />
+  <style>
+    .container .video-list {
+      border-radius: 5px;
+      height: 520px;
+      overflow-y: scroll;
+    }
+
+    .container {
+      margin-top: -25px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="main-video">
+      {% if ':' in data.title %}
+      <h1 class="">{{ data.title.split(':')[-1] }}</h1>
+      {% else %}
+      <h1 class="">{{ data.title.split(' - ')[-1] }}</h1>
+      {% endif %}
+      <!-- <h6 class="">{{ data.title.upper() }}</h6> -->
+      <div class="video">
+        <iframe width="650" height="400"
+          src="https://www.youtube.com/embed/{{data.week_wise[0].videos[0].yt_vid}}?start=10&rel=0"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+        <h3 class="title">{{data.week_wise[0].videos[0].title}}</h3>
+      </div>
+    </div>
+    <div class="video-list">
+      {% for data in data.week_wise %}
+      <div class="accordion-item">
+        <div class="accordion-header">{{ data.title }}</div>
+        <div class="accordion-content">
+          {% for week in data.videos %}
+          <div class="vid">
+            <img src="https://img.youtube.com/vi/{{ week.yt_vid }}/default.jpg" alt="YouTube Video Thumbnail" />
+            <h3 class="title">{{ week.title }}</h3>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <script>
+    let listVideo = document.querySelectorAll(".video-list .vid");
+    let mainVideo = document.querySelector(".main-video video iframe");
+    const iframe = document.querySelector(".main-video iframe");
+    let title = document.querySelector(".main-video .title");
+
+    listVideo.forEach((video) => {
+      video.onclick = () => {
+        listVideo.forEach((vid) => vid.classList.remove("active"));
+        video.classList.add("active");
+        if (video.classList.contains("active")) {
+          let thumbnailUrl = video.children[0].getAttribute("src");
+          let videoId = thumbnailUrl.split("/")[4];
+          iframe.setAttribute(
+            "src",
+            `https://www.youtube.com/embed/${videoId}?start=10&rel=0`
+          );
+
+          let text = video.children[1].innerHTML;
+          title.innerHTML = text;
+        }
+      };
+    });
+    //=================== Accordion starts here====================================
+    const accordionHeaders = document.querySelectorAll(".accordion-header");
+
+    accordionHeaders.forEach((header) => {
+      header.addEventListener("click", () => {
+        const accordionContent = header.nextElementSibling;
+        const isActive = header.classList.contains("active");
+
+        // Close all other open accordion sections
+        accordionHeaders.forEach((header) => {
+          if (
+            header !== accordionContent.previousElementSibling &&
+            header.classList.contains("active")
+          ) {
+            header.classList.remove("active");
+            header.nextElementSibling.style.display = "none";
+          }
+        });
+        // Toggle the clicked accordion section
+        header.classList.toggle("active");
+        if (isActive) {
+          accordionContent.style.display = "none";
+        } else {
+          accordionContent.style.display = "block";
+        }
+      });
+    });
+  </script>
+
+
+</body>
+
+</html>
+{% endblock %}
