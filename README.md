@@ -39,7 +39,7 @@ Studify is a centralized repository designed to assist students by providing eas
 ### Marks Calculator 
 ![Question Papers](https://raw.githubusercontent.com/0rajnishk/studify/main/screenshots/marks_calculator.png)
 ![Question Papers](https://raw.githubusercontent.com/0rajnishk/studify/main/screenshots/marks_page.png)
-*Find previous year question papers to help with exam preparation.*
+*Marks calculator help with Calculating marks*
 
 
 
