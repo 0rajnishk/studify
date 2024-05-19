@@ -24,16 +24,24 @@ Studify is a centralized repository designed to assist students by providing eas
 *The landing page of Studify, where users can navigate to different sections such as notes, lectures, and question papers.*
 
 ### Notes Section
-![Notes Section](https://raw.githubusercontent.com/0rajnishk/studify/main/screenshotsscreenshots/notes_section.png)
+![Notes Section](https://raw.githubusercontent.com/0rajnishk/studify/main/screenshots/notes_page.png)
 *Browse and download notes organized by subjects and topics.*
 
 ### Archived Lectures
-![Archived Lectures](https://raw.githubusercontent.com/0rajnishk/studify/main/screenshotsscreenshots/archived_lectures.png)
+![Archived Lectures](https://raw.githubusercontent.com/0rajnishk/studify/main/screenshots/archived_lectures.png)
 *Access and view recorded lectures for revisiting important topics and concepts.*
 
 ### Question Papers
-![Question Papers](https://raw.githubusercontent.com/0rajnishk/studify/main/screenshotsscreenshots/question_papers.png)
+![Question Papers](https://raw.githubusercontent.com/0rajnishk/studify/main/screenshots/question_papers.png)
 *Find previous year question papers to help with exam preparation.*
+
+
+### Marks Calculator 
+![Question Papers](https://raw.githubusercontent.com/0rajnishk/studify/main/screenshots/marks_calculator.png)
+![Question Papers](https://raw.githubusercontent.com/0rajnishk/studify/main/screenshots/marks_page.png)
+*Find previous year question papers to help with exam preparation.*
+
+
 
 ## Getting Started
 
